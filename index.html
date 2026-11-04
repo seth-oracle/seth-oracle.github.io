@@ -93,12 +93,27 @@
     .download-foot-links a:hover{text-decoration:underline}
     .download-note{max-width:810px;margin:20px auto 0;color:#a99c87;font-size:12px;line-height:1.7}
     @media(max-width:750px){.download-grid{grid-template-columns:1fr;max-width:430px;gap:13px}.download-card{padding:23px 19px}.download-card p{min-height:0;margin-bottom:20px}.download-foot-links{flex-direction:column;gap:13px}}
+
+    /* New member guide & FAQ */
+    .guide-section{background:radial-gradient(ellipse at 50% 0%,#22170e 0%,#0a0908 65%);border-top:1px solid #45301a}
+    .guide-steps{max-width:1080px;margin:34px auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .guide-step{min-width:0;text-align:left;padding:28px 24px;border-radius:16px;border:1px solid #87602c;background:linear-gradient(155deg,#22180f,#0c0e0d 84%);box-shadow:0 10px 25px #0005}
+    .guide-num{display:grid;place-items:center;width:45px;height:45px;border-radius:50%;border:1px solid #f3ce7b;background:linear-gradient(125deg,#ffe1a0,#d3a045);color:#1d1309;font-size:19px;font-weight:900}
+    .guide-step h3{margin:19px 0 12px;color:#ffdc98;font-size:20px}.guide-step p{color:#d0c1aa;font-size:14px;line-height:1.9;min-height:80px;margin:0 0 17px}
+    .guide-step a{display:inline-flex;align-items:center;gap:6px;color:#f4ce82;font-size:14px;font-weight:800;border-bottom:1px solid #bd914c;padding-bottom:5px}
+    .faq-title{color:#f4d18a;font-size:clamp(22px,3vw,30px);margin:60px 0 22px}
+    .faq-list{max-width:880px;margin:0 auto;display:grid;gap:12px}
+    .faq-item{background:linear-gradient(130deg,#1b140e,#0a0d0d);border:1px solid #68502b;border-radius:12px;text-align:left;overflow:hidden}
+    .faq-item[open]{border-color:#c49b53}.faq-item summary{padding:18px 22px;cursor:pointer;font-size:16px;font-weight:800;color:#f5d18e;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .faq-item summary::-webkit-details-marker{display:none}.faq-item summary::after{content:"+";font-size:23px;color:#f5d18e;line-height:1}.faq-item[open] summary::after{content:"−"}
+    .faq-item summary:focus-visible{outline:2px solid #f5cf79;outline-offset:-3px}.faq-answer{padding:0 22px 19px;color:#cfc1ae;font-size:14px;line-height:1.9}.faq-answer a{color:#ffe09a;text-decoration:underline}
+    @media(max-width:750px){.guide-steps{grid-template-columns:1fr;gap:13px;max-width:480px}.guide-step{padding:23px 21px}.guide-step p{min-height:0}.faq-title{margin-top:44px}.faq-item summary{font-size:15px;padding:16px}}
 </style>
 </head>
 <body>
   <header>
     <a class="logo" href="#home">◉ 賽特神諭</a>
-    <nav class="nav"><a href="#features">核心功能</a><a href="#games">支援遊戲</a><a href="#download">下載專區</a><a href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer">啟動系統</a></nav>
+    <nav class="nav"><a href="#features">核心功能</a><a href="#games">支援遊戲</a><a href="#guide">新手教學</a><a href="#download">下載專區</a><a href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer">啟動系統</a></nav>
   </header>
   <main>
     <div class="hero" id="home"><div class="hero-content">
@@ -219,6 +234,36 @@
         <a href="https://xinyao-ai.github.io/xinyao-ai/download.html" target="_blank" rel="noopener noreferrer">完整下載與安裝說明 ↗</a>
       </div>
       <p class="download-note">提醒：Android 安裝檔可能需要允許安裝來自此來源的應用程式；請僅從本網站提供的官方連結取得檔案。</p>
+    </section>
+
+    <section class="guide-section" id="guide">
+      <h2 class="section-title">新手使用教學</h2>
+      <p class="section-sub">三個步驟，從註冊到啟用賽特神諭。</p>
+      <div class="guide-steps">
+        <article class="guide-step"><span class="guide-num">01</span>
+          <h3>註冊皇鼎會員</h3>
+          <p>先完成皇鼎娛樂城會員註冊，準備好登入賽特神諭所需的會員帳號。</p>
+          <a href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer">前往賽特神諭入口 ↗</a>
+        </article>
+        <article class="guide-step"><span class="guide-num">02</span>
+          <h3>下載賽特神諭</h3>
+          <p>依照使用裝置，下載 Windows 或 Android 版本；iPhone 請先查看 Safari 安裝教學。</p>
+          <a href="#download">選擇下載方式 ↗</a>
+        </article>
+        <article class="guide-step"><span class="guide-num">03</span>
+          <h3>登入並完成配對</h3>
+          <p>使用會員帳號登入，依系統畫面完成裝置配對，再選擇遊戲開始使用支援的功能。</p>
+          <a href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer">開啟系統 ↗</a>
+        </article>
+      </div>
+      <h3 class="faq-title" id="faq">常見問題 FAQ</h3>
+      <div class="faq-list">
+        <details class="faq-item"><summary>第一次使用需要準備什麼？</summary><div class="faq-answer">請先備妥皇鼎會員帳號，依裝置選擇安裝方式，登入後按照配對碼畫面的說明完成設定。</div></details>
+        <details class="faq-item"><summary>換手機或換電腦，要重新購買或註冊嗎？</summary><div class="faq-answer">可在配對頁選擇「更換裝置」，新裝置會取代原本的綁定裝置；實際使用資格仍依會員帳號設定為準。</div></details>
+        <details class="faq-item"><summary>iPhone 可以直接下載原生 APP 嗎？</summary><div class="faq-answer">目前沒有提供可直接下載的原生 iOS APP。請先查看 <a href="https://xinyao-ai.github.io/xinyao-ai/download.html#iosGuideModal" target="_blank" rel="noopener noreferrer">iOS Safari 安裝教學</a>，部分功能可能需要額外設定。</div></details>
+        <details class="faq-item"><summary>安裝完成卻沒有看到分析工具怎麼辦？</summary><div class="faq-answer">先確認已登入正確會員帳號、完成裝置配對，並重新開啟程式。如仍無法顯示，請參考 <a href="https://xinyao-ai.github.io/xinyao-ai/download.html" target="_blank" rel="noopener noreferrer">完整安裝說明</a>。</div></details>
+        <details class="faq-item"><summary>賽特神諭可以保證遊戲結果嗎？</summary><div class="faq-answer">不行。賽特神諭提供資料整理、盤面監測與操作輔助，無法保證結果或獲利。</div></details>
+      </div>
     </section>
   </main>
   <footer class="foot">© 2026 賽特神諭 · 數據僅供參考，不保證任何遊戲結果</footer>
