@@ -26,12 +26,25 @@
     .showcase-card img{display:block;width:100%;height:auto;background:#13110e}
     .showcase-card .details{padding:22px 24px 28px}.showcase-card h3{color:#f6d78b;font-size:21px;margin:0 0 9px}.showcase-card p{margin:0;font-size:14px;color:#cfc0a9;line-height:1.85}
     @media(max-width:700px){.showcase-grid{grid-template-columns:1fr;max-width:500px;gap:20px}.showcase-card .details{padding:18px}}
-  </style>
+  
+    .games{background:radial-gradient(ellipse at 50% 0%,#2b1d11 0%,#0b0908 65%);border-top:1px solid #372819}
+    .games-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;max-width:1060px;margin:0 auto}
+    .game-card{position:relative;min-width:0;overflow:hidden;text-align:left;padding:30px 25px 26px;border:1px solid #916a37;border-radius:16px;background:linear-gradient(145deg,#271b11 0%,#10110e 52%,#0a0a0a 100%);box-shadow:0 12px 30px #0007;transition:transform .2s,border-color .2s}
+    .game-card:hover{transform:translateY(-4px);border-color:#f5cf79}
+    .game-card::before{content:"";position:absolute;right:-58px;top:-72px;width:175px;height:175px;border-radius:50%;border:1px solid #f5cf793b;box-shadow:0 0 0 19px #f5cf7909,0 0 0 41px #f5cf7907;pointer-events:none}
+    .game-emblem{display:flex;align-items:center;justify-content:center;width:68px;height:68px;border:1px solid #bb8d46;border-radius:50%;background:radial-gradient(circle,#594020 0%,#1a1410 70%);color:#ffe3a5;font-size:30px;margin-bottom:22px;text-shadow:0 0 15px #e8b86680}
+    .game-card .game-tag{font-size:11px;letter-spacing:.16em;color:#d7b36a;font-weight:700}
+    .game-card h3{font-size:clamp(22px,2.5vw,28px);margin:7px 0 12px;color:#ffe0a1}
+    .game-card p{color:#cabca5;font-size:14px;line-height:1.9;min-height:52px;margin:0 0 23px}
+    .game-link{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid #c69b53;border-radius:8px;color:#ffdc92;padding:11px 17px;font-size:13px;font-weight:800;transition:background .2s}
+    .game-link:hover{background:#a77a32;color:#100d09}
+    @media(max-width:750px){.games-grid{grid-template-columns:1fr;max-width:500px}.game-card{text-align:center;padding:24px}.game-emblem{margin:0 auto 17px}.game-card p{min-height:0;margin-bottom:19px}}
+</style>
 </head>
 <body>
   <header>
     <a class="logo" href="#home">◉ 賽特神諭</a>
-    <nav class="nav"><a href="#features">核心功能</a><a href="#showcase">介面展示</a><a href="#download">下載專區</a><a href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer">啟動系統</a></nav>
+    <nav class="nav"><a href="#features">核心功能</a><a href="#games">支援遊戲</a><a href="#showcase">介面展示</a><a href="#download">下載專區</a><a href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer">啟動系統</a></nav>
   </header>
   <main>
     <div class="hero" id="home"><div class="hero-content">
@@ -51,6 +64,31 @@
       </div>
     </section>
 
+
+    <section class="games" id="games">
+      <h2 class="section-title">支援遊戲</h2>
+      <p class="section-sub">進入賽特神諭，選擇遊戲並查看對應的分析與輔助介面。</p>
+      <div class="games-grid">
+        <article class="game-card">
+          <div class="game-emblem" aria-hidden="true">☥</div><span class="game-tag">ATG · SETH II</span>
+          <h3>戰神賽特二代</h3>
+          <p>覺醒之力｜從遊戲選擇頁進入支援的掃描及分析工具。</p>
+          <a class="game-link" href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer" aria-label="開啟賽特神諭選擇戰神賽特二代">前往選擇遊戲 ↗</a>
+        </article>
+        <article class="game-card">
+          <div class="game-emblem" aria-hidden="true">𓂀</div><span class="game-tag">ATG · SETH I</span>
+          <h3>戰神賽特一代</h3>
+          <p>經典賽特｜透過賽特神諭統一入口進入遊戲工具。</p>
+          <a class="game-link" href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer" aria-label="開啟賽特神諭選擇戰神賽特一代">前往選擇遊戲 ↗</a>
+        </article>
+        <article class="game-card">
+          <div class="game-emblem" aria-hidden="true">✦</div><span class="game-tag">ATG · TIGER</span>
+          <h3>虎小妹</h3>
+          <p>虎小妹專區｜切換遊戲後查看對應的輔助功能。</p>
+          <a class="game-link" href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer" aria-label="開啟賽特神諭選擇虎小妹">前往選擇遊戲 ↗</a>
+        </article>
+      </div>
+    </section>
     <section class="showcase" id="showcase">
       <h2 class="section-title">介面展示</h2>
       <p class="section-sub">實際操作畫面，快速了解會員登入、APP 下載、遊戲選擇及裝置配對流程。</p>
