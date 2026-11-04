@@ -53,7 +53,7 @@
     .games-grid .game-card{flex:0 0 clamp(214px,24vw,258px);width:clamp(214px,24vw,258px);scroll-snap-align:start;padding:18px 17px 19px}
     .games-grid .game-cover{height:170px;margin-bottom:13px}
     .games-grid .game-card h3{font-size:20px;margin:6px 0 8px}
-    .games-grid .game-card p{min-height:56px;font-size:12px;line-height:1.65;margin-bottom:14px}
+    .games-grid .game-status{display:inline-block;margin:5px 0 14px;padding:5px 11px;border:1px solid #bf9a56;border-radius:20px;color:#f8d991;font-size:12px;font-weight:700}
     .games-grid .game-link{font-size:12px;padding:9px 12px}
     .games-grid .game-tag{font-size:10px}
     .game-scroll-btn{position:absolute;top:42%;transform:translateY(-50%);z-index:1;width:40px;height:40px;border:1px solid #dcad59;background:#17100dec;color:#f9d78c;border-radius:50%;font-size:27px;line-height:1;cursor:pointer;box-shadow:0 2px 14px #0009}
@@ -89,59 +89,54 @@
 
     <section class="games" id="games">
       <h2 class="section-title">支援遊戲</h2>
-      <p class="section-sub">目前系統提供 8 款 ATG 遊戲入口，部分遊戲仍在進房或入口測試階段。</p>
+      <p class="section-sub">目前展示 8 款 ATG 遊戲，點選卡片可前往系統選擇遊戲。</p>
       <div class="games-carousel"><button class="game-scroll-btn game-scroll-prev" type="button" aria-label="上一組遊戲" onclick="document.getElementById('gameTrack').scrollBy({left:-540,behavior:'smooth'})">‹</button><div class="games-grid" id="gameTrack" tabindex="0" aria-label="支援遊戲橫向列表，可左右滑動">
         <article class="game-card">
           <div class="game-cover"><img src="https://www.atg-games.com/storm-of-seth-2-awakening/zh-tw/game_icon.png" alt="戰神賽特二代覺醒之力官方遊戲封面" loading="lazy" referrerpolicy="no-referrer"></div><span class="game-tag">ATG · SETH II</span>
           <h3>戰神賽特二代</h3>
-          <p>覺醒之力｜從遊戲選擇頁進入支援的掃描及分析工具。</p>
+          <span class="game-status">可進入</span>
           <a class="game-link" href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer" aria-label="開啟賽特神諭選擇戰神賽特二代">前往選擇遊戲 ↗</a>
         </article>
         <article class="game-card">
           <div class="game-cover"><img src="https://www.atg-games.com/storm-of-seth/zh-tw/game_icon.png" alt="戰神賽特一代官方遊戲封面" loading="lazy" referrerpolicy="no-referrer"></div><span class="game-tag">ATG · SETH I</span>
           <h3>戰神賽特一代</h3>
-          <p>經典賽特｜透過賽特神諭統一入口進入遊戲工具。</p>
+          <span class="game-status">可進入</span>
           <a class="game-link" href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer" aria-label="開啟賽特神諭選擇戰神賽特一代">前往選擇遊戲 ↗</a>
         </article>
         <article class="game-card">
           <div class="game-cover"><img src="https://atg-games.com/_ipx/f_webp/tiger-girl/zh-tw/game_icon.png" alt="虎小妹官方遊戲封面" loading="lazy" referrerpolicy="no-referrer"></div><span class="game-tag">ATG · TIGER</span>
           <h3>虎小妹</h3>
-          <p>虎小妹專區｜切換遊戲後查看對應的輔助功能。</p>
+          <span class="game-status">可進入</span>
           <a class="game-link" href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer" aria-label="開啟賽特神諭選擇虎小妹">前往選擇遊戲 ↗</a>
         </article>
           <article class="game-card">
           <div class="game-cover"><img src="https://www.atg-games.com/elder-god-baphomet/en/game_icon.png" alt="古神巴風特遊戲封面" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"></div>
           <span class="game-tag">ATG · BAPHOMET</span><h3>古神巴風特</h3>
-          <span class="game-status ">可進入</span>
-          <p>古神巴風特｜查看對應的遊戲入口與盤面介面。</p>
+          <span class="game-status">可進入</span>
           <a class="game-link" href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer" aria-label="開啟賽特神諭選擇古神巴風特">前往選擇遊戲 ↗</a>
         </article>
         <article class="game-card">
           <div class="game-cover"><img src="https://www.atg-games.com/vampire/en/game_icon.png" alt="惡魔血域遊戲封面" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"></div>
           <span class="game-tag">ATG · VAMPIRE</span><h3>惡魔血域</h3>
-          <span class="game-status is-testing">進房測試</span>
-          <p>惡魔血域｜遊戲進房功能測試中。</p>
+          <span class="game-status">可進入</span>
           <a class="game-link" href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer" aria-label="開啟賽特神諭選擇惡魔血域">前往選擇遊戲 ↗</a>
         </article>
         <article class="game-card">
           <div class="game-cover"><img src="https://raw.githubusercontent.com/xinyao-ai/xinyao-ai/main/songo_cover.png" alt="孫行者遊戲封面" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"></div>
           <span class="game-tag">ATG · SONGO</span><h3>孫行者</h3>
-          <span class="game-status is-testing">入口測試</span>
-          <p>孫行者｜遊戲入口測試中。</p>
+          <span class="game-status">可進入</span>
           <a class="game-link" href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer" aria-label="開啟賽特神諭選擇孫行者">前往選擇遊戲 ↗</a>
         </article>
         <article class="game-card">
           <div class="game-cover"><img src="https://www.atg-games.com/scarlet-three-kingdoms/en/game_icon.png" alt="赤三國遊戲封面" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"></div>
           <span class="game-tag">ATG · SCARLET</span><h3>赤三國</h3>
-          <span class="game-status is-testing">入口測試</span>
-          <p>赤三國｜遊戲入口測試中。</p>
+          <span class="game-status">可進入</span>
           <a class="game-link" href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer" aria-label="開啟賽特神諭選擇赤三國">前往選擇遊戲 ↗</a>
         </article>
         <article class="game-card">
           <div class="game-cover"><img src="https://www.atg-games.com/wuxia-caishen/en/game_icon.png" alt="武俠遊戲封面" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"></div>
           <span class="game-tag">ATG · WUXIA</span><h3>武俠</h3>
-          <span class="game-status is-testing">入口測試</span>
-          <p>武俠｜遊戲入口測試中。</p>
+          <span class="game-status">可進入</span>
           <a class="game-link" href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer" aria-label="開啟賽特神諭選擇武俠">前往選擇遊戲 ↗</a>
         </article>
       </div><button class="game-scroll-btn game-scroll-next" type="button" aria-label="下一組遊戲" onclick="document.getElementById('gameTrack').scrollBy({left:540,behavior:'smooth'})">›</button></div><p class="games-tip">← 左右滑動，查看更多遊戲 →</p></section>
