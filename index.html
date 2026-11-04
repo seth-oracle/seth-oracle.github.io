@@ -19,12 +19,19 @@
     .features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:1040px;margin:auto}.feature{padding:32px 24px;background:linear-gradient(155deg,#21180e,#0f0d0b);border:1px solid #6d4c2799;border-radius:14px;text-align:left}.feature .symbol{font-size:27px;color:var(--gold)}.feature h3{font-size:20px;color:#f5d58f;margin:13px 0 8px}.feature p{font-size:14px;color:#c4b7a3;line-height:1.9;margin:0}
     .downloads{background:radial-gradient(ellipse at 50% 100%,#39250e 0%,#0b0908 60%);border-top:1px solid #3a2b1e}.downloads .actions{margin-top:28px}.foot{border-top:1px solid #34291b;text-align:center;color:#8e806c;font-size:12px;padding:24px 12px}
     @media(max-width:700px){header{padding:18px 20px}.logo{font-size:17px}.nav{gap:12px;font-size:12px}.nav a:first-child{display:none}.hero{min-height:780px;min-height:100svh;padding:200px 16px 14vh;background-position:center,center top}.hero h1{letter-spacing:.08em}.features{grid-template-columns:1fr}.feature{text-align:center}.btn{min-width:145px}.eyebrow{font-size:11px}}
+
+    .showcase{background:linear-gradient(180deg,#0b0908,#160f09);border-top:1px solid #4e361e;border-bottom:1px solid #4e361e}
+    .showcase-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px;max-width:1020px;margin:0 auto}
+    .showcase-card{min-width:0;text-align:center;background:linear-gradient(150deg,#1d150f,#080b0c);border:1px solid #89632e;border-radius:18px;overflow:hidden;box-shadow:0 18px 38px #0008}
+    .showcase-card img{display:block;width:100%;height:auto;background:#13110e}
+    .showcase-card .details{padding:22px 24px 28px}.showcase-card h3{color:#f6d78b;font-size:21px;margin:0 0 9px}.showcase-card p{margin:0;font-size:14px;color:#cfc0a9;line-height:1.85}
+    @media(max-width:700px){.showcase-grid{grid-template-columns:1fr;max-width:500px;gap:20px}.showcase-card .details{padding:18px}}
   </style>
 </head>
 <body>
   <header>
     <a class="logo" href="#home">◉ 賽特神諭</a>
-    <nav class="nav"><a href="#features">核心功能</a><a href="#download">下載專區</a><a href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer">啟動系統</a></nav>
+    <nav class="nav"><a href="#features">核心功能</a><a href="#showcase">介面展示</a><a href="#download">下載專區</a><a href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer">啟動系統</a></nav>
   </header>
   <main>
     <div class="hero" id="home"><div class="hero-content">
@@ -41,6 +48,21 @@
         <article class="feature"><div class="symbol">⌁</div><h3>數據觀察</h3><p>整合多種遊戲資訊，協助整理分析結果。</p></article>
         <article class="feature"><div class="symbol">◇</div><h3>遊戲切換</h3><p>從統一介面進入支援的遊戲及工具。</p></article>
         <article class="feature"><div class="symbol">▣</div><h3>跨裝置使用</h3><p>依裝置選擇適合的啟動或安裝方式。</p></article>
+      </div>
+    </section>
+
+    <section class="showcase" id="showcase">
+      <h2 class="section-title">介面展示</h2>
+      <p class="section-sub">實際操作畫面，快速了解會員登入、APP 下載、遊戲選擇及裝置配對流程。</p>
+      <div class="showcase-grid">
+        <article class="showcase-card">
+          <img src="showcase-login.webp" alt="賽特神諭會員登入與 APP 下載介面" loading="lazy" width="541" height="1061">
+          <div class="details"><h3>會員登入與 APP 下載</h3><p>整合會員登入、Windows／Android 下載入口，以及新會員使用教學。</p></div>
+        </article>
+        <article class="showcase-card">
+          <img src="showcase-games.webp" alt="賽特神諭選擇遊戲及裝置配對介面" loading="lazy" width="559" height="1061">
+          <div class="details"><h3>遊戲選擇與裝置配對</h3><p>集中管理遊戲入口與配對碼，快速查看會員綁定裝置狀態。</p></div>
+        </article>
       </div>
     </section>
     <section class="downloads" id="download"><h2 class="section-title">開啟賽特神諭</h2><p class="section-sub">從你的裝置開始體驗賽特神諭。</p>
