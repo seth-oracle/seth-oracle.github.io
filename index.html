@@ -44,6 +44,23 @@
     .game-link{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid #c69b53;border-radius:8px;color:#ffdc92;padding:11px 17px;font-size:13px;font-weight:800;transition:background .2s}
     .game-link:hover{background:#a77a32;color:#100d09}
     @media(max-width:750px){.games-grid{grid-template-columns:1fr;max-width:500px}.game-card{text-align:center;padding:24px}.game-emblem{margin:0 auto 17px}.game-card p{min-height:0;margin-bottom:19px}}
+
+    /* Supported games: compact horizontal carousel */
+    .games{overflow:hidden}
+    .games-carousel{position:relative;max-width:1160px;margin:0 auto;padding:0 54px}
+    .games-grid{display:flex!important;grid-template-columns:none!important;max-width:none!important;gap:16px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-inline:contain;scrollbar-width:none;padding:6px 3px 18px;margin:0}
+    .games-grid::-webkit-scrollbar{display:none}
+    .games-grid .game-card{flex:0 0 clamp(214px,24vw,258px);width:clamp(214px,24vw,258px);scroll-snap-align:start;padding:18px 17px 19px}
+    .games-grid .game-cover{height:170px;margin-bottom:13px}
+    .games-grid .game-card h3{font-size:20px;margin:6px 0 8px}
+    .games-grid .game-card p{min-height:56px;font-size:12px;line-height:1.65;margin-bottom:14px}
+    .games-grid .game-link{font-size:12px;padding:9px 12px}
+    .games-grid .game-tag{font-size:10px}
+    .game-scroll-btn{position:absolute;top:42%;transform:translateY(-50%);z-index:1;width:40px;height:40px;border:1px solid #dcad59;background:#17100dec;color:#f9d78c;border-radius:50%;font-size:27px;line-height:1;cursor:pointer;box-shadow:0 2px 14px #0009}
+    .game-scroll-btn:hover{background:#6b4b1b;color:#fff1be}
+    .game-scroll-prev{left:4px}.game-scroll-next{right:4px}
+    .games-tip{color:#bfa57b;font-size:12px;margin:14px 0 0}
+    @media(max-width:750px){.games-carousel{padding:0 12px}.games-grid{max-width:none!important;gap:12px;padding:5px 6px 15px}.games-grid .game-card{flex:0 0 min(72vw,270px);width:min(72vw,270px);text-align:left;padding:17px}.games-grid .game-cover{height:170px}.games-grid .game-card p{min-height:0}.game-scroll-btn{display:none}}
 </style>
 </head>
 <body>
@@ -73,7 +90,7 @@
     <section class="games" id="games">
       <h2 class="section-title">支援遊戲</h2>
       <p class="section-sub">目前系統提供 8 款 ATG 遊戲入口，部分遊戲仍在進房或入口測試階段。</p>
-      <div class="games-grid">
+      <div class="games-carousel"><button class="game-scroll-btn game-scroll-prev" type="button" aria-label="上一組遊戲" onclick="document.getElementById('gameTrack').scrollBy({left:-540,behavior:'smooth'})">‹</button><div class="games-grid" id="gameTrack" tabindex="0" aria-label="支援遊戲橫向列表，可左右滑動">
         <article class="game-card">
           <div class="game-cover"><img src="https://www.atg-games.com/storm-of-seth-2-awakening/zh-tw/game_icon.png" alt="戰神賽特二代覺醒之力官方遊戲封面" loading="lazy" referrerpolicy="no-referrer"></div><span class="game-tag">ATG · SETH II</span>
           <h3>戰神賽特二代</h3>
@@ -127,8 +144,7 @@
           <p>武俠｜遊戲入口測試中。</p>
           <a class="game-link" href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer" aria-label="開啟賽特神諭選擇武俠">前往選擇遊戲 ↗</a>
         </article>
-      </div>
-    </section>
+      </div><button class="game-scroll-btn game-scroll-next" type="button" aria-label="下一組遊戲" onclick="document.getElementById('gameTrack').scrollBy({left:540,behavior:'smooth'})">›</button></div><p class="games-tip">← 左右滑動，查看更多遊戲 →</p></section>
     <section class="showcase" id="showcase">
       <h2 class="section-title">介面展示</h2>
       <p class="section-sub">實際操作畫面，快速了解會員登入、APP 下載、遊戲選擇及裝置配對流程。</p>
