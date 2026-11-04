@@ -32,6 +32,9 @@
     .game-card{position:relative;min-width:0;overflow:hidden;text-align:left;padding:30px 25px 26px;border:1px solid #916a37;border-radius:16px;background:linear-gradient(145deg,#271b11 0%,#10110e 52%,#0a0a0a 100%);box-shadow:0 12px 30px #0007;transition:transform .2s,border-color .2s}
     .game-card:hover{transform:translateY(-4px);border-color:#f5cf79}
     .game-card::before{content:"";position:absolute;right:-58px;top:-72px;width:175px;height:175px;border-radius:50%;border:1px solid #f5cf793b;box-shadow:0 0 0 19px #f5cf7909,0 0 0 41px #f5cf7907;pointer-events:none}
+    .game-cover{display:flex;align-items:center;justify-content:center;height:232px;margin:0 0 20px;border-radius:12px;background:radial-gradient(circle,#47311c 0%,#100e0b 70%);overflow:hidden}
+    .game-cover img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 8px 14px #0009);transition:transform .25s}
+    .game-card:hover .game-cover img{transform:scale(1.035)}
     .game-emblem{display:flex;align-items:center;justify-content:center;width:68px;height:68px;border:1px solid #bb8d46;border-radius:50%;background:radial-gradient(circle,#594020 0%,#1a1410 70%);color:#ffe3a5;font-size:30px;margin-bottom:22px;text-shadow:0 0 15px #e8b86680}
     .game-card .game-tag{font-size:11px;letter-spacing:.16em;color:#d7b36a;font-weight:700}
     .game-card h3{font-size:clamp(22px,2.5vw,28px);margin:7px 0 12px;color:#ffe0a1}
@@ -70,19 +73,19 @@
       <p class="section-sub">進入賽特神諭，選擇遊戲並查看對應的分析與輔助介面。</p>
       <div class="games-grid">
         <article class="game-card">
-          <div class="game-emblem" aria-hidden="true">☥</div><span class="game-tag">ATG · SETH II</span>
+          <div class="game-cover"><img src="https://www.atg-games.com/storm-of-seth-2-awakening/zh-tw/game_icon.png" alt="戰神賽特二代覺醒之力官方遊戲封面" loading="lazy" referrerpolicy="no-referrer"></div><span class="game-tag">ATG · SETH II</span>
           <h3>戰神賽特二代</h3>
           <p>覺醒之力｜從遊戲選擇頁進入支援的掃描及分析工具。</p>
           <a class="game-link" href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer" aria-label="開啟賽特神諭選擇戰神賽特二代">前往選擇遊戲 ↗</a>
         </article>
         <article class="game-card">
-          <div class="game-emblem" aria-hidden="true">𓂀</div><span class="game-tag">ATG · SETH I</span>
+          <div class="game-cover"><img src="https://www.atg-games.com/storm-of-seth/zh-tw/game_icon.png" alt="戰神賽特一代官方遊戲封面" loading="lazy" referrerpolicy="no-referrer"></div><span class="game-tag">ATG · SETH I</span>
           <h3>戰神賽特一代</h3>
           <p>經典賽特｜透過賽特神諭統一入口進入遊戲工具。</p>
           <a class="game-link" href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer" aria-label="開啟賽特神諭選擇戰神賽特一代">前往選擇遊戲 ↗</a>
         </article>
         <article class="game-card">
-          <div class="game-emblem" aria-hidden="true">✦</div><span class="game-tag">ATG · TIGER</span>
+          <div class="game-cover"><img src="https://atg-games.com/_ipx/f_webp/tiger-girl/zh-tw/game_icon.png" alt="虎小妹官方遊戲封面" loading="lazy" referrerpolicy="no-referrer"></div><span class="game-tag">ATG · TIGER</span>
           <h3>虎小妹</h3>
           <p>虎小妹專區｜切換遊戲後查看對應的輔助功能。</p>
           <a class="game-link" href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer" aria-label="開啟賽特神諭選擇虎小妹">前往選擇遊戲 ↗</a>
