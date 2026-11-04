@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090707">
+  <meta name="description" content="賽特之眼｜ATG 智慧分析系統，整合全房掃描、盤面監測、數據觀察與輔助工具。">
+  <title>賽特之眼｜ATG 智慧分析系統</title>
+  <style>
+    :root{--gold:#f5cf79;--muted:#c5b9a4;--line:#6f502b}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#080707;color:#f9f2e7;font-family:"Microsoft JhengHei","Noto Sans TC",system-ui,sans-serif}
+    a{text-decoration:none;color:inherit}header{position:absolute;z-index:2;top:0;left:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:24px max(24px,6vw);background:linear-gradient(#070605ba,transparent)}
+    .logo{font-size:23px;font-weight:900;letter-spacing:.15em;color:var(--gold);text-shadow:0 0 19px #d9a74d66}.nav{display:flex;gap:26px;font-size:14px;color:#dfd1bc}.nav a:hover{color:var(--gold)}
+    .hero{min-height:100svh;position:relative;display:flex;align-items:flex-end;justify-content:center;text-align:center;padding:210px 20px 12vh;background:linear-gradient(180deg,#08070733 12%,#08070722 34%,#0807077d 64%,#080707 100%),url('temple.png') center 35% / cover no-repeat,#0b0908}
+    .hero-content{position:relative;max-width:860px}.eyebrow{font-size:13px;letter-spacing:.36em;color:var(--gold);font-weight:700}.hero h1{font-size:clamp(52px,8vw,104px);line-height:1.14;margin:12px 0;color:#ffe1a0;letter-spacing:.13em;text-shadow:0 5px 30px #000,0 0 24px #cf912766}
+    .hero p{font-size:clamp(15px,2.1vw,21px);line-height:1.9;color:#e6d8c5;margin:0 auto 30px;text-shadow:0 2px 7px #000}
+    .actions{display:flex;justify-content:center;flex-wrap:wrap;gap:14px}.btn{min-width:170px;padding:14px 25px;border:1px solid #dcb560;border-radius:8px;font-weight:800;font-size:15px;transition:.2s}.btn:hover{transform:translateY(-2px);filter:brightness(1.12)}.btn.primary{background:linear-gradient(110deg,#f8e0a1,#d69b3d);color:#201408;box-shadow:0 0 26px #d59c2d38}.btn.secondary{background:#0b0908b8;color:#f7d88e}
+    section{padding:75px 20px;text-align:center}.section-title{font-size:clamp(26px,3.5vw,40px);margin:0 0 13px;color:var(--gold);letter-spacing:.12em}.section-sub{color:var(--muted);margin:0 auto 32px;max-width:680px;line-height:1.9}
+    .features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:1040px;margin:auto}.feature{padding:32px 24px;background:linear-gradient(155deg,#21180e,#0f0d0b);border:1px solid #6d4c2799;border-radius:14px;text-align:left}.feature .symbol{font-size:27px;color:var(--gold)}.feature h3{font-size:20px;color:#f5d58f;margin:13px 0 8px}.feature p{font-size:14px;color:#c4b7a3;line-height:1.9;margin:0}
+    .downloads{background:radial-gradient(ellipse at 50% 100%,#39250e 0%,#0b0908 60%);border-top:1px solid #3a2b1e}.downloads .actions{margin-top:28px}.foot{border-top:1px solid #34291b;text-align:center;color:#8e806c;font-size:12px;padding:24px 12px}
+    @media(max-width:700px){header{padding:18px 20px}.logo{font-size:17px}.nav{gap:12px;font-size:12px}.nav a:first-child{display:none}.hero{min-height:780px;min-height:100svh;padding:200px 16px 14vh;background-position:center,center top}.hero h1{letter-spacing:.08em}.features{grid-template-columns:1fr}.feature{text-align:center}.btn{min-width:145px}.eyebrow{font-size:11px}}
+  </style>
+</head>
+<body>
+  <header>
+    <a class="logo" href="#home">◉ 賽特之眼</a>
+    <nav class="nav"><a href="#features">核心功能</a><a href="#download">下載專區</a><a href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer">啟動系統</a></nav>
+  </header>
+  <main>
+    <div class="hero" id="home"><div class="hero-content">
+      <div class="eyebrow">SETH ORACLE · ATG ANALYTICS</div>
+      <h1>賽特之眼</h1>
+      <p>開啟神諭視界，探索遊戲數據。<br>全房掃描・盤面監測・智慧分析</p>
+      <div class="actions"><a class="btn primary" href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer">立即啟動</a><a class="btn secondary" href="#features">探索功能</a></div>
+    </div></div>
+    <section id="features"><h2 class="section-title">核心功能</h2><p class="section-sub">整合 ATG 遊戲資訊與輔助工具，讓數據觀察更直覺。</p>
+      <div class="features">
+        <article class="feature"><div class="symbol">◈</div><h3>全房掃描</h3><p>彙整房間資訊與排行，快速查看不同房間狀態。</p></article>
+        <article class="feature"><div class="symbol">◉</div><h3>盤面監測</h3><p>追蹤盤面符號及近期記錄，呈現統計參考資訊。</p></article>
+        <article class="feature"><div class="symbol">✦</div><h3>極速加速</h3><p>集中操作入口，提供更便利的使用體驗。</p></article>
+        <article class="feature"><div class="symbol">⌁</div><h3>數據觀察</h3><p>整合多種遊戲資訊，協助整理分析結果。</p></article>
+        <article class="feature"><div class="symbol">◇</div><h3>遊戲切換</h3><p>從統一介面進入支援的遊戲及工具。</p></article>
+        <article class="feature"><div class="symbol">▣</div><h3>跨裝置使用</h3><p>依裝置選擇適合的啟動或安裝方式。</p></article>
+      </div>
+    </section>
+    <section class="downloads" id="download"><h2 class="section-title">開啟神諭之眼</h2><p class="section-sub">從你的裝置開始體驗賽特之眼。</p>
+      <div class="actions"><a class="btn primary" href="https://github.com/xinyao-ai/xinyao-ai/releases/download/windows-stable/SethOracle-Windows-Setup.exe">下載 Windows 版</a><a class="btn secondary" href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer">開啟網頁版</a></div>
+    </section>
+  </main>
+  <footer class="foot">© 2026 賽特之眼 · 數據僅供參考，不保證任何遊戲結果</footer>
+</body>
+</html>
