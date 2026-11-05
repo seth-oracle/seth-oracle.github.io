@@ -145,12 +145,127 @@
       .floating-line-mark{width:31px!important;height:31px!important}
       .foot{padding-bottom:calc(78px + env(safe-area-inset-bottom,0px))}
     }
+
+/* 2026-11-05: Mobile-first landing page refinements */
+.mobile-menu-toggle,.mobile-quick-links{display:none}
+@media(max-width:700px){
+  html{scroll-padding-top:80px}
+  body{overflow-x:hidden}
+  header{
+    position:relative;z-index:20;width:100%;
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:nowrap;
+    gap:10px;padding:12px 16px!important;
+    min-height:62px;background:#100c09!important;
+    border-bottom:1px solid #634824
+  }
+  header .logo{font-size:20px!important;letter-spacing:.08em;white-space:nowrap}
+  .mobile-menu-toggle{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+    width:43px;height:41px;flex-shrink:0;padding:0;border:1px solid #997037;
+    border-radius:9px;background:#23180c;color:#ffe2a4;cursor:pointer
+  }
+  .mobile-menu-toggle span{display:block;width:20px;height:2px;border-radius:2px;background:#f7d48d}
+  header .nav{
+    display:none!important;position:absolute;top:calc(100% - 1px);left:0;right:0;
+    width:100%;max-height:calc(100dvh - 70px);overflow:auto;
+    flex-direction:column;flex-wrap:nowrap;gap:0!important;
+    padding:9px 14px 16px!important;border-bottom:1px solid #9a6d34;
+    background:#110c08f7;box-shadow:0 18px 28px #000b
+  }
+  header.menu-open .nav{display:flex!important}
+  header .nav a,header .nav a:first-child{
+    display:flex!important;align-items:center;min-height:46px;flex:none;white-space:normal;
+    background:none!important;border:0!important;border-bottom:1px solid #39291b!important;
+    border-radius:0!important;padding:12px 9px!important;
+    font-size:14px!important;color:#f1d49a
+  }
+  .hero{
+    min-height:0!important;display:flex;align-items:center;justify-content:center;
+    padding:94px 17px 48px!important;
+    background:linear-gradient(180deg,#08070752,#08070766 24%,#080707a5 65%,#080707 100%),url('temple.png') center 26%/cover no-repeat,#0b0908!important
+  }
+  .hero-content{width:100%;max-width:440px}
+  .hero .eyebrow{font-size:10px!important;letter-spacing:.17em}
+  .hero h1{font-size:clamp(40px,11vw,62px)!important;line-height:1.2;letter-spacing:.06em!important;margin:13px 0!important}
+  .hero p{font-size:14px!important;line-height:1.75;margin:0 auto 22px!important}
+  .hero .actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .hero .btn{display:flex;align-items:center;justify-content:center;min-width:0;min-height:47px;padding:10px 8px;font-size:14px}
+  .mobile-quick-links{
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;
+    margin:29px 0 0;text-align:left
+  }
+  .mobile-quick-links a{
+    display:grid;grid-template-columns:33px 1fr;grid-template-rows:auto auto;
+    column-gap:10px;align-items:center;min-height:80px;padding:13px 12px;
+    background:linear-gradient(140deg,#261a0e,#12100e);
+    border:1px solid #816035;border-radius:13px;box-shadow:0 7px 16px #0004
+  }
+  .mobile-quick-links a>span{
+    grid-row:span 2;display:grid;place-items:center;width:32px;height:32px;
+    border-radius:10px;border:1px solid #bd8b3d;background:#3b2712;
+    color:#ffe1a1;font-size:21px
+  }
+  .mobile-quick-links strong{font-size:14px;color:#ffe3a1;white-space:nowrap}
+  .mobile-quick-links small{font-size:11px;color:#bbac94}
+  section{padding:47px 16px!important}
+  .section-title{font-size:27px!important;line-height:1.3;margin-bottom:10px}
+  .section-sub{font-size:13px!important;line-height:1.75;margin-bottom:23px}
+  .feature-section .features{grid-template-columns:1fr!important;gap:10px}
+  .feature-accordion{border-radius:12px}
+  .feature-accordion>summary{min-height:78px!important;padding:14px!important;gap:12px}
+  .feature-icon{width:41px;height:41px;font-size:23px;border-radius:10px}
+  .feature-head{gap:4px}
+  .feature-head strong{font-size:16px!important}
+  .feature-brief{font-size:12px!important;line-height:1.55}
+  .feature-expanded{padding:13px 16px 17px}
+  .games-carousel{padding:0!important;margin:0 -1px}
+  .games-grid{gap:12px!important;padding:3px 1px 13px!important}
+  .games-grid .game-card{
+    flex:0 0 min(64vw,232px)!important;width:min(64vw,232px)!important;
+    text-align:left;padding:12px!important;border-radius:13px
+  }
+  .games-grid .game-cover{height:143px!important;margin-bottom:8px;border-radius:9px}
+  .games-grid .game-card h3{font-size:17px!important;margin:6px 0 7px}
+  .games-grid .game-status{font-size:11px;margin:4px 0 10px}
+  .games-grid .game-link{display:flex;min-height:40px;font-size:12px;line-height:1.5;padding:10px 8px}
+  .download-grid{grid-template-columns:1fr;max-width:460px;gap:11px;margin-top:23px}
+  .download-card{
+    display:grid;grid-template-columns:52px minmax(0,1fr);column-gap:13px;
+    align-items:center;justify-items:stretch;text-align:left;
+    padding:16px!important;border-radius:13px
+  }
+  .download-card .device-icon{grid-row:1/3;width:49px;height:49px;border-radius:12px;font-size:25px}
+  .download-card h3{font-size:17px;margin:0 0 4px}
+  .download-card p{font-size:12px;line-height:1.65;min-height:0;margin:0}
+  .download-card .download-action{
+    grid-column:1/-1;max-width:none;width:100%;margin-top:13px;min-height:43px;font-size:13px
+  }
+  .guide-steps{grid-template-columns:1fr;gap:11px;margin-top:22px}
+  .guide-step{padding:18px!important;border-radius:13px}
+  .guide-num{width:37px;height:37px;font-size:15px}
+  .guide-step h3{font-size:17px;margin:12px 0 7px}
+  .guide-step p{font-size:13px;min-height:0;margin-bottom:11px;line-height:1.7}
+  .guide-step a{font-size:13px}
+  .faq-title{margin:40px 0 16px;font-size:23px}
+  .faq-list{gap:9px}
+  .faq-item summary{font-size:14px;padding:14px 15px}
+  .faq-answer{padding:0 15px 17px;font-size:13px}
+  .download-foot-links{font-size:13px;gap:12px}
+  a.floating-line{
+    min-width:0!important;min-height:48px!important;
+    right:12px!important;bottom:calc(12px + env(safe-area-inset-bottom,0px))!important;
+    padding:8px 12px!important;font-size:13px!important
+  }
+  .floating-line-mark{width:29px!important;height:29px!important;font-size:9px!important}
+}
+@media(max-width:360px){.mobile-quick-links strong{font-size:12px}.mobile-quick-links a{padding:10px 8px;column-gap:7px}}
+@media(min-width:701px){.mobile-menu-toggle,.mobile-quick-links{display:none!important}}
 </style>
 </head>
 <body>
   <header>
     <a class="logo" href="#home">◉ 賽特神諭</a>
-    <nav class="nav"><a href="#features">核心功能</a><a href="#games">支援遊戲</a><a href="/guides/">攻略教學</a><a href="/assistant/">神諭助手</a><a href="#guide">新手教學</a><a href="#download">下載專區</a><a href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer">啟動系統</a></nav>
+    <button class="mobile-menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="展開網站選單"><span></span><span></span><span></span></button><nav class="nav" id="primary-nav"><a href="#features">核心功能</a><a href="#games">支援遊戲</a><a href="/guides/">攻略教學</a><a href="/assistant/">神諭助手</a><a href="#guide">新手教學</a><a href="#download">下載專區</a><a href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer">啟動系統</a></nav>
   </header>
   <main>
     <div class="hero" id="home"><div class="hero-content">
@@ -158,6 +273,12 @@
       <h1>賽特神諭</h1>
       <p>開啟神諭視界，探索遊戲數據。<br>全房掃描・盤面監測・智慧分析</p>
       <div class="actions"><a class="btn primary" href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer">立即啟動</a><a class="btn secondary" href="#features">探索功能</a></div>
+    <div class="mobile-quick-links" aria-label="熱門功能入口">
+      <a href="#games"><span aria-hidden="true">◈</span><strong>支援遊戲</strong><small>8 款遊戲</small></a>
+      <a href="/assistant/"><span aria-hidden="true">◉</span><strong>神諭助手</strong><small>功能介紹</small></a>
+      <a href="/guides/"><span aria-hidden="true">▤</span><strong>攻略教學</strong><small>新手必看</small></a>
+      <a href="#download"><span aria-hidden="true">⬇</span><strong>下載專區</strong><small>開始使用</small></a>
+    </div>
     </div></div>
     <section id="features" class="feature-section">
       <h2 class="section-title">核心功能</h2><p class="section-sub">六大功能一次掌握。點選卡片，即可展開詳細介紹。</p>
@@ -305,5 +426,22 @@
   </main>
   <a class="floating-line" href="https://lin.ee/sAuklWr" target="_blank" rel="noopener noreferrer" aria-label="聯絡賽特神諭官方 LINE 客服"><span class="floating-line-mark" aria-hidden="true">LINE</span><span>官方客服</span></a>
   <footer class="foot">© 2026 賽特神諭 · 數據僅供參考，不保證任何遊戲結果</footer>
-</body>
+<script>
+(function(){
+  const header=document.querySelector("body > header");
+  const toggle=document.querySelector(".mobile-menu-toggle");
+  if(!header||!toggle)return;
+  toggle.addEventListener("click",()=>{
+    const open=header.classList.toggle("menu-open");
+    toggle.setAttribute("aria-expanded",String(open));
+    toggle.setAttribute("aria-label",open?"關閉網站選單":"展開網站選單");
+  });
+  header.querySelectorAll(".nav a").forEach(link=>link.addEventListener("click",()=>{
+    header.classList.remove("menu-open");
+    toggle.setAttribute("aria-expanded","false");
+    toggle.setAttribute("aria-label","展開網站選單");
+  }));
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"){header.classList.remove("menu-open");toggle.setAttribute("aria-expanded","false");}});
+})();
+</script></body>
 </html>
