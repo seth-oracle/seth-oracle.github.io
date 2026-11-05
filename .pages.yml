@@ -48,6 +48,7 @@ content:
       - name: order
         label: 顯示順序
         type: number
+        required: true
         description: 數字越小越前面，新增文章請填 10、11...
       - name: published
         label: 公開發布
