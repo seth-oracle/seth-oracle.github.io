@@ -1,14 +1,13 @@
 ---
-title: "◎ 盤面監測"
-description: "整理近期符號與盤面資訊，協助觀察變化。"
-image1: "/assistant/images/monitor.webp"
-image1_caption: "盤面監測介面"
-image1_description: "查看遊戲符號及近期盤面監測資訊"
-image2: "/assistant/images/game-main.webp"
-image2_caption: "遊戲中的助手視窗"
-image2_description: "在實際遊戲畫面中開啟監測功能"
+title: 🎯 盤面監測
+description: 整理近期符號與盤面資訊，協助觀察變化。
+image1: /assistant/images/monitor.webp
+image1_caption: 盤面監測介面
+image1_description: 查看遊戲符號及近期盤面監測資訊
+image2: /assistant/images/game-main.webp
+image2_caption: 遊戲中的助手視窗
+image2_description: 在實際遊戲畫面中開啟監測功能
 ---
-
 ## 盤面監測會顯示什麼？
 
 依支援的遊戲版本，整理畫面中的符號與近期盤面紀錄，方便查看資訊。可呈現的欄位以實際介面為準。
