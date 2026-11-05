@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090807">
+<meta name="description" content="賽特神諭助手：ATG 全房掃描、盤面監測、極速加速與分數配置功能介紹。查看操作畫面、下載方式與使用教學。">
+<link rel="canonical" href="https://seth-oracle.github.io/assistant/"><title>賽特神諭助手｜ATG 智慧輔助系統</title>
+<style>
+:root{--gold:#f4d58e;--line:#77562b;--soft:#c5b79f;--bg:#090807;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--bg);color:#f5ecd9;margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",system-ui,sans-serif;line-height:1.7}
+a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}
+.sitebar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px max(20px,5vw);border-bottom:1px solid #614525;background:#0c0b09}
+.brand{font-weight:900;color:#ffe0a1;letter-spacing:.12em;font-size:22px}.navigation{display:flex;gap:24px;align-items:center;color:#e1c590;font-size:14px}.navigation a:hover{color:#fff4d8}
+.hero{position:relative;text-align:center;overflow:hidden;padding:94px 18px 104px;background:linear-gradient(180deg,#0807065e 0%,#09080791 49%,#090807 100%),url("../temple.png") center 34%/cover}
+.hero .eyebrow{font-size:12px;letter-spacing:.32em;color:#f5cd82;font-weight:800}.hero h1{font-size:clamp(42px,7.5vw,81px);color:#ffdfa0;line-height:1.3;letter-spacing:.1em;margin:15px 0 20px;text-shadow:0 5px 32px #000}
+.hero p{max-width:750px;margin:0 auto 27px;color:#e4d2b5;font-size:16px;line-height:2}
+.pills{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-bottom:29px}.pills span{border:1px solid #a37b40;padding:6px 13px;border-radius:999px;font-size:12px;color:#f6da9d;background:#17120ac9}
+.actions{display:flex;justify-content:center;gap:13px;flex-wrap:wrap}.btn{display:inline-flex;justify-content:center;align-items:center;min-height:49px;padding:12px 24px;border:1px solid #cfaa61;border-radius:9px;color:#251608;background:linear-gradient(120deg,#fae3ab,#d49d42);font-weight:900;font-size:14px;transition:filter .2s,transform .2s}.btn:hover{filter:brightness(1.08);transform:translateY(-2px)}.btn.alt{background:#0c0a08bd;color:#f5d18b}
+.section{max-width:1160px;margin:auto;padding:72px 20px}.section-title{margin:0 0 13px;text-align:center;color:#ffe09a;font-size:clamp(28px,4vw,39px);letter-spacing:.08em}.section-lead{color:var(--soft);max-width:720px;text-align:center;margin:0 auto 35px;line-height:1.9;font-size:15px}
+.demo-layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,.9fr);gap:24px;align-items:stretch}
+.demo-visual{position:relative;min-width:0;overflow:hidden;border:1px solid #a47838;border-radius:18px;background:radial-gradient(ellipse at center,#332214,#0b0a08 76%);box-shadow:0 18px 48px #0009;display:flex;flex-direction:column}
+.demo-image{width:100%;height:370px;object-fit:contain;display:block;background:#0e0e0e}
+.demo-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 17px;background:#15100c;border-top:1px solid #5b4124}
+.demo-caption strong{display:block;color:#ffdd9b;font-size:18px}.demo-caption small{color:#b9a98e;font-size:12px}
+.slide-controls{display:flex;align-items:center;gap:10px}.slide-controls button{width:39px;height:39px;border:1px solid #b18b4d;border-radius:50%;background:#20170f;color:#ffe4a7;font-size:22px}.slide-count{font-size:12px;color:#ddc28d;white-space:nowrap}
+.demo-aside{padding:27px 25px;border:1px solid #6a4b2b;border-radius:18px;background:linear-gradient(140deg,#24170e,#0c0d0c)}.demo-aside .tag{font-size:12px;letter-spacing:.18em;color:#efc780}.demo-aside h3{font-size:26px;color:#ffdf99;margin:13px 0}.demo-aside p{font-size:14px;line-height:2;color:#d1c1a5}.demo-points{list-style:none;padding:0;margin:25px 0}.demo-points li{padding:9px 0;color:#ebd6ac;border-bottom:1px solid #503920;font-size:14px}.demo-points li::before{content:"✓";color:#f6d282;margin-right:9px}.demo-warning{font-size:12px!important;color:#aa9a82!important}
+.features-area{background:linear-gradient(180deg,#0b0a09,#160f09 50%,#090807);border-top:1px solid #37291b;border-bottom:1px solid #37291b}
+.feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.feature-card{min-width:0;border:1px solid #76542d;border-radius:15px;padding:25px 23px;background:linear-gradient(155deg,#251b10,#0c0d0d 79%);box-shadow:0 10px 25px #0005}
+.feature-top{display:flex;justify-content:space-between;align-items:center}.feature-num{font-size:27px;color:#7f6038;font-weight:900}.feature-icon{display:inline-flex;justify-content:center;align-items:center;min-width:52px;padding:8px 12px;background:#372515;border:1px solid #9f793e;border-radius:10px;color:#ffe1a5;font-size:13px;font-weight:800}.feature-card h3{color:#ffe0a1;margin:14px 0 10px;font-size:21px}.feature-card p{color:#c9bba7;margin:0;font-size:14px;line-height:1.9}
+.truth{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:19px}.truth-panel{padding:24px;border-radius:16px;border:1px solid #74542d;background:#17120e}.truth-panel h3{color:#f7d58c;margin:0 0 13px;font-size:22px}.truth-panel p{color:#cbbca5;font-size:14px;line-height:2}.truth-panel .subtle{color:#aa9980}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.step{padding:27px 24px;border:1px solid #78572d;background:linear-gradient(140deg,#231910,#0c0d0c);border-radius:16px}.step-num{display:grid;place-items:center;border-radius:50%;width:47px;height:47px;background:linear-gradient(130deg,#ffe6aa,#d1a04b);color:#281808;font-weight:900;font-size:18px}
+.step h3{color:#ffe0a1;font-size:21px;margin:19px 0 9px}.step p{font-size:14px;color:#cbbda9;line-height:1.9;min-height:80px}.step a{display:inline-block;border-bottom:1px solid #be9553;padding-bottom:4px;color:#f9d88c;font-weight:800;font-size:14px}
+.faq{max-width:840px;margin:0 auto}.faq details{border:1px solid #76562e;border-radius:11px;background:#17120f;margin:10px 0;overflow:hidden}.faq summary{padding:17px 20px;font-weight:900;color:#f5d188;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px}.faq summary::after{content:"+";font-size:19px}.faq details[open] summary::after{content:"−"}.faq summary::-webkit-details-marker{display:none}.faq p{color:#d2c3ae;font-size:14px;line-height:1.9;padding:0 20px 18px;margin:0}
+.bottom{border-top:1px solid #50371e;background:radial-gradient(ellipse at center,#382511,#0b0908 76%);text-align:center;padding:64px 20px}.bottom h2{color:#ffe0a1;font-size:30px}.bottom p{color:#c8b99e;font-size:14px;margin-bottom:25px}
+.footer{border-top:1px solid #36281a;text-align:center;padding:23px 12px;color:#958570;font-size:12px}
+.floating-line{position:fixed;z-index:10;right:18px;bottom:18px;border:2px solid #9af4bb;border-radius:99px;background:#06c755;color:#fff;display:flex;align-items:center;gap:9px;padding:10px 17px;min-height:52px;font-size:14px;font-weight:900;box-shadow:0 8px 24px #000b}.floating-line b{display:grid;place-items:center;border-radius:8px;background:#fff;color:#07b94e;width:30px;height:30px;font-size:9px}
+@media(max-width:850px){.demo-layout{grid-template-columns:1fr}.feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:1fr}.step p{min-height:0}}
+@media(max-width:600px){.sitebar{padding:16px;flex-wrap:wrap}.brand{font-size:19px}.navigation{width:100%;gap:10px;justify-content:space-between;font-size:12px}.hero{padding:66px 15px 79px}.hero h1{letter-spacing:.04em}.hero p{font-size:14px}.section{padding:55px 15px}.demo-image{height:260px}.demo-aside{padding:21px}.feature-grid,.truth{grid-template-columns:1fr}.feature-card{padding:22px}.step{padding:22px}.floating-line{right:10px;bottom:12px;padding:9px 13px}.footer{padding-bottom:78px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style></head><body>
+<header class="sitebar"><a class="brand" href="../">◉ 賽特神諭</a><nav class="navigation"><a href="../">官方首頁</a><a href="../guides/">攻略教學</a><a href="../#download">APP 下載</a></nav></header>
+<main><section class="hero"><div class="eyebrow">SETH ORACLE · SMART ASSISTANT</div><h1>賽特神諭助手</h1>
+<p>專為支援的 ATG 遊戲打造的數據觀察與操作輔助工具。整合全房掃描、盤面監測及常用操作功能，讓遊戲資訊更容易查看。</p>
+<div class="pills"><span>ATG 輔助工具</span><span>會員免費</span><span>Windows／Android</span><span>iPhone Safari 教學</span></div>
+<div class="actions"><a class="btn" href="#demo">觀看功能展示</a><a class="btn alt" href="../#download">前往下載專區</a></div></section>
+<section class="section" id="demo"><h2 class="section-title">認識賽特神諭操作畫面</h2><p class="section-lead">這裡展示實際網站與遊戲選擇介面的截圖；展示圖片不是可操作的遊戲，也不會在本頁執行掃描。</p>
+<div class="demo-layout"><div class="demo-visual"><img class="demo-image" id="demoImage" src="../showcase-games.webp" alt="賽特神諭遊戲選擇介面">
+<div class="demo-bottom"><div class="demo-caption"><strong id="demoTitle">選擇支援遊戲</strong><small id="demoDesc">從賽特神諭進入支援的 ATG 遊戲</small></div><div class="slide-controls"><button type="button" id="prevSlide" aria-label="上一張展示圖">‹</button><span id="slideCount" class="slide-count">1 / 2</span><button type="button" id="nextSlide" aria-label="下一張展示圖">›</button></div></div></div>
+<aside class="demo-aside"><span class="tag">SYSTEM OVERVIEW</span><h3>一個入口，整合常用功能</h3><p>先登入皇鼎會員帳號並完成裝置配對，再進入支援遊戲使用相應的輔助功能。</p>
+<ul class="demo-points"><li>集中管理支援遊戲入口</li><li>查看房間掃描與盤面資訊</li><li>整合加速與分數配置操作</li><li>依使用裝置選擇安裝方式</li></ul>
+<p class="demo-warning">部分功能可能因遊戲版本、裝置或當前相容性而異。請以實際 APP 畫面為準。</p><a class="btn" href="../#download">取得賽特神諭</a></aside></div></section>
+<div class="features-area"><section class="section" id="features"><h2 class="section-title">助手主要功能</h2><p class="section-lead">功能介紹以賽特神諭現有設計與支援方向為主，不等於每款遊戲都具備所有功能。</p><div class="feature-grid"><article class="feature-card"><div class="feature-top"><span class="feature-num">01</span><span class="feature-icon">掃描</span></div><h3>全房掃描</h3><p>彙整支援遊戲可讀取的房間資訊，減少逐房查找的步驟。</p></article>
+<article class="feature-card"><div class="feature-top"><span class="feature-num">02</span><span class="feature-icon">盤面</span></div><h3>盤面監測</h3><p>查看近期畫面符號與盤面紀錄；觀察資訊不代表未來結果。</p></article>
+<article class="feature-card"><div class="feature-top"><span class="feature-num">03</span><span class="feature-icon">加速</span></div><h3>極速加速</h3><p>集中管理支援遊戲的加速入口，操作方式依遊戲與裝置而定。</p></article>
+<article class="feature-card"><div class="feature-top"><span class="feature-num">04</span><span class="feature-icon">配置</span></div><h3>自動分數配置</h3><p>依使用者操作設定提供分數配置輔助，請自行核對金額。</p></article>
+<article class="feature-card"><div class="feature-top"><span class="feature-num">05</span><span class="feature-icon">資訊</span></div><h3>遊戲資訊</h3><p>在支援遊戲中整理可辨識的狀態、近期紀錄與操作資訊。</p></article>
+<article class="feature-card"><div class="feature-top"><span class="feature-num">06</span><span class="feature-icon">配對</span></div><h3>裝置配對</h3><p>使用皇鼎會員帳號登入，依畫面完成裝置配對或更換。</p></article></div></section></div>
+<section class="section"><h2 class="section-title">助手能做什麼？不能做什麼？</h2><div class="truth"><article class="truth-panel"><h3>✓ 資訊整理與操作輔助</h3><p>協助整理可讀取的房間資訊、查看盤面近期紀錄、集中操作支援遊戲的工具功能。實際效果以會員裝置及遊戲相容性為準。</p></article><article class="truth-panel"><h3>✕ 不會修改開獎機率</h3><p>不會破解遊戲隨機機制，也無法保證中獎、爆分或獲利。</p><p class="subtle">請使用可負擔的娛樂預算，勿將歷史統計視為未來結果保證。</p></article></div></section>
+<section class="section" id="steps"><h2 class="section-title">三個步驟開始使用</h2><p class="section-lead">第一次使用也能依照流程完成設定。</p>
+<div class="steps"><article class="step"><span class="step-num">01</span><h3>註冊皇鼎會員</h3><p>透過專屬連結申請會員帳號，準備好登入所需帳密。</p><a href="https://hd5957.com/?aff=gs42oj" target="_blank" rel="noopener noreferrer">前往會員註冊 ↗</a></article>
+<article class="step"><span class="step-num">02</span><h3>下載或查看安裝教學</h3><p>Windows 可下載安裝程式、Android 使用 APK；iPhone 目前提供 Safari 使用教學，尚無原生 iOS APP 下載。</p><a href="../#download">選擇裝置版本 ↗</a></article>
+<article class="step"><span class="step-num">03</span><h3>登入並完成配對</h3><p>使用皇鼎會員帳號登入，依系統畫面完成裝置配對，再選擇遊戲進入。</p><a href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer">開啟賽特神諭 ↗</a></article></div></section>
+<section class="section" id="faq"><h2 class="section-title">常見問題 FAQ</h2><div class="faq">
+<details><summary>賽特神諭助手需要付費嗎？</summary><p>皇鼎會員可免費使用，請依官網的註冊與登入流程操作。</p></details>
+<details><summary>登入時使用哪組帳密？</summary><p>使用皇鼎會員帳號及密碼登入。</p></details>
+<details><summary>這是破解或保證獲利的程式嗎？</summary><p>不是。賽特神諭提供資訊整理與操作輔助，不改變遊戲機率，也不保證任何遊戲結果。</p></details>
+<details><summary>iPhone 可以下載原生 APP 嗎？</summary><p>目前尚無直接下載的原生 iOS APP，請先閱讀 Safari 安裝教學。</p></details>
+<details><summary>無法登入怎麼辦？</summary><p>請透過頁面右下角的官方 LINE 客服詢問。</p></details></div></section></main>
+<section class="bottom"><h2>開始使用賽特神諭</h2><p>了解功能之後，前往下載或聯繫客服協助完成設定。</p><div class="actions"><a class="btn" href="../#download">APP 下載與安裝教學</a><a class="btn alt" href="https://lin.ee/sAuklWr" target="_blank" rel="noopener noreferrer">聯絡官方 LINE</a></div></section>
+<footer class="footer">© 2026 賽特神諭 · 工具資訊僅供參考，不保證任何遊戲結果。</footer>
+<a class="floating-line" href="https://lin.ee/sAuklWr" target="_blank" rel="noopener noreferrer"><b aria-hidden="true">LINE</b> 官方客服</a>
+<script>(function(){const slides=[{src:"../showcase-games.webp",title:"選擇支援遊戲",desc:"從賽特神諭進入支援的 ATG 遊戲",alt:"賽特神諭遊戲選擇介面"},{src:"../showcase-login.webp",title:"登入會員帳號",desc:"依畫面輸入皇鼎會員帳號並完成設定",alt:"賽特神諭會員登入介面"}];let i=0;function show(n){i=(n+slides.length)%slides.length;const s=slides[i];document.getElementById("demoImage").src=s.src;document.getElementById("demoImage").alt=s.alt;document.getElementById("demoTitle").textContent=s.title;document.getElementById("demoDesc").textContent=s.desc;document.getElementById("slideCount").textContent=(i+1)+" / "+slides.length;}document.getElementById("prevSlide").addEventListener("click",()=>show(i-1));document.getElementById("nextSlide").addEventListener("click",()=>show(i+1));})();</script>
+</body></html>
