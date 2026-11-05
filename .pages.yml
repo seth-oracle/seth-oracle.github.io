@@ -1,0 +1,63 @@
+# 賽特神諭文章後台（Pages CMS）
+# 需要用 GitHub 授權 Pages CMS App 才能編輯
+media:
+  input: media/guides
+  output: /media/guides
+
+content:
+  - name: tutorials
+    label: 攻略文章管理
+    type: collection
+    path: _tutorials
+    format: yaml-frontmatter
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      fields: [title, category, published, order]
+      primary: title
+      sort: [order, title]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - name: title
+        label: 文章標題
+        type: string
+        required: true
+      - name: description
+        label: 文章摘要
+        type: text
+        required: true
+      - name: category
+        label: 文章分類
+        type: select
+        required: true
+        options:
+          values:
+            - 新手入門
+            - 功能教學
+            - 遊戲攻略
+            - 數據觀念
+            - 資金控管
+            - 安全防護
+      - name: cover
+        label: 封面圖片
+        type: image
+        description: 建議 16:9 橫圖，可以選擇已有圖片或上傳新圖片
+      - name: order
+        label: 顯示順序
+        type: number
+        description: 數字越小越前面，新增文章請填 10、11...
+      - name: published
+        label: 公開發布
+        type: boolean
+        default: true
+        description: 關閉後文章不會出現在官網
+      - name: body
+        label: 文章內文（可插入圖片）
+        type: rich-text
+        options:
+          format: markdown
+          switcher: true
+          rename: true
