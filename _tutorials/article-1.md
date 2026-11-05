@@ -1,5 +1,5 @@
 ---
-title: 第一次使用賽特神諭：從登入到選擇遊戲
+title: 第一次使用賽特神諭：從登入到選擇遊戲^^
 description: 掌握會員登入、裝置配對、遊戲選擇的基本流程。
 category: 新手入門
 cover: /showcase-login.webp
