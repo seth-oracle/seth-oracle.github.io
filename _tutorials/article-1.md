@@ -1,12 +1,11 @@
 ---
-title: "第一次使用賽特神諭：從登入到選擇遊戲"
-description: "掌握會員登入、裝置配對、遊戲選擇的基本流程。"
-category: "新手入門"
-cover: "/showcase-login.webp"
+title: 第一次使用賽特神諭：從登入到選擇遊戲
+description: 掌握會員登入、裝置配對、遊戲選擇的基本流程。
+category: 新手入門
+cover: /showcase-login.webp
 order: 1
 published: true
 ---
-
 ## 準備帳號
 
 先使用皇鼎會員帳號登入賽特神諭，依登入畫面的提示完成操作。
