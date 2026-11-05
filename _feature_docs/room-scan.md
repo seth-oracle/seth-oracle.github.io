@@ -1,4 +1,7 @@
 ---
+card_title: "全房掃描"
+card_icon: "⌗"
+card_order: 1
 title: 🏚️ 全房掃描
 description: 彙整不同房間的資訊與排序，方便快速比較。
 image1: /assistant/images/scan-control.webp
