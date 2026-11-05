@@ -60,3 +60,46 @@ content:
           format: markdown
           switcher: true
           rename: true
+
+  - name: feature_docs
+    label: 核心功能教學管理
+    type: collection
+    path: _feature_docs
+    format: yaml-frontmatter
+    view:
+      fields: [title, description]
+      primary: title
+    fields:
+      - name: title
+        label: 功能文章標題
+        type: string
+        required: true
+      - name: description
+        label: 功能簡介
+        type: text
+        required: true
+      - name: image1
+        label: 第一張教學圖片
+        type: image
+      - name: image1_caption
+        label: 第一張圖片標題
+        type: string
+      - name: image1_description
+        label: 第一張圖片說明
+        type: text
+      - name: image2
+        label: 第二張教學圖片
+        type: image
+      - name: image2_caption
+        label: 第二張圖片標題
+        type: string
+      - name: image2_description
+        label: 第二張圖片說明
+        type: text
+      - name: body
+        label: 詳細教學內容（可插入圖片）
+        type: rich-text
+        options:
+          format: markdown
+          switcher: true
+          rename: true
