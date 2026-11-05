@@ -6,11 +6,17 @@ timezone: Asia/Taipei
 markdown: kramdown
 collections:
   feature_docs:
-    output: false
+    output: true
+    permalink: /features/posts/:name.html
   tutorials:
     output: true
     permalink: /guides/posts/:name.html
 defaults:
+  - scope:
+      path: ""
+      type: feature_docs
+    values:
+      layout: feature
   - scope:
       path: ""
       type: tutorials
