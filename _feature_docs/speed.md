@@ -1,14 +1,13 @@
 ---
-title: "↯ 極速加速"
-description: "整合加速操作入口，讓切換更直覺。"
-image1: "/assistant/images/game-main.webp"
-image1_caption: "遊戲中的快捷控制"
-image1_description: "遊戲畫面左側提供常用功能的入口"
-image2: "/assistant/images/scan-control.webp"
-image2_caption: "助手控制介面"
-image2_description: "操作前確認對應遊戲及目前設定"
+title: ⚡️ 極速加速
+description: 整合加速操作入口，讓切換更直覺。
+image1: /assistant/images/game-main.webp
+image1_caption: 遊戲中的快捷控制
+image1_description: 遊戲畫面左側提供常用功能的入口
+image2: /assistant/images/scan-control.webp
+image2_caption: 助手控制介面
+image2_description: 操作前確認對應遊戲及目前設定
 ---
-
 ## 功能目的
 
 將支援遊戲的加速操作集中在同一個入口，減少反覆操作的步驟。
