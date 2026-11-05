@@ -1,4 +1,7 @@
 ---
+card_title: "數據觀察"
+card_icon: "▥"
+card_order: 4
 title: "▥ 數據觀察"
 description: "集中查看遊戲資訊與統計結果。"
 image1: "/assistant/images/room-ranking.webp"
