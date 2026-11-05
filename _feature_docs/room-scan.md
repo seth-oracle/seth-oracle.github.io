@@ -1,14 +1,13 @@
 ---
-title: "⌗ 全房掃描"
-description: "彙整不同房間的資訊與排序，方便快速比較。"
-image1: "/assistant/images/scan-control.webp"
-image1_caption: "全房掃描控制面板"
-image1_description: "開啟掃描，查看掃描進度與操作選項"
-image2: "/assistant/images/room-ranking.webp"
-image2_caption: "房間排行榜"
-image2_description: "掃描後查看房號、排行與歷史資料"
+title: 🏚️ 全房掃描
+description: 彙整不同房間的資訊與排序，方便快速比較。
+image1: /assistant/images/scan-control.webp
+image1_caption: 全房掃描控制面板
+image1_description: 開啟掃描，查看掃描進度與操作選項
+image2: /assistant/images/room-ranking.webp
+image2_caption: 房間排行榜
+image2_description: 掃描後查看房號、排行與歷史資料
 ---
-
 ## 功能是做什麼的？
 
 全房掃描會把支援遊戲中可讀取的房間資訊集中整理，減少每個房間都要手動進入查看的步驟。
