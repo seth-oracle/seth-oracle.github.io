@@ -1,7 +1,7 @@
 ---
 card_title: 極速加速
 card_icon: ⚡️
-card_order: 3
+card_order: 2
 title: ⚡️ 極速加速
 description: 整合加速操作入口，讓切換更直覺。
 image1: /assistant/images/game-main.webp
