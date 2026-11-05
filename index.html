@@ -275,6 +275,44 @@ layout: null
   .feature-article-link .feature-head strong{font-size:16px}
   .feature-article-link .feature-brief{font-size:12px;line-height:1.55}
 }
+
+/* Five-card, single-row horizontal core feature carousel */
+.feature-section .features-carousel{position:relative;max-width:1170px;margin:0 auto;padding:0 45px}
+.feature-section .features{
+  display:flex!important;grid-template-columns:none!important;gap:15px!important;
+  max-width:none!important;margin:0!important;padding:5px 3px 16px;
+  overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;overscroll-behavior-inline:contain;
+  scrollbar-width:none;align-items:stretch
+}
+.feature-section .features::-webkit-scrollbar{display:none}
+.feature-section .features>.feature-article-link{
+  flex:0 0 clamp(260px,30vw,336px)!important;width:clamp(260px,30vw,336px);
+  min-height:125px;align-self:stretch;scroll-snap-align:start;
+  padding:18px!important;box-sizing:border-box;
+}
+.feature-scroll-btn{
+  position:absolute;z-index:3;top:46%;transform:translateY(-50%);
+  display:grid;place-items:center;width:37px;height:37px;
+  border:1px solid #d6ab59;border-radius:50%;background:#17100def;
+  color:#f8d48a;font-size:25px;line-height:1;cursor:pointer;
+  box-shadow:0 3px 12px #0008
+}
+.feature-scroll-btn:hover{background:#694717;color:#fff3c8}
+.feature-scroll-prev{left:0}.feature-scroll-next{right:0}
+.features-hint{margin:13px 0 0;color:#bfa57b;font-size:12px;text-align:center}
+@media(max-width:700px){
+  .feature-section .features-carousel{padding:0!important}
+  .feature-section .features{gap:11px!important;padding:5px 3px 14px!important}
+  .feature-section .features>.feature-article-link{
+    flex:0 0 min(78vw,300px)!important;width:min(78vw,300px)!important;
+    min-height:108px!important;padding:15px!important;gap:11px
+  }
+  .feature-scroll-btn{display:none}
+  .feature-section .feature-head strong{font-size:17px!important}
+  .feature-section .feature-brief{font-size:12px!important}
+}
+@media(prefers-reduced-motion:reduce){.feature-section .features{scroll-behavior:auto}}
 </style>
 </head>
 <body>
@@ -297,24 +335,30 @@ layout: null
     </div></div>
     <section id="features" class="feature-section">
       <h2 class="section-title">核心功能</h2>
-      <p class="section-sub">六大功能一次掌握，點選卡片即可在新分頁閱讀完整教學。</p>
+      <p class="section-sub">五大功能一次掌握，左右滑動查看更多，點選卡片即可在新分頁閱讀教學。</p>
       {% assign sorted_features = site.feature_docs | sort: "card_order" %}
-      <div class="features">
-      {% for feature in sorted_features %}
-        {% assign feature_slug = feature.path | split: '/' | last | remove: '.md' %}
-        <a class="feature-accordion feature-article-link" href="/features/{{ feature_slug }}.html" target="_blank" rel="noopener noreferrer" aria-label="開新分頁閱讀{{ feature.card_title | default: feature.title | escape }}教學">
-          <span class="feature-icon" aria-hidden="true">{{ feature.card_icon | default: '◈' | escape }}</span>
-          <span class="feature-head">
-            <strong>{{ feature.card_title | default: feature.title | escape }}</strong>
-            <span class="feature-brief">{{ feature.description | escape }}</span>
-          </span>
-          <span class="feature-chevron" aria-hidden="true">↗</span>
-        </a>
-      {% endfor %}
+      <div class="features-carousel">
+        <button type="button" class="feature-scroll-btn feature-scroll-prev" aria-label="上一張核心功能卡片" data-feature-scroll="-1">‹</button>
+        <div class="features" id="featureTrack" tabindex="0" aria-label="五大核心功能橫向列表，可左右滑動">
+          {% for feature in sorted_features %}
+          {% assign feature_slug = feature.path | split: '/' | last | remove: '.md' %}
+          {% unless feature_slug == 'devices' %}
+          <a class="feature-accordion feature-article-link" href="/features/{{ feature_slug }}.html" target="_blank" rel="noopener noreferrer" aria-label="開新分頁閱讀{{ feature.card_title | default: feature.title | escape }}教學">
+            <span class="feature-icon" aria-hidden="true">{{ feature.card_icon | default: '◈' | escape }}</span>
+            <span class="feature-head"><strong>{{ feature.card_title | default: feature.title | escape }}</strong>
+              <span class="feature-brief">{{ feature.description | escape }}</span>
+            </span>
+            <span class="feature-chevron" aria-hidden="true">↗</span>
+          </a>
+          {% endunless %}
+          {% endfor %}
+        </div>
+        <button type="button" class="feature-scroll-btn feature-scroll-next" aria-label="下一張核心功能卡片" data-feature-scroll="1">›</button>
       </div>
+      <p class="features-hint">← 左右滑動，查看更多功能 →</p>
     </section>
 
-    <section class="games" id="games">
+        <section class="games" id="games">
       <h2 class="section-title">支援遊戲</h2>
       <p class="section-sub">目前展示 8 款 ATG 遊戲，點選卡片可前往系統選擇遊戲。</p>
       <div class="games-carousel"><button class="game-scroll-btn game-scroll-prev" type="button" aria-label="上一組遊戲" onclick="document.getElementById('gameTrack').scrollBy({left:-540,behavior:'smooth'})">‹</button><div class="games-grid" id="gameTrack" tabindex="0" aria-label="支援遊戲橫向列表，可左右滑動">
@@ -449,6 +493,20 @@ layout: null
     toggle.setAttribute("aria-label","展開網站選單");
   }));
   document.addEventListener("keydown",e=>{if(e.key==="Escape"){header.classList.remove("menu-open");toggle.setAttribute("aria-expanded","false");}});
+})();
+</script><script>
+(function(){
+  const track=document.getElementById('featureTrack');
+  if(!track)return;
+  document.querySelectorAll('[data-feature-scroll]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const card=track.querySelector('.feature-article-link');
+      if(!card)return;
+      const amount=card.getBoundingClientRect().width+15;
+      const motion=window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';
+      track.scrollBy({left:amount*Number(btn.dataset.featureScroll),behavior:motion});
+    });
+  });
 })();
 </script></body>
 </html>
