@@ -1,17 +1,16 @@
 ---
-card_title: "遊戲切換"
-card_icon: "◇"
+card_title: 遊戲劇透
+card_icon: 💎
 card_order: 5
-title: "◇ 遊戲切換"
-description: "從單一入口選擇不同 ATG 遊戲。"
-image1: "/assistant/images/games.webp"
-image1_caption: "賽特神諭選擇遊戲頁"
-image1_description: "從統一入口選擇支援遊戲"
-image2: "/assistant/images/game-main.webp"
-image2_caption: "進入遊戲後的畫面"
-image2_description: "進入遊戲後可看到助手快捷工具"
+title: 💎 遊戲切換
+description: 從單一入口選擇不同 ATG 遊戲。
+image1: /assistant/images/games.webp
+image1_caption: 賽特神諭選擇遊戲頁
+image1_description: 從統一入口選擇支援遊戲
+image2: /assistant/images/game-main.webp
+image2_caption: 進入遊戲後的畫面
+image2_description: 進入遊戲後可看到助手快捷工具
 ---
-
 ## 有哪些遊戲入口？
 
 賽特神諭官網展示戰神賽特一代、戰神賽特二代、虎小妹、古神巴風特、惡魔血域、孫行者、赤三國及武俠等入口。
