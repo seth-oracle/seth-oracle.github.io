@@ -34,15 +34,20 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}
 @media(max-width:850px){.demo-layout{grid-template-columns:1fr}.feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:1fr}.step p{min-height:0}}
 @media(max-width:600px){.sitebar{padding:16px;flex-wrap:wrap}.brand{font-size:19px}.navigation{width:100%;gap:10px;justify-content:space-between;font-size:12px}.hero{padding:66px 15px 79px}.hero h1{letter-spacing:.04em}.hero p{font-size:14px}.section{padding:55px 15px}.demo-image{height:260px}.demo-aside{padding:21px}.feature-grid,.truth{grid-template-columns:1fr}.feature-card{padding:22px}.step{padding:22px}.floating-line{right:10px;bottom:12px;padding:9px 13px}.footer{padding-bottom:78px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+
+/* User-provided vertical app screenshots: tall gallery display */
+.phone-stage{min-height:610px;display:flex;align-items:center;justify-content:center;padding:18px 22px;background:radial-gradient(ellipse at center,#21180f,#070807 76%);overflow:hidden}
+.phone-stage .demo-image{display:block;width:auto;max-width:min(100%,390px);height:auto;max-height:690px;object-fit:contain;object-position:center;border-radius:12px;border:1px solid #a37b4080;background:#10100e;box-shadow:0 17px 34px #000a}
+@media(max-width:600px){.phone-stage{min-height:480px;padding:13px}.phone-stage .demo-image{max-width:100%;max-height:590px}}
 </style></head><body>
 <header class="sitebar"><a class="brand" href="../">◉ 賽特神諭</a><nav class="navigation"><a href="../">官方首頁</a><a href="../guides/">攻略教學</a><a href="../#download">APP 下載</a></nav></header>
 <main><section class="hero"><div class="eyebrow">SETH ORACLE · SMART ASSISTANT</div><h1>賽特神諭助手</h1>
 <p>專為支援的 ATG 遊戲打造的數據觀察與操作輔助工具。整合全房掃描、盤面監測及常用操作功能，讓遊戲資訊更容易查看。</p>
 <div class="pills"><span>ATG 輔助工具</span><span>會員免費</span><span>Windows／Android</span><span>iPhone Safari 教學</span></div>
 <div class="actions"><a class="btn" href="#demo">觀看功能展示</a><a class="btn alt" href="../#download">前往下載專區</a></div></section>
-<section class="section" id="demo"><h2 class="section-title">認識賽特神諭操作畫面</h2><p class="section-lead">這裡展示實際網站與遊戲選擇介面的截圖；展示圖片不是可操作的遊戲，也不會在本頁執行掃描。</p>
-<div class="demo-layout"><div class="demo-visual"><img class="demo-image" id="demoImage" src="../showcase-games.webp" alt="賽特神諭遊戲選擇介面">
-<div class="demo-bottom"><div class="demo-caption"><strong id="demoTitle">選擇支援遊戲</strong><small id="demoDesc">從賽特神諭進入支援的 ATG 遊戲</small></div><div class="slide-controls"><button type="button" id="prevSlide" aria-label="上一張展示圖">‹</button><span id="slideCount" class="slide-count">1 / 2</span><button type="button" id="nextSlide" aria-label="下一張展示圖">›</button></div></div></div>
+<section class="section" id="demo"><h2 class="section-title">認識賽特神諭操作畫面</h2><p class="section-lead">以下使用你提供的 6 張實際操作截圖，按左右箭頭即可切換。圖片僅供介面展示，本頁不會執行遊戲或即時掃描。</p>
+<div class="demo-layout"><div class="demo-visual"><div class="phone-stage"><img class="demo-image" id="demoImage" src="./images/login.webp" alt="賽特神諭會員登入介面"></div>
+<div class="demo-bottom"><div class="demo-caption"><strong id="demoTitle">會員登入介面</strong><small id="demoDesc">實際會員登入頁面展示</small></div><div class="slide-controls"><button type="button" id="prevSlide" aria-label="上一張展示圖">‹</button><span id="slideCount" class="slide-count">1 / 6</span><button type="button" id="nextSlide" aria-label="下一張展示圖">›</button></div></div></div>
 <aside class="demo-aside"><span class="tag">SYSTEM OVERVIEW</span><h3>一個入口，整合常用功能</h3><p>先登入皇鼎會員帳號並完成裝置配對，再進入支援遊戲使用相應的輔助功能。</p>
 <ul class="demo-points"><li>集中管理支援遊戲入口</li><li>查看房間掃描與盤面資訊</li><li>整合加速與分數配置操作</li><li>依使用裝置選擇安裝方式</li></ul>
 <p class="demo-warning">部分功能可能因遊戲版本、裝置或當前相容性而異。請以實際 APP 畫面為準。</p><a class="btn" href="../#download">取得賽特神諭</a></aside></div></section>
@@ -66,5 +71,18 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}
 <section class="bottom"><h2>開始使用賽特神諭</h2><p>了解功能之後，前往下載或聯繫客服協助完成設定。</p><div class="actions"><a class="btn" href="../#download">APP 下載與安裝教學</a><a class="btn alt" href="https://lin.ee/sAuklWr" target="_blank" rel="noopener noreferrer">聯絡官方 LINE</a></div></section>
 <footer class="footer">© 2026 賽特神諭 · 工具資訊僅供參考，不保證任何遊戲結果。</footer>
 <a class="floating-line" href="https://lin.ee/sAuklWr" target="_blank" rel="noopener noreferrer"><b aria-hidden="true">LINE</b> 官方客服</a>
-<script>(function(){const slides=[{src:"../showcase-games.webp",title:"選擇支援遊戲",desc:"從賽特神諭進入支援的 ATG 遊戲",alt:"賽特神諭遊戲選擇介面"},{src:"../showcase-login.webp",title:"登入會員帳號",desc:"依畫面輸入皇鼎會員帳號並完成設定",alt:"賽特神諭會員登入介面"}];let i=0;function show(n){i=(n+slides.length)%slides.length;const s=slides[i];document.getElementById("demoImage").src=s.src;document.getElementById("demoImage").alt=s.alt;document.getElementById("demoTitle").textContent=s.title;document.getElementById("demoDesc").textContent=s.desc;document.getElementById("slideCount").textContent=(i+1)+" / "+slides.length;}document.getElementById("prevSlide").addEventListener("click",()=>show(i-1));document.getElementById("nextSlide").addEventListener("click",()=>show(i+1));})();</script>
+<script>(function(){
+const slides=[
+{src:"./images/login.webp",title:"會員登入介面",desc:"使用皇鼎會員帳號登入賽特神諭",alt:"賽特神諭會員登入介面"},
+{src:"./images/games.webp",title:"選擇支援遊戲",desc:"從首頁選擇戰神賽特等支援的遊戲",alt:"賽特神諭遊戲選擇介面"},
+{src:"./images/monitor.webp",title:"盤面監測畫面",desc:"查看支援遊戲的符號與近期盤面資訊",alt:"賽特神諭盤面監測實際畫面"},
+{src:"./images/scan-control.webp",title:"掃描控制面板",desc:"全房掃描與控制工具的實際操作介面",alt:"賽特神諭掃描控制面板"},
+{src:"./images/room-ranking.webp",title:"房間排行總覽",desc:"房間掃描列表及排行資訊展示",alt:"賽特神諭房間排行介面"},
+{src:"./images/game-main.webp",title:"遊戲主畫面",desc:"賽特神諭搭配 ATG 遊戲的介面展示",alt:"賽特神諭遊戲主畫面"}
+];let i=0;
+const img=document.getElementById("demoImage"),title=document.getElementById("demoTitle"),desc=document.getElementById("demoDesc"),count=document.getElementById("slideCount");
+function show(n){i=(n+slides.length)%slides.length;const s=slides[i];img.src=s.src;img.alt=s.alt;title.textContent=s.title;desc.textContent=s.desc;count.textContent=(i+1)+" / "+slides.length;}
+document.getElementById("prevSlide").addEventListener("click",()=>show(i-1));
+document.getElementById("nextSlide").addEventListener("click",()=>show(i+1));
+})();</script>
 </body></html>
