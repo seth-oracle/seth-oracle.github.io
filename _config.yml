@@ -5,6 +5,8 @@ baseurl: ""
 timezone: Asia/Taipei
 markdown: kramdown
 collections:
+  feature_docs:
+    output: false
   tutorials:
     output: true
     permalink: /guides/posts/:name.html
