@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#090807">
+<title>{{ page.title | escape }}｜賽特神諭攻略中心</title>
+<meta name="description" content="{{ page.description | escape }}">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+<style>
+:root{color-scheme:dark;--gold:#f7d284;--line:#71512e}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#090807;color:#f6eacb;font-family:"Microsoft JhengHei","Noto Sans TC",system-ui,sans-serif;line-height:1.85}
+a{color:inherit;text-decoration:none}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px max(20px,6vw);border-bottom:1px solid #5e4527;background:#0e0b09}
+.brand{font-size:22px;font-weight:900;color:var(--gold);letter-spacing:.09em}.topnav{display:flex;gap:20px;font-size:14px;color:#e7cd99}
+.article{max-width:880px;margin:0 auto;padding:33px 20px 85px}.back{display:inline-flex;margin-bottom:25px;color:#f4d38a;font-size:14px;font-weight:800}.back:hover{text-decoration:underline}
+.cover{display:block;max-height:500px;overflow:hidden;border:1px solid #8a6431;border-radius:16px;background:radial-gradient(circle,#44301d,#0a0908 79%)}
+.cover img{display:block;width:100%;max-height:500px;object-fit:contain;margin:auto}
+.article-head{padding:29px 0 28px;border-bottom:1px solid #654824}
+.tag{display:inline-flex;color:#f6d58a;font-size:12px;border:1px solid #a27b3f;border-radius:90px;padding:4px 11px}
+.article-head h1{color:#ffe0a0;font-size:clamp(27px,4vw,42px);margin:17px 0 12px;line-height:1.45}.intro{font-size:16px;color:#d1c0a8;margin:0}
+.prose{padding:22px 0 32px;line-height:2;color:#e3d4bb;overflow-wrap:anywhere}
+.prose h2{font-size:23px;color:#f5d28c;margin:29px 0 13px;padding-top:17px;border-top:1px solid #40301f}.prose h3{font-size:19px;color:#f5d28c;margin:23px 0 10px}
+.prose p,.prose li{font-size:16px;line-height:2}.prose p{margin:12px 0}.prose img{display:block;max-width:100%;height:auto;max-height:680px;object-fit:contain;margin:20px auto;border-radius:11px;border:1px solid #76552d}
+.prose a{color:#ffdf9d;text-decoration:underline}.prose blockquote{border-left:3px solid #d8a655;padding:3px 16px;color:#dac8a7;background:#1e170f;margin:17px 0}
+.prose table{border-collapse:collapse;display:block;max-width:100%;overflow-x:auto}.prose td,.prose th{padding:10px 13px;border:1px solid #68502c}
+.notice{padding:15px 19px;color:#b7a88d;font-size:13px;background:#18120b;border-left:3px solid #d2a34f;border-radius:0 9px 9px 0}
+.article-links{display:flex;gap:11px;flex-wrap:wrap;margin-top:26px}
+.article-links a{padding:11px 16px;border:1px solid #ba9559;border-radius:9px;font-size:14px;font-weight:800;color:#f5d38c}
+.article-links a:first-child{background:linear-gradient(110deg,#f9e1a5,#d2a04e);color:#251709}
+footer{border-top:1px solid #43301d;text-align:center;font-size:12px;color:#9d8e79;padding:21px}
+@media(max-width:650px){.topbar{padding:14px;flex-wrap:wrap}.brand{font-size:19px}.topnav{justify-content:space-between;width:100%;font-size:12px}.article{padding:22px 14px 65px}.article-head{padding:22px 0}.intro{font-size:14px}.prose h2{font-size:20px}.prose p,.prose li{font-size:15px}}
+</style>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="/">◉ 賽特神諭</a><nav class="topnav"><a href="/">官方首頁</a><a href="/guides/">攻略中心</a><a href="/assistant/">神諭助手</a></nav></header>
+<main class="article"><a class="back" href="/guides/">← 返回攻略中心</a>
+{% if page.cover and page.cover != "" %}<div class="cover"><img src="{{ page.cover | relative_url }}" alt="{{ page.title | escape }} 封面圖片"></div>{% endif %}
+<header class="article-head"><span class="tag">{{ page.category | escape }}</span><h1>{{ page.title | escape }}</h1><p class="intro">{{ page.description | escape }}</p></header>
+<div class="prose">{{ content }}</div>
+<div class="notice">本文僅供系統操作與資訊理解參考，不保證任何遊戲結果或獲利。</div>
+<div class="article-links"><a href="/guides/">返回文章列表</a><a href="https://lin.ee/sAuklWr" target="_blank" rel="noopener noreferrer">LINE 官方客服</a><a href="/#download">APP 下載</a></div>
+</main><footer>© 2026 賽特神諭 · 攻略教學中心</footer></body></html>
