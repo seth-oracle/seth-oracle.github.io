@@ -10,9 +10,7 @@ content:
     type: collection
     path: _tutorials
     format: yaml-frontmatter
-    filename:
-      template: "{primary}.md"
-      field: create
+    filename: "{year}-{month}-{day}-{hour}-{minute}-{second}.md"
     view:
       fields: [title, category, published, order]
       primary: title
