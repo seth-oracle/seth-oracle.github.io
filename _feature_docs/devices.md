@@ -1,4 +1,7 @@
 ---
+card_title: "跨裝置使用"
+card_icon: "▣"
+card_order: 6
 title: "▣ 跨裝置使用"
 description: "依裝置選擇適合的啟動或安裝方式。"
 image1: "/assistant/images/login.webp"
