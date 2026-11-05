@@ -67,11 +67,30 @@ content:
     path: _feature_docs
     format: yaml-frontmatter
     view:
-      fields: [title, description]
-      primary: title
+      fields: [card_order, card_title, title]
+      primary: card_title
+      sort: [card_order, card_title]
+      default:
+        sort: card_order
+        order: asc
     fields:
+      - name: card_title
+        label: 首頁卡片名稱
+        type: string
+        required: true
+        description: 修改後同步顯示於官網首頁六大核心功能
+      - name: card_icon
+        label: 首頁卡片圖示或表情
+        type: string
+        required: true
+        description: 例如 ◎ ⚡ ◇，建議使用一個符號
+      - name: card_order
+        label: 首頁卡片顯示順序
+        type: number
+        required: true
+        description: 數字越小排列越前面
       - name: title
-        label: 功能文章標題
+        label: 教學文章標題
         type: string
         required: true
       - name: description
