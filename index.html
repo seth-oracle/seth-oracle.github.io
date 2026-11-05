@@ -1,3 +1,6 @@
+---
+layout: null
+---
 <!doctype html>
 <html lang="zh-Hant">
 <head>
@@ -293,30 +296,25 @@
     </div>
     </div></div>
     <section id="features" class="feature-section">
-      <h2 class="section-title">核心功能</h2><p class="section-sub">六大功能一次掌握，點選卡片即可在新分頁閱讀完整教學。</p>
+      <h2 class="section-title">核心功能</h2>
+      <p class="section-sub">六大功能一次掌握，點選卡片即可在新分頁閱讀完整教學。</p>
+      {% assign sorted_features = site.feature_docs | sort: "card_order" %}
       <div class="features">
-      <a class="feature-accordion feature-article-link" href="/features/room-scan.html" target="_blank" rel="noopener noreferrer" aria-label="開新分頁閱讀全房掃描教學">
-        <span class="feature-icon" aria-hidden="true">⌗</span><span class="feature-head"><strong>全房掃描</strong><span class="feature-brief">彙整不同房間的資訊與排序，方便快速比較。</span></span><span class="feature-chevron" aria-hidden="true">↗</span>
-      </a>
-      <a class="feature-accordion feature-article-link" href="/features/board-monitor.html" target="_blank" rel="noopener noreferrer" aria-label="開新分頁閱讀盤面監測教學">
-        <span class="feature-icon" aria-hidden="true">◎</span><span class="feature-head"><strong>盤面監測</strong><span class="feature-brief">整理近期符號與盤面資訊，協助觀察變化。</span></span><span class="feature-chevron" aria-hidden="true">↗</span>
-      </a>
-      <a class="feature-accordion feature-article-link" href="/features/speed.html" target="_blank" rel="noopener noreferrer" aria-label="開新分頁閱讀極速加速教學">
-        <span class="feature-icon" aria-hidden="true">↯</span><span class="feature-head"><strong>極速加速</strong><span class="feature-brief">整合加速操作入口，讓切換更直覺。</span></span><span class="feature-chevron" aria-hidden="true">↗</span>
-      </a>
-      <a class="feature-accordion feature-article-link" href="/features/data.html" target="_blank" rel="noopener noreferrer" aria-label="開新分頁閱讀數據觀察教學">
-        <span class="feature-icon" aria-hidden="true">▥</span><span class="feature-head"><strong>數據觀察</strong><span class="feature-brief">集中查看遊戲資訊與統計結果。</span></span><span class="feature-chevron" aria-hidden="true">↗</span>
-      </a>
-      <a class="feature-accordion feature-article-link" href="/features/games.html" target="_blank" rel="noopener noreferrer" aria-label="開新分頁閱讀遊戲切換教學">
-        <span class="feature-icon" aria-hidden="true">◇</span><span class="feature-head"><strong>遊戲切換</strong><span class="feature-brief">從單一入口選擇不同 ATG 遊戲。</span></span><span class="feature-chevron" aria-hidden="true">↗</span>
-      </a>
-      <a class="feature-accordion feature-article-link" href="/features/devices.html" target="_blank" rel="noopener noreferrer" aria-label="開新分頁閱讀跨裝置使用教學">
-        <span class="feature-icon" aria-hidden="true">▣</span><span class="feature-head"><strong>跨裝置使用</strong><span class="feature-brief">依裝置選擇適合的啟動或安裝方式。</span></span><span class="feature-chevron" aria-hidden="true">↗</span>
-      </a>
+      {% for feature in sorted_features %}
+        {% assign feature_slug = feature.path | split: '/' | last | remove: '.md' %}
+        <a class="feature-accordion feature-article-link" href="/features/{{ feature_slug }}.html" target="_blank" rel="noopener noreferrer" aria-label="開新分頁閱讀{{ feature.card_title | default: feature.title | escape }}教學">
+          <span class="feature-icon" aria-hidden="true">{{ feature.card_icon | default: '◈' | escape }}</span>
+          <span class="feature-head">
+            <strong>{{ feature.card_title | default: feature.title | escape }}</strong>
+            <span class="feature-brief">{{ feature.description | escape }}</span>
+          </span>
+          <span class="feature-chevron" aria-hidden="true">↗</span>
+        </a>
+      {% endfor %}
       </div>
     </section>
 
-        <section class="games" id="games">
+    <section class="games" id="games">
       <h2 class="section-title">支援遊戲</h2>
       <p class="section-sub">目前展示 8 款 ATG 遊戲，點選卡片可前往系統選擇遊戲。</p>
       <div class="games-carousel"><button class="game-scroll-btn game-scroll-prev" type="button" aria-label="上一組遊戲" onclick="document.getElementById('gameTrack').scrollBy({left:-540,behavior:'smooth'})">‹</button><div class="games-grid" id="gameTrack" tabindex="0" aria-label="支援遊戲橫向列表，可左右滑動">
