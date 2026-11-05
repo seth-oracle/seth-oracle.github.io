@@ -1,7 +1,7 @@
 ---
 card_title: 盤面監測
 card_icon: 🎯
-card_order: 2
+card_order: 3
 title: 🎯 盤面監測
 description: 整理近期符號與盤面資訊，協助觀察變化。
 image1: /assistant/images/monitor.webp
