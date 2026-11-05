@@ -1,0 +1,19 @@
+title: 賽特神諭
+description: 賽特神諭 ATG 智慧分析系統
+url: https://seth-oracle.github.io
+baseurl: ""
+timezone: Asia/Taipei
+markdown: kramdown
+collections:
+  tutorials:
+    output: true
+    permalink: /guides/posts/:name.html
+defaults:
+  - scope:
+      path: ""
+      type: tutorials
+    values:
+      layout: tutorial
+      published: true
+exclude:
+  - README.md
