@@ -1,4 +1,7 @@
 ---
+card_title: "遊戲切換"
+card_icon: "◇"
+card_order: 5
 title: "◇ 遊戲切換"
 description: "從單一入口選擇不同 ATG 遊戲。"
 image1: "/assistant/images/games.webp"
