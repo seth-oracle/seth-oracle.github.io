@@ -38,11 +38,34 @@ a{color:inherit;text-decoration:none}
 .btn.ghost{color:#f4cf88;background:#15100c}
 footer{text-align:center;color:#93826c;font-size:12px;padding:23px;border-top:1px solid #392c1c}
 @media(max-width:650px){.top{padding:14px}.logo{font-size:19px}.nav{width:100%;justify-content:space-between;gap:8px}.masthead{padding:66px 17px 79px}.masthead h1{letter-spacing:.04em}.masthead p{font-size:13px}.wrap{padding:0 12px 60px}.article{padding:23px 20px}.feature-gallery{grid-template-columns:1fr;gap:13px;margin-bottom:25px}.feature-shot{padding:13px}.feature-shot img{height:auto;max-height:480px}.feature-prose h2{font-size:19px}.feature-prose p{font-size:14px}}
+
+/* YouTube and MP4 instructional videos */
+.tutorial-videos{margin:12px 0 28px;display:grid;gap:19px}
+.tutorial-video{margin:0;min-width:0;padding:17px;border:1px solid #79582d;border-radius:15px;background:linear-gradient(140deg,#21170e,#0d0d0c)}
+.tutorial-video figcaption{font-size:16px;font-weight:900;color:#ffe0a0;margin:0 0 12px}
+.tutorial-video-frame{width:100%;aspect-ratio:16/9;overflow:hidden;background:#090909;border-radius:10px;position:relative}
+.tutorial-video-frame iframe,.tutorial-video-frame video{display:block;width:100%;height:100%;border:0}
+.tutorial-video-frame video{object-fit:contain}
+.video-error{padding:20px;color:#cdb89a;font-size:13px;line-height:1.8}
+@media(max-width:650px){.tutorial-video{padding:12px}.tutorial-video figcaption{font-size:14px}}
 </style></head><body>
 <header class="top"><a class="logo" href="/">◉ 賽特神諭</a><nav class="nav"><a href="/">官方首頁</a><a href="/guides/">攻略中心</a><a href="/assistant/">神諭助手</a></nav></header>
 <div class="masthead"><div class="eyebrow">SETH ORACLE · FEATURE GUIDE</div><h1>{{ page.title | escape }}</h1><p>{{ page.description | escape | newline_to_br }}</p></div>
 <main class="wrap"><article class="article"><p class="intro">賽特神諭功能教學 · {{ page.card_title | default: page.title | escape }}</p>
 {% if page.image1 or page.image2 %}
+
+{% if page.youtube_url and page.youtube_url != "" or page.mp4_file and page.mp4_file != "" %}
+<div class="tutorial-videos" aria-label="操作教學影片">
+{% if page.youtube_url and page.youtube_url != "" %}
+<figure class="tutorial-video"><figcaption>▶ YouTube 操作教學</figcaption>
+<div class="tutorial-video-frame" data-youtube-url="{{ page.youtube_url | escape }}"><p class="video-error">正在載入 YouTube 影片…</p></div></figure>
+{% endif %}
+{% if page.mp4_file and page.mp4_file != "" %}
+<figure class="tutorial-video"><figcaption>▶ MP4 操作教學</figcaption>
+<div class="tutorial-video-frame"><video controls preload="metadata" playsinline src="{{ page.mp4_file | relative_url | escape }}"><p>您的瀏覽器不支援 MP4 播放。</p></video></div></figure>
+{% endif %}
+</div>
+{% endif %}
 <div class="feature-gallery">
 {% if page.image1 and page.image1 != "" %}
 <figure class="feature-shot"><a href="{{ page.image1 | relative_url }}" target="_blank" rel="noopener noreferrer"><img src="{{ page.image1 | relative_url }}" alt="{{ page.image1_caption | escape }}" loading="lazy"></a><figcaption>{{ page.image1_caption | escape }}<small>{{ page.image1_description | escape }}</small></figcaption></figure>
@@ -55,4 +78,37 @@ footer{text-align:center;color:#93826c;font-size:12px;padding:23px;border-top:1p
 <div class="tip">提醒：功能可用性依遊戲、裝置及當前版本而異；觀察與統計資訊不保證遊戲結果或獲利。</div>
 <div class="tools"><a class="btn" href="/#download">下載賽特神諭</a><a class="btn ghost" href="https://lin.ee/sAuklWr" target="_blank" rel="noopener noreferrer">官方 LINE 客服</a><a class="btn ghost" href="/#features">返回核心功能</a></div>
 </article></main>
-<footer>© 2026 賽特神諭 · 功能與數據僅供參考</footer></body></html>
+<footer>© 2026 賽特神諭 · 功能與數據僅供參考</footer><script>
+(function(){
+  function youtubeId(value){
+    try{
+      const u=new URL(value.trim());
+      const host=u.hostname.toLowerCase();
+      const allowed=host==="youtube.com"||host==="www.youtube.com"||host==="m.youtube.com"||host==="music.youtube.com"||host==="youtube-nocookie.com"||host==="www.youtube-nocookie.com";
+      let id="";
+      if(host==="youtu.be"||host==="www.youtu.be")id=u.pathname.split("/")[1]||"";
+      else if(allowed){
+        const path=u.pathname.split("/").filter(Boolean);
+        id=u.pathname==="/watch"?(u.searchParams.get("v")||""):((["shorts","live","embed","v"].includes(path[0]))?(path[1]||""):"");
+      }else return null;
+      return /^[a-zA-Z0-9_-]{11}$/.test(id)?id:null;
+    }catch{return null}
+  }
+  document.querySelectorAll("[data-youtube-url]").forEach(el=>{
+    const url=el.getAttribute("data-youtube-url")||"";
+    const id=youtubeId(url);
+    if(!id){
+      el.replaceChildren();
+      const p=document.createElement("p");p.className="video-error";p.textContent="YouTube 網址格式不正確，請在後台貼上影片分享連結。";el.appendChild(p);return;
+    }
+    const frame=document.createElement("iframe");
+    frame.src="https://www.youtube-nocookie.com/embed/"+id;
+    frame.title="賽特神諭 YouTube 教學影片";
+    frame.loading="lazy";
+    frame.referrerPolicy="strict-origin-when-cross-origin";
+    frame.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    frame.allowFullscreen=true;
+    el.replaceChildren(frame);
+  });
+})();
+</script></body></html>
