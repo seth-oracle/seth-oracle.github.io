@@ -320,6 +320,11 @@ layout: null
 header .logo{display:inline-flex;align-items:center;gap:11px;white-space:nowrap}
 header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:cover;border-radius:10px;border:1px solid #b38947;box-shadow:0 2px 14px #0009}
 @media(max-width:700px){header .logo{gap:8px}header .logo-app-icon{width:34px;height:34px;border-radius:9px}}
+
+/* Match other circle symbols to the official APP logo */
+.app-symbol-img{display:block;width:100%;height:100%;object-fit:cover;border-radius:inherit}
+.mobile-quick-links .app-symbol-container{overflow:hidden}
+.download-card .app-device-icon{overflow:hidden;padding:0!important}
 </style>
 </head>
 <body>
@@ -335,7 +340,7 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
       <div class="actions"><a class="btn primary" href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer">立即啟動</a><a class="btn secondary" href="#features">探索功能</a></div>
     <div class="mobile-quick-links" aria-label="熱門功能入口">
       <a href="#games"><span aria-hidden="true">◈</span><strong>支援遊戲</strong><small>8 款遊戲</small></a>
-      <a href="/assistant/"><span aria-hidden="true">◉</span><strong>神諭助手</strong><small>功能介紹</small></a>
+      <a href="/assistant/"><span class="app-symbol-container" aria-hidden="true"><img class="app-symbol-img" src="https://xinyao-ai.github.io/xinyao-ai/icon-192.png" alt="" loading="lazy"></span><strong>神諭助手</strong><small>功能介紹</small></a>
       <a href="/guides/"><span aria-hidden="true">▤</span><strong>攻略教學</strong><small>新手必看</small></a>
       <a href="#download"><span aria-hidden="true">⬇</span><strong>下載專區</strong><small>開始使用</small></a>
     </div>
@@ -458,7 +463,7 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
           <a class="download-action" href="https://github.com/xinyao-ai/xinyao-ai/raw/refs/heads/main/SethOracle-v014.apk">下載 Android APK</a>
         </article>
         <article class="download-card">
-          <span class="device-icon" aria-hidden="true">◉</span>
+          <span class="device-icon app-device-icon" aria-hidden="true"><img class="app-symbol-img" src="https://xinyao-ai.github.io/xinyao-ai/icon-192.png" alt="" loading="lazy"></span>
           <h3>iPhone / iPad</h3>
           <p>目前提供 Safari 安裝教學，尚無可直接下載的原生 iOS APP。</p>
           <a class="download-action" href="https://xinyao-ai.github.io/xinyao-ai/download.html#iosGuideModal" target="_blank" rel="noopener noreferrer">查看 iOS 安裝教學</a>
