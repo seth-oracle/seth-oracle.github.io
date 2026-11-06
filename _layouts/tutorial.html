@@ -27,10 +27,15 @@ a{color:inherit;text-decoration:none}
 .article-links a:first-child{background:linear-gradient(110deg,#f9e1a5,#d2a04e);color:#251709}
 footer{border-top:1px solid #43301d;text-align:center;font-size:12px;color:#9d8e79;padding:21px}
 @media(max-width:650px){.topbar{padding:14px;flex-wrap:wrap}.brand{font-size:19px}.topnav{justify-content:space-between;width:100%;font-size:12px}.article{padding:22px 14px 65px}.article-head{padding:22px 0}.intro{font-size:14px}.prose h2{font-size:20px}.prose p,.prose li{font-size:15px}}
+
+/* Unified official APP icon in site navigation */
+.site-app-brand{display:inline-flex!important;align-items:center;gap:9px;white-space:nowrap}
+.site-app-brand-icon{display:block;width:38px;height:38px;flex:0 0 38px;object-fit:cover;border-radius:9px;border:1px solid #aa8649;box-shadow:0 2px 12px #0008}
+@media(max-width:700px){.site-app-brand-icon{width:33px;height:33px;flex-basis:33px}}
 </style>
 </head>
 <body>
-<header class="topbar"><a class="brand" href="/">◉ 賽特神諭</a><nav class="topnav"><a href="/">官方首頁</a><a href="/guides/">攻略中心</a><a href="/assistant/">神諭助手</a></nav></header>
+<header class="topbar site-app-brand"><a class="brand" href="/"><img class="site-app-brand-icon" src="https://xinyao-ai.github.io/xinyao-ai/icon-192.png" alt="" width="38" height="38" decoding="async"><span>賽特神諭</span></a><nav class="topnav"><a href="/">官方首頁</a><a href="/guides/">攻略中心</a><a href="/assistant/">神諭助手</a></nav></header>
 <main class="article"><a class="back" href="/guides/">← 返回攻略中心</a>
 {% if page.cover and page.cover != "" %}<div class="cover"><img src="{{ page.cover | relative_url }}" alt="{{ page.title | escape }} 封面圖片"></div>{% endif %}
 <header class="article-head"><span class="tag">{{ page.category | escape }}</span><h1>{{ page.title | escape }}</h1><p class="intro">{{ page.description | escape }}</p></header>
