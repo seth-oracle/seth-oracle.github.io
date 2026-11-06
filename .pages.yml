@@ -115,6 +115,17 @@ content:
       - name: image2_description
         label: 第二張圖片說明
         type: text
+      - name: youtube_url
+        label: YouTube 教學影片連結
+        type: string
+        description: 貼上影片網址（youtu.be、youtube.com/watch 或 Shorts），不填就不顯示
+      - name: mp4_file
+        label: 上傳 MP4 教學影片
+        type: file
+        description: 可直接選取 MP4 上傳；建議短片且壓縮至 100MB 以下，不填就不顯示
+        options:
+          extensions: [mp4]
+          categories: [video]
       - name: body
         label: 詳細教學內容（可插入圖片）
         type: rich-text
