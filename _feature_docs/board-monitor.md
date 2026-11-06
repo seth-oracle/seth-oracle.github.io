@@ -10,6 +10,7 @@ image1_description: 查看遊戲符號及近期盤面監測資訊
 image2: /assistant/images/game-main.webp
 image2_caption: 遊戲中的助手視窗
 image2_description: 在實際遊戲畫面中開啟監測功能
+mp4_url: https://youtube.com/shorts/ANsKrFhX8Ts?si=u6VZWqDED5zKRZEx
 ---
 ## 盤面監測會顯示什麼？
 
