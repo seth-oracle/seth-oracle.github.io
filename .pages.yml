@@ -119,10 +119,14 @@ content:
         label: YouTube 教學影片連結
         type: string
         description: 貼上影片網址（youtu.be、youtube.com/watch 或 Shorts），不填就不顯示
+      - name: mp4_url
+        label: MP4 影片網址（大檔案建議使用）
+        type: string
+        description: 貼上公開、可直接播放的 HTTPS .mp4 影片網址；非 YouTube 影片網址，不填就不顯示
       - name: mp4_file
         label: 上傳 MP4 教學影片
         type: file
-        description: 可直接選取 MP4 上傳；建議短片且壓縮至 100MB 以下，不填就不顯示
+        description: Pages CMS 上傳可能超過約 4.5MB 就出現 413；大影片請改用上方 MP4 網址欄位
         options:
           extensions: [mp4]
           categories: [video]
