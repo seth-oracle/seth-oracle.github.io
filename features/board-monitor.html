@@ -27,6 +27,73 @@ layout: null
 .site-app-brand{display:inline-flex!important;align-items:center;gap:9px;white-space:nowrap}
 .site-app-brand-icon{display:block;width:38px;height:38px;flex:0 0 38px;object-fit:cover;border-radius:9px;border:1px solid #aa8649;box-shadow:0 2px 12px #0008}
 @media(max-width:700px){.site-app-brand-icon{width:33px;height:33px;flex-basis:33px}}
+
+/* Mobile tutorial images: compact swipeable gallery instead of full-height stacked screenshots */
+@media (max-width:650px){
+  .article{overflow:hidden}
+  .feature-gallery{
+    display:flex!important;
+    grid-template-columns:none!important;
+    flex-wrap:nowrap!important;
+    gap:12px!important;
+    overflow-x:auto!important;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    scroll-padding-inline:4px;
+    overscroll-behavior-x:contain;
+    -webkit-overflow-scrolling:touch;
+    padding:5px 4px 14px!important;
+    margin:14px -5px 10px!important;
+    scrollbar-width:none;
+    align-items:stretch;
+  }
+  .feature-gallery::-webkit-scrollbar{display:none}
+  .feature-gallery>.feature-shot{
+    display:flex;
+    flex:0 0 82%!important;
+    width:82%!important;
+    max-width:320px!important;
+    flex-direction:column;
+    min-width:0;
+    scroll-snap-align:start;
+    padding:10px 10px 14px!important;
+    border-radius:14px;
+    box-sizing:border-box;
+  }
+  .feature-gallery .feature-shot>a{
+    display:flex!important;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    height:290px!important;
+    min-height:290px;
+    max-height:290px;
+    border-radius:10px;
+    overflow:hidden;
+    background:radial-gradient(ellipse at 50% 35%,#292015,#090909 78%);
+  }
+  .feature-gallery .feature-shot img{
+    display:block;
+    width:auto!important;
+    max-width:100%!important;
+    height:100%!important;
+    max-height:100%!important;
+    object-fit:contain!important;
+    margin:auto;
+  }
+  .feature-gallery .feature-shot figcaption{
+    margin:11px 0 0!important;
+    font-size:14px!important;
+    line-height:1.5;
+  }
+  .feature-gallery .feature-shot figcaption small{
+    font-size:12px!important;
+    line-height:1.55;
+    margin-top:5px;
+  }
+  .gallery-note{margin:0 0 22px!important;text-align:center}
+}
+@media(max-width:380px){.feature-gallery .feature-shot>a{height:255px!important;min-height:255px;max-height:255px}}
 </style></head><body><header class="top"><a class="logo site-app-brand" href="../"><img class="site-app-brand-icon" src="https://xinyao-ai.github.io/xinyao-ai/icon-192.png" alt="" width="38" height="38"><span>賽特神諭</span></a><nav class="nav"><a href="../">官方首頁</a><a href="../guides/">攻略中心</a><a href="../assistant/">神諭助手</a></nav></header><div class="masthead"><div class="eyebrow">SETH ORACLE · FEATURE GUIDE 02</div><h1>{{ feature.title | escape }}</h1><p>{{ feature.description | escape }}</p></div><main class="wrap"><article class="article"><p class="intro">賽特神諭功能教學 · {{ feature.title | escape }}</p>
 {% assign yt_link = feature.youtube_url | default: '' %}
 {% assign mp4_uploaded = feature.mp4_file | default: '' %}
@@ -54,7 +121,7 @@ layout: null
    <a href="{{ feature.image2 | relative_url }}" target="_blank" rel="noopener noreferrer" aria-label="查看第二張教學圖片"><img src="{{ feature.image2 | relative_url }}" alt="{{ feature.image2_caption | escape }}" loading="lazy"></a>
    <figcaption>{{ feature.image2_caption | escape }}<small>{{ feature.image2_description | escape }}</small></figcaption>
  </figure>{% endif %}
- </div><p class="gallery-note">以上為操作介面截圖，畫面可能隨版本及裝置不同而調整。點擊圖片可放大查看。</p><div class="feature-prose">{{ feature.content | markdownify }}</div><div class="tip">提醒：功能可用性依遊戲、裝置及當前版本而異；觀察與統計資訊不保證任何遊戲結果或獲利。</div><div class="tools"><a class="btn" href="../#download">下載賽特神諭</a><a class="btn ghost" href="https://lin.ee/sAuklWr" target="_blank" rel="noopener noreferrer">官方 LINE 客服</a></div></article><nav class="pager" aria-label="功能教學導覽"><a href="room-scan.html">← 全房掃描</a><a href="speed.html">極速加速 →</a></nav></main><footer>© 2026 賽特神諭 · 功能與數據僅供參考</footer><script>
+ </div><p class="gallery-note">手機版可左右滑動查看圖片，點擊可開啟完整原圖。介面可能隨版本更新。</p><div class="feature-prose">{{ feature.content | markdownify }}</div><div class="tip">提醒：功能可用性依遊戲、裝置及當前版本而異；觀察與統計資訊不保證任何遊戲結果或獲利。</div><div class="tools"><a class="btn" href="../#download">下載賽特神諭</a><a class="btn ghost" href="https://lin.ee/sAuklWr" target="_blank" rel="noopener noreferrer">官方 LINE 客服</a></div></article><nav class="pager" aria-label="功能教學導覽"><a href="room-scan.html">← 全房掃描</a><a href="speed.html">極速加速 →</a></nav></main><footer>© 2026 賽特神諭 · 功能與數據僅供參考</footer><script>
 (function(){
   function youtubeId(value){
     try{
