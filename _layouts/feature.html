@@ -48,8 +48,13 @@ footer{text-align:center;color:#93826c;font-size:12px;padding:23px;border-top:1p
 .tutorial-video-frame video{object-fit:contain}
 .video-error{padding:20px;color:#cdb89a;font-size:13px;line-height:1.8}
 @media(max-width:650px){.tutorial-video{padding:12px}.tutorial-video figcaption{font-size:14px}}
+
+/* Unified official APP icon in site navigation */
+.site-app-brand{display:inline-flex!important;align-items:center;gap:9px;white-space:nowrap}
+.site-app-brand-icon{display:block;width:38px;height:38px;flex:0 0 38px;object-fit:cover;border-radius:9px;border:1px solid #aa8649;box-shadow:0 2px 12px #0008}
+@media(max-width:700px){.site-app-brand-icon{width:33px;height:33px;flex-basis:33px}}
 </style></head><body>
-<header class="top"><a class="logo" href="/">◉ 賽特神諭</a><nav class="nav"><a href="/">官方首頁</a><a href="/guides/">攻略中心</a><a href="/assistant/">神諭助手</a></nav></header>
+<header class="top site-app-brand"><a class="logo" href="/"><img class="site-app-brand-icon" src="https://xinyao-ai.github.io/xinyao-ai/icon-192.png" alt="" width="38" height="38" decoding="async"><span>賽特神諭</span></a><nav class="nav"><a href="/">官方首頁</a><a href="/guides/">攻略中心</a><a href="/assistant/">神諭助手</a></nav></header>
 <div class="masthead"><div class="eyebrow">SETH ORACLE · FEATURE GUIDE</div><h1>{{ page.title | escape }}</h1><p>{{ page.description | escape | newline_to_br }}</p></div>
 <main class="wrap"><article class="article"><p class="intro">賽特神諭功能教學 · {{ page.card_title | default: page.title | escape }}</p>
 {% assign yt_link = page.youtube_url | default: '' %}
