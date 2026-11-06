@@ -24,15 +24,15 @@ layout: null
 .video-error{padding:20px;color:#cdb89a;font-size:13px;line-height:1.8}
 @media(max-width:650px){.tutorial-video{padding:12px}.tutorial-video figcaption{font-size:14px}}
 </style></head><body><header class="top"><a class="logo" href="../">◉ 賽特神諭</a><nav class="nav"><a href="../">官方首頁</a><a href="../guides/">攻略中心</a><a href="../assistant/">神諭助手</a></nav></header><div class="masthead"><div class="eyebrow">SETH ORACLE · FEATURE GUIDE 06</div><h1>{{ feature.title | escape }}</h1><p>{{ feature.description | escape }}</p></div><main class="wrap"><article class="article"><p class="intro">賽特神諭功能教學 · {{ feature.title | escape }}</p>
-{% if feature.youtube_url and feature.youtube_url != "" or feature.mp4_file and feature.mp4_file != "" %}
+{% if feature.youtube_url and feature.youtube_url != "" or feature.mp4_file and feature.mp4_file != "" or feature.mp4_url and feature.mp4_url != "" %}
 <div class="tutorial-videos" aria-label="操作教學影片">
 {% if feature.youtube_url and feature.youtube_url != "" %}
 <figure class="tutorial-video"><figcaption>▶ YouTube 操作教學</figcaption>
 <div class="tutorial-video-frame" data-youtube-url="{{ feature.youtube_url | escape }}"><p class="video-error">正在載入 YouTube 影片…</p></div></figure>
 {% endif %}
-{% if feature.mp4_file and feature.mp4_file != "" %}
+{% if feature.mp4_file and feature.mp4_file != "" or feature.mp4_url and feature.mp4_url != "" %}
 <figure class="tutorial-video"><figcaption>▶ MP4 操作教學</figcaption>
-<div class="tutorial-video-frame"><video controls preload="metadata" playsinline src="{{ feature.mp4_file | relative_url | escape }}"><p>您的瀏覽器不支援 MP4 播放。</p></video></div></figure>
+<div class="tutorial-video-frame"><video controls preload="metadata" playsinline {% if feature.mp4_url and feature.mp4_url != "" %}src="{{ feature.mp4_url | escape }}"{% else %}src="{{ feature.mp4_file | relative_url | escape }}"{% endif %}><p>您的瀏覽器不支援 MP4 播放。</p></video></div></figure>
 {% endif %}
 </div>
 {% endif %}
