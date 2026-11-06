@@ -52,8 +52,6 @@ footer{text-align:center;color:#93826c;font-size:12px;padding:23px;border-top:1p
 <header class="top"><a class="logo" href="/">◉ 賽特神諭</a><nav class="nav"><a href="/">官方首頁</a><a href="/guides/">攻略中心</a><a href="/assistant/">神諭助手</a></nav></header>
 <div class="masthead"><div class="eyebrow">SETH ORACLE · FEATURE GUIDE</div><h1>{{ page.title | escape }}</h1><p>{{ page.description | escape | newline_to_br }}</p></div>
 <main class="wrap"><article class="article"><p class="intro">賽特神諭功能教學 · {{ page.card_title | default: page.title | escape }}</p>
-{% if page.image1 or page.image2 %}
-
 {% if page.youtube_url and page.youtube_url != "" or page.mp4_file and page.mp4_file != "" %}
 <div class="tutorial-videos" aria-label="操作教學影片">
 {% if page.youtube_url and page.youtube_url != "" %}
@@ -66,6 +64,7 @@ footer{text-align:center;color:#93826c;font-size:12px;padding:23px;border-top:1p
 {% endif %}
 </div>
 {% endif %}
+{% if page.image1 or page.image2 %}
 <div class="feature-gallery">
 {% if page.image1 and page.image1 != "" %}
 <figure class="feature-shot"><a href="{{ page.image1 | relative_url }}" target="_blank" rel="noopener noreferrer"><img src="{{ page.image1 | relative_url }}" alt="{{ page.image1_caption | escape }}" loading="lazy"></a><figcaption>{{ page.image1_caption | escape }}<small>{{ page.image1_description | escape }}</small></figcaption></figure>
