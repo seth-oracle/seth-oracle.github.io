@@ -9,6 +9,8 @@ layout: null
   <meta name="theme-color" content="#090707">
   <meta name="description" content="賽特神諭｜ATG 智慧分析系統，整合全房掃描、盤面監測、數據觀察與輔助工具。">
   <title>賽特神諭｜ATG 智慧分析系統</title>
+  <link rel="icon" type="image/png" href="https://xinyao-ai.github.io/xinyao-ai/favicon.png">
+  <link rel="apple-touch-icon" href="https://xinyao-ai.github.io/xinyao-ai/apple-touch-icon.png">
   <style>
     :root{--gold:#f5cf79;--muted:#c5b9a4;--line:#6f502b}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#080707;color:#f9f2e7;font-family:"Microsoft JhengHei","Noto Sans TC",system-ui,sans-serif}
@@ -313,11 +315,16 @@ layout: null
   .feature-section .feature-brief{font-size:12px!important}
 }
 @media(prefers-reduced-motion:reduce){.feature-section .features{scroll-behavior:auto}}
+
+/* Official Seth Oracle app icon */
+header .logo{display:inline-flex;align-items:center;gap:11px;white-space:nowrap}
+header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:cover;border-radius:10px;border:1px solid #b38947;box-shadow:0 2px 14px #0009}
+@media(max-width:700px){header .logo{gap:8px}header .logo-app-icon{width:34px;height:34px;border-radius:9px}}
 </style>
 </head>
 <body>
   <header>
-    <a class="logo" href="#home">◉ 賽特神諭</a>
+    <a class="logo" href="#home"><img class="logo-app-icon" src="https://xinyao-ai.github.io/xinyao-ai/icon-192.png" alt="" width="40" height="40" decoding="async"> <span>賽特神諭</span></a>
     <button class="mobile-menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="展開網站選單"><span></span><span></span><span></span></button><nav class="nav" id="primary-nav"><a href="#features">核心功能</a><a href="#games">支援遊戲</a><a href="/guides/">攻略教學</a><a href="/assistant/">神諭助手</a><a href="#guide">新手教學</a><a href="#download">下載專區</a><a href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer">啟動系統</a></nav>
   </header>
   <main>
