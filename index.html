@@ -329,6 +329,10 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
 /* Windows download card icon */
 .download-card .windows-device-icon{padding:0!important;overflow:hidden;background:#080e22}
 .download-card .windows-device-icon img{display:block;width:100%;height:100%;object-fit:cover;border-radius:inherit}
+
+/* User-provided green Android logo, preserve original download card */
+.download-card .android-device-icon{overflow:hidden;padding:4px!important}
+.download-card .android-device-icon img{display:block;max-width:100%;max-height:100%;object-fit:contain}
 </style>
 </head>
 <body>
@@ -461,7 +465,7 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
           <a class="download-action" href="https://github.com/xinyao-ai/xinyao-ai/releases/download/windows-stable/SethOracle-Windows-Setup.exe">下載 Windows 版</a>
         </article>
         <article class="download-card">
-          <span class="device-icon" aria-hidden="true">◈</span>
+          <span class="device-icon android-device-icon" aria-hidden="true"><img src="/assets/android-green-icon.svg" alt="" width="50" height="50" decoding="async"></span>
           <h3>Android 手機版</h3>
           <p>下載 Android APK，依手機提示完成安裝。</p>
           <a class="download-action" href="https://github.com/xinyao-ai/xinyao-ai/raw/refs/heads/main/SethOracle-v014.apk">下載 Android APK</a>
