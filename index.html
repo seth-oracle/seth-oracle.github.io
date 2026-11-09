@@ -333,6 +333,10 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
 /* User-provided green Android logo, preserve original download card */
 .download-card .android-device-icon{overflow:hidden;padding:4px!important}
 .download-card .android-device-icon img{display:block;max-width:100%;max-height:100%;object-fit:contain}
+
+/* Silver Apple icon for iPhone/iPad download card */
+.download-card .apple-device-icon{padding:6px!important;overflow:hidden;background:radial-gradient(circle,#342c27,#130f0b 75%)}
+.download-card .apple-device-icon img{display:block;max-width:100%;max-height:100%;width:auto;height:100%;object-fit:contain}
 </style>
 </head>
 <body>
@@ -471,7 +475,7 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
           <a class="download-action" href="https://github.com/xinyao-ai/xinyao-ai/raw/refs/heads/main/SethOracle-v014.apk">下載 Android APK</a>
         </article>
         <article class="download-card">
-          <span class="device-icon app-device-icon" aria-hidden="true"><img class="app-symbol-img" src="https://xinyao-ai.github.io/xinyao-ai/icon-192.png" alt="" loading="lazy"></span>
+          <span class="device-icon apple-device-icon" aria-hidden="true"><img src="/assets/apple-silver-icon.svg" alt="" width="48" height="54" decoding="async"></span>
           <h3>iPhone / iPad</h3>
           <p>目前提供 Safari 安裝教學，尚無可直接下載的原生 iOS APP。</p>
           <a class="download-action" href="https://xinyao-ai.github.io/xinyao-ai/download.html#iosGuideModal" target="_blank" rel="noopener noreferrer">查看 iOS 安裝教學</a>
