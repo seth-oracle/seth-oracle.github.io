@@ -2,6 +2,7 @@
 title: 賽特神諭是什麼？六大核心功能、系統特色與完整使用指南
 description: 完整認識賽特神諭 ATG 智慧輔助系統，深入了解全房掃描、盤面監測、數據觀察、極速加速、遊戲劇透及止盈止損等功能。
 category: 功能教學
+cover: /media/guides/54bad1e9-ac0f-4817-89fa-097347b20d3f.png
 order: 3
 published: true
 ---
