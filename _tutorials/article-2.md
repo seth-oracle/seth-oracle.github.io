@@ -2,6 +2,7 @@
 title: 賽特 AI 爆分預測是真的嗎？賽特神諭智慧分析系統完整解析
 description: 深入了解賽特神諭如何整合歷史免費遊戲數據、智慧盤面監測與全房掃描，以及訊號和開獎結果的真正意義。
 category: 功能教學
+cover: /media/guides/f76d0524-12e8-4f0c-9d87-1f59819332a7.png
 order: 2
 published: true
 ---
