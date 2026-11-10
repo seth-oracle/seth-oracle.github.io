@@ -2,7 +2,7 @@
 title: 戰神賽特怎麼玩？新手玩法與賽特神諭完整操作指南
 description: 從基本投注、免費遊戲到盤面符號辨識，帶你認識戰神賽特一代與二代，並學會使用賽特神諭查看房間數據與盤面資訊。
 category: 新手入門
-cover: /media/guides/ca6200a0-1288-4036-904f-3b32a649ea54.png
+cover: /media/guides/a5f53eba-3778-4d48-a4f2-206a06e47503.png
 order: 1
 published: true
 ---
