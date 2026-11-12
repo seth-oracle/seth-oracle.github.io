@@ -12,4 +12,10 @@ layout: null
   {% for doc in site.feature_docs %}
   <url><loc>{{ doc.url | absolute_url | xml_escape }}</loc></url>
   {% endfor %}
+  {% comment %}Include standalone feature tutorial pages.{% endcomment %}
+  {% for p in site.pages %}
+    {% if p.url contains '/features/' and p.url != '/features/' and p.url != '/features/index.html' %}
+  <url><loc>{{ p.url | absolute_url | xml_escape }}</loc></url>
+    {% endif %}
+  {% endfor %}
 </urlset>
