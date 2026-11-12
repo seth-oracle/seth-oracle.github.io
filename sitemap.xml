@@ -1,0 +1,16 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>{{ '/' | absolute_url }}</loc></url>
+  <url><loc>{{ '/guides/' | absolute_url }}</loc></url>
+  <url><loc>{{ '/assistant/' | absolute_url }}</loc></url>
+  {% assign published_tutorials = site.tutorials | where: "published", true %}
+  {% for doc in published_tutorials %}
+  <url><loc>{{ doc.url | absolute_url | xml_escape }}</loc></url>
+  {% endfor %}
+  {% for doc in site.feature_docs %}
+  <url><loc>{{ doc.url | absolute_url | xml_escape }}</loc></url>
+  {% endfor %}
+</urlset>
