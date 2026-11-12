@@ -4,6 +4,12 @@
 <title>{{ page.title | escape }}｜賽特神諭功能教學</title>
 <meta name="description" content="{{ page.description | escape }}">
 <link rel="canonical" href="{{ page.url | absolute_url }}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="賽特神諭">
+<meta property="og:title" content="{{ page.title | escape }}">
+<meta property="og:description" content="{{ page.description | escape }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":{{ page.title | jsonify }},"description":{{ page.description | jsonify }},"url":{{ page.url | absolute_url | jsonify }},"inLanguage":"zh-Hant","publisher":{"@type":"Organization","name":"賽特神諭","url":"https://seth-oracle.github.io/"}}</script>
 <style>
 :root{color-scheme:dark;--gold:#f4d38a;--line:#79562e}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
