@@ -4,6 +4,14 @@
 <title>{{ page.title | escape }}｜賽特神諭攻略中心</title>
 <meta name="description" content="{{ page.description | escape }}">
 <link rel="canonical" href="{{ page.url | absolute_url }}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="賽特神諭">
+<meta property="og:title" content="{{ page.title | escape }}">
+<meta property="og:description" content="{{ page.description | escape }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+{% if page.cover and page.cover != "" %}<meta property="og:image" content="{{ page.cover | absolute_url }}">{% endif %}
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":{{ page.title | jsonify }},"description":{{ page.description | jsonify }},"url":{{ page.url | absolute_url | jsonify }},"inLanguage":"zh-Hant","publisher":{"@type":"Organization","name":"賽特神諭","url":"https://seth-oracle.github.io/"}{% if page.cover and page.cover != "" %},"image":{{ page.cover | absolute_url | jsonify }}{% endif %}}</script>
 <style>
 :root{color-scheme:dark;--gold:#f7d284;--line:#71512e}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#090807;color:#f6eacb;font-family:"Microsoft JhengHei","Noto Sans TC",system-ui,sans-serif;line-height:1.85}
