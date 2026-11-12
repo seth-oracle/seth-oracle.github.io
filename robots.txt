@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /assets/admin/
+Sitemap: https://seth-oracle.github.io/sitemap.xml
