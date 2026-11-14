@@ -25,7 +25,7 @@ h1{font-size:clamp(32px,5vw,52px);color:#ffe0a1;margin:6px 0 12px}h2{color:#ffe0
 .panel{border:1px solid #674b25;border-radius:16px;background:#111816;padding:24px;margin:26px 0}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .review{padding:20px;border:1px solid #6d522b;border-radius:13px;background:#18201d}
-.review-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:14px}.review-gallery .review-photo{margin-top:0}.upload-gallery{display:flex;flex-wrap:wrap;gap:10px}.review-photo{display:block;width:100%;max-height:310px;object-fit:contain;background:#0b100e;border:1px solid #594727;border-radius:10px;margin-top:14px}.upload-preview{max-width:260px;max-height:210px;object-fit:contain;border-radius:9px;border:1px solid #72582c;margin-top:10px}.review-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.review strong{color:#f3d58f}.review time{color:#b9ab91;font-size:12px}
+.review-gallery{display:flex;flex-direction:column;gap:9px;margin-top:14px}.review-photos{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-inline:contain;scrollbar-width:thin;scrollbar-color:#96753e #121713;touch-action:pan-x}.review-photos .review-photo{flex:0 0 100%;width:100%;height:310px;max-height:60vh;margin:0;scroll-snap-align:start;object-fit:contain}.review-photo-controls{display:flex;align-items:center;justify-content:center;gap:14px;color:#cbb385;font-size:13px}.review-photo-controls button{background:#121916;border:1px solid #876b3b;border-radius:7px;color:#f4d38b;padding:5px 13px;cursor:pointer}.review-photo-controls button:disabled{opacity:.4;cursor:default}.upload-gallery{display:flex;flex-wrap:wrap;gap:10px}.review-photo{display:block;width:100%;max-height:310px;object-fit:contain;background:#0b100e;border:1px solid #594727;border-radius:10px;margin-top:14px}.upload-preview{max-width:260px;max-height:210px;object-fit:contain;border-radius:9px;border:1px solid #72582c;margin-top:10px}.review-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.review strong{color:#f3d58f}.review time{color:#b9ab91;font-size:12px}
 .rating{color:#f3c960;letter-spacing:2px;margin:9px 0}.content{white-space:pre-wrap;overflow-wrap:anywhere;color:#ede0c6}.small{color:#bdae94;font-size:13px}
 .empty{border:1px dashed #806333;padding:28px;text-align:center;color:#c4b69b;border-radius:12px}
 .form-grid{display:grid;gap:15px}label{display:block;font-size:14px;color:#f4d999;font-weight:700;margin-bottom:5px}
@@ -39,9 +39,7 @@ footer{text-align:center;color:#968b78;font-size:12px;padding:20px}
 </style></head><body>
 <header><a class="brand" href="/">賽特神諭</a><a class="back" href="/">返回官方首頁</a></header>
 <main>
-<div class="eyebrow">SETH ORACLE · COMMUNITY</div>
 <h1>玩家評價</h1>
-<p class="intro">看看玩家對賽特神諭功能與使用體驗的真實分享。公開內容由管理者人工審核，不會自動上架；心得屬個人觀點，不代表遊戲結果或收益保證。</p>
 <div class="actions"><a class="btn primary" href="#submit">我要投稿心得</a></div>
 <section id="published" aria-labelledby="published-title"><h2 id="published-title">玩家心得分享</h2>
 {% assign approved_reviews = site.reviews | where: "published", true | sort: "order" %}
@@ -52,7 +50,10 @@ footer{text-align:center;color:#968b78;font-size:12px;padding:20px}
 {% if review.rating %}<div class="rating" aria-label="評分 {{ review.rating }} / 5">{% assign stars = review.rating | plus: 0 %}{% for i in (1..5) %}{% if i <= stars %}★{% else %}☆{% endif %}{% endfor %}</div>{% endif %}
 <div class="content">{{ review.review_text | escape }}</div>
 {% if review.photos and review.photos.size > 0 %}
-<div class="review-gallery">{% for photo in review.photos %}{% if photo != "" %}<img class="review-photo" src="{{ photo | relative_url }}" alt="{{ review.nickname | escape }} 提供的心得照片 {{ forloop.index }}" loading="lazy">{% endif %}{% endfor %}</div>
+<div class="review-gallery" data-photo-carousel>
+<div class="review-photos" tabindex="0" aria-label="{{ review.nickname | escape }} 的照片，可左右滑動">{% for photo in review.photos %}{% if photo != "" %}<img class="review-photo" src="{{ photo | relative_url }}" alt="{{ review.nickname | escape }} 的照片 {{ forloop.index }}" loading="lazy">{% endif %}{% endfor %}</div>
+<div class="review-photo-controls"><button type="button" data-photo-prev aria-label="上一張照片">‹</button><span data-photo-count aria-live="polite"></span><button type="button" data-photo-next aria-label="下一張照片">›</button></div>
+</div>
 {% elsif review.photo and review.photo != "" %}<img class="review-photo" src="{{ review.photo | relative_url }}" alt="{{ review.nickname | escape }} 提供的心得照片" loading="lazy">{% endif %}
 {% if review.reply and review.reply != "" %}<p class="small">官方回覆：{{ review.reply | escape }}</p>{% endif %}
 </article>{% endfor %}</div>
@@ -126,6 +127,19 @@ if(api&&!api.includes('REPLACE_WITH')){
 message='【賽特神諭｜玩家心得投稿】\n暱稱：'+document.getElementById('nick').value.trim()+'\n評分：'+document.getElementById('rating').value+'/5\n心得：'+document.getElementById('comment').value.trim()+'\n照片：'+(photoInput.files&&photoInput.files.length?'已選擇 '+photoInput.files.length+' 張照片，請在 LINE 對話中另外傳送全部原圖':'未附照片')+'\n（本人同意將心得送交審核，是否刊登由官方決定）';
 fallback.hidden=false;preview.textContent=message;window.open('https://lin.ee/TOLUjbR','_blank','noopener,noreferrer');await copyMessage();});
 document.getElementById('copy-again').addEventListener('click',copyMessage);
+function setupPhotoCarousel(root){
+ if(root.dataset.carouselReady)return;root.dataset.carouselReady='1';
+ const track=root.querySelector('.review-photos'),photos=[...track.querySelectorAll('.review-photo')];
+ const prev=root.querySelector('[data-photo-prev]'),next=root.querySelector('[data-photo-next]'),count=root.querySelector('[data-photo-count]');
+ if(photos.length<2){root.querySelector('.review-photo-controls')?.remove();return;}
+ let current=0;
+ function update(){count.textContent=(current+1)+' / '+photos.length;prev.disabled=current===0;next.disabled=current===photos.length-1;}
+ function go(i){current=Math.max(0,Math.min(photos.length-1,i));photos[current].scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'nearest',inline:'start'});update();}
+ prev.addEventListener('click',()=>go(current-1));next.addEventListener('click',()=>go(current+1));
+ track.addEventListener('scroll',()=>{const i=Math.round(track.scrollLeft/Math.max(1,track.clientWidth));if(i!==current){current=Math.max(0,Math.min(photos.length-1,i));update();}},{passive:true});
+ update();
+}
+document.querySelectorAll('[data-photo-carousel]').forEach(setupPhotoCarousel);
 (async function loadApprovedReviews(){
  const api=window.SETH_REVIEWS_API;if(!api||api.includes('REPLACE_WITH'))return;
  try{
@@ -144,9 +158,14 @@ document.getElementById('copy-again').addEventListener('click',copyMessage);
     const content=document.createElement('div');content.className='content';content.textContent=r.content;
     article.append(head,stars,content);
     if(r.photos?.length){
-      const gallery=document.createElement('div');gallery.className='review-gallery';
-      for(const p of r.photos){const img=document.createElement('img');img.className='review-photo';img.src=api.replace(/\/$/,'')+p;img.alt=r.nickname+' 投稿照片';img.loading='lazy';gallery.append(img);}
-      article.append(gallery);
+      const gallery=document.createElement('div');gallery.className='review-gallery';gallery.dataset.photoCarousel='';
+      const track=document.createElement('div');track.className='review-photos';track.tabIndex=0;track.setAttribute('aria-label',r.nickname+' 的照片，可左右滑動');
+      for(const p of r.photos){const img=document.createElement('img');img.className='review-photo';img.src=api.replace(/\/$/,'')+p;img.alt=r.nickname+' 投稿照片';img.loading='lazy';track.append(img);}
+      const controls=document.createElement('div');controls.className='review-photo-controls';
+      const prev=document.createElement('button');prev.type='button';prev.textContent='‹';prev.dataset.photoPrev='';
+      const count=document.createElement('span');count.dataset.photoCount='';
+      const next=document.createElement('button');next.type='button';next.textContent='›';next.dataset.photoNext='';
+      controls.append(prev,count,next);gallery.append(track,controls);article.append(gallery);setupPhotoCarousel(gallery);
     }
     grid.append(article);
   }
