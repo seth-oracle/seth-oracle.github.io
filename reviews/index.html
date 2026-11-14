@@ -73,6 +73,7 @@ footer{text-align:center;color:#968b78;font-size:12px;padding:20px}
 </section>
 <p class="note">聲明：所有內容為投稿者個人心得，不代表遊戲中獎或收益保證。官方有權審核、決定是否刊登；歡迎正面或負面真實回饋。</p>
 </main><footer>© 2026 賽特神諭 · 玩家評價</footer>
+<script src="/reviews/config.js"></script>
 <script>
 (function(){
 const form=document.getElementById('review-form'),status=document.getElementById('status'),fallback=document.getElementById('fallback'),preview=document.getElementById('preview'),photoInput=document.getElementById('photo'),photoPreview=document.getElementById('photo-preview');
@@ -92,8 +93,55 @@ files.forEach((file,i)=>{
 let message='';
 async function copyMessage(){try{await navigator.clipboard.writeText(message);status.textContent='已複製投稿文字！請在 LINE 對話中貼上並傳送，才算完成投稿。'}catch(e){status.textContent='請手動複製下方投稿文字，再貼到 LINE 傳送。';}}
 form.addEventListener('submit',async function(e){e.preventDefault();if(!form.reportValidity())return;
+const api=window.SETH_REVIEWS_API;
+if(api&&!api.includes('REPLACE_WITH')){
+ const data=new FormData();
+ data.append('nickname',document.getElementById('nick').value.trim());
+ data.append('rating',document.getElementById('rating').value);
+ data.append('content',document.getElementById('comment').value.trim());
+ data.append('consent',document.getElementById('consent').checked?'yes':'no');
+ Array.from(photoInput.files||[]).forEach(f=>data.append('photos',f));
+ const btn=form.querySelector('button[type="submit"]');
+ btn.disabled=true;status.textContent='正在上傳心得與照片，請勿關閉頁面…';
+ try{
+  const response=await fetch(api.replace(/\/$/,'')+'/api/submissions',{method:'POST',body:data});
+  const result=await response.json();
+  if(!response.ok)throw Error(result.error||'投稿失敗');
+  status.textContent='✅ 投稿已成功送達審核後台！通過審核後才會公開。';
+  fallback.hidden=true;form.reset();photoPreview.replaceChildren();
+  photoUrls.forEach(url=>URL.revokeObjectURL(url));photoUrls=[];
+ }catch(err){status.textContent='投稿未送出：'+err.message+'。請稍後再試，或聯絡官方 LINE。';}
+ finally{btn.disabled=false;}
+ return;
+}
 message='【賽特神諭｜玩家心得投稿】\n暱稱：'+document.getElementById('nick').value.trim()+'\n評分：'+document.getElementById('rating').value+'/5\n心得：'+document.getElementById('comment').value.trim()+'\n照片：'+(photoInput.files&&photoInput.files.length?'已選擇 '+photoInput.files.length+' 張照片，請在 LINE 對話中另外傳送全部原圖':'未附照片')+'\n（本人同意將心得送交審核，是否刊登由官方決定）';
 fallback.hidden=false;preview.textContent=message;window.open('https://lin.ee/TOLUjbR','_blank','noopener,noreferrer');await copyMessage();});
 document.getElementById('copy-again').addEventListener('click',copyMessage);
+(async function loadApprovedReviews(){
+ const api=window.SETH_REVIEWS_API;if(!api||api.includes('REPLACE_WITH'))return;
+ try{
+  const res=await fetch(api.replace(/\/$/,'')+'/api/reviews');
+  if(!res.ok)return;
+  const data=await res.json();
+  const reviews=data.reviews||[];if(!reviews.length)return;
+  const published=document.getElementById('published');
+  let grid=published.querySelector('.grid');
+  if(!grid){grid=document.createElement('div');grid.className='grid';published.querySelector('.empty')?.remove();published.append(grid);}
+  for(const r of reviews){
+    const article=document.createElement('article');article.className='review';
+    const head=document.createElement('div');head.className='review-head';
+    const name=document.createElement('strong');name.textContent=r.nickname;head.append(name);
+    const stars=document.createElement('div');stars.className='rating';stars.textContent='★'.repeat(Math.min(5,Math.max(1,Number(r.rating))))+'☆'.repeat(5-Math.min(5,Math.max(1,Number(r.rating))));
+    const content=document.createElement('div');content.className='content';content.textContent=r.content;
+    article.append(head,stars,content);
+    if(r.photos?.length){
+      const gallery=document.createElement('div');gallery.className='review-gallery';
+      for(const p of r.photos){const img=document.createElement('img');img.className='review-photo';img.src=api.replace(/\/$/,'')+p;img.alt=r.nickname+' 投稿照片';img.loading='lazy';gallery.append(img);}
+      article.append(gallery);
+    }
+    grid.append(article);
+  }
+ }catch(e){console.warn('評價暫時無法載入');}
+})();
 })();
 </script></body></html>
