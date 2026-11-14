@@ -1,0 +1,16 @@
+name = "seth-review-service"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+# Edit these values after creating your Cloudflare D1 database and R2 bucket.
+[[d1_databases]]
+binding = "DB"
+database_name = "seth-reviews"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+
+[[r2_buckets]]
+binding = "PHOTOS"
+bucket_name = "seth-review-photos"
+
+[vars]
+SITE_ORIGIN = "https://seth-oracle.github.io"
