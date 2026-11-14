@@ -11,6 +11,8 @@ collections:
   tutorials:
     output: true
     permalink: /guides/posts/:name.html
+  reviews:
+    output: false
 defaults:
   - scope:
       path: ""
