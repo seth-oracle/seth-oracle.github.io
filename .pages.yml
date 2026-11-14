@@ -160,7 +160,7 @@ content:
       - name: date
         label: 評價日期
         type: date
-      - name: content
+      - name: review_text
         label: 玩家心得
         type: text
         required: true
