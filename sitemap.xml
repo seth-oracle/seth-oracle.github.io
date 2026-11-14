@@ -5,6 +5,7 @@ layout: null
   <url><loc>{{ '/' | absolute_url }}</loc></url>
   <url><loc>{{ '/guides/' | absolute_url }}</loc></url>
   <url><loc>{{ '/assistant/' | absolute_url }}</loc></url>
+  <url><loc>{{ '/reviews/' | absolute_url }}</loc></url>
   {% assign published_tutorials = site.tutorials | where: "published", true %}
   {% for doc in published_tutorials %}
   <url><loc>{{ doc.url | absolute_url | xml_escape }}</loc></url>
