@@ -1,0 +1,1 @@
+// Cloudflare Worker deploy 完成後，將下面網址改成實際 Worker HTTPS 網址。\nwindow.SETH_REVIEWS_API = "REPLACE_WITH_WORKER_URL";\n
