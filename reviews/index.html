@@ -76,7 +76,7 @@ let message='';
 async function copyMessage(){try{await navigator.clipboard.writeText(message);status.textContent='已複製投稿文字！請在 LINE 對話中貼上並傳送，才算完成投稿。'}catch(e){status.textContent='請手動複製下方投稿文字，再貼到 LINE 傳送。';}}
 form.addEventListener('submit',async function(e){e.preventDefault();if(!form.reportValidity())return;
 message='【賽特神諭｜玩家心得投稿】\n暱稱：'+document.getElementById('nick').value.trim()+'\n評分：'+document.getElementById('rating').value+'/5\n心得：'+document.getElementById('comment').value.trim()+'\n（本人同意將心得送交審核，是否刊登由官方決定）';
-fallback.hidden=false;preview.textContent=message;await copyMessage();window.open('https://lin.ee/TOLUjbR','_blank','noopener,noreferrer');});
+fallback.hidden=false;preview.textContent=message;window.open('https://lin.ee/TOLUjbR','_blank','noopener,noreferrer');await copyMessage();});
 document.getElementById('copy-again').addEventListener('click',copyMessage);
 })();
 </script></body></html>
