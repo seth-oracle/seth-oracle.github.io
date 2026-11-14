@@ -164,10 +164,13 @@ content:
         label: 玩家心得
         type: text
         required: true
-      - name: photo
-        label: 玩家心得照片（選填）
+      - name: photos
+        label: 玩家心得照片（可新增多張）
         type: image
-        description: 玩家從 LINE 提供照片後，由管理員審核、上傳並決定是否公開
+        list: true
+        description: 玩家透過 LINE 提供照片後，由管理員審核並逐張新增；可不限制張數
+        options:
+          extensions: [jpg, png, webp]
       - name: reply
         label: 官方回覆（選填）
         type: text
