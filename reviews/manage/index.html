@@ -1,0 +1,82 @@
+<!doctype html><html lang="zh-Hant"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#090807">
+<title>玩家評價審核後台｜賽特神諭</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#090807;color:#f6e8cb;font-family:"Microsoft JhengHei","Noto Sans TC",system-ui,sans-serif;line-height:1.7}
+a{color:#f7d992}header{padding:20px max(18px,5vw);border-bottom:1px solid #594427;display:flex;align-items:center;justify-content:space-between;gap:15px}
+h1{font-size:28px;color:#f5cf79;margin:0}h2{margin:0;font-size:19px;color:#ffe4a1}
+main{max-width:1090px;margin:35px auto;padding:0 18px 80px}
+input,button{font:inherit}input{display:block;width:100%;background:#0f1614;border:1px solid #82643a;color:#f8e7c3;padding:11px;border-radius:8px}
+button{border:1px solid #c79f58;border-radius:8px;background:#e7c271;color:#261909;padding:9px 16px;cursor:pointer;font-weight:800}
+button.alt{background:transparent;color:#f2d18e}button.warn{background:#5e2f25;color:#ffe9d6;border-color:#a65b50}
+.panel,.review{border:1px solid #6e552d;background:#131b18;padding:22px;border-radius:14px;margin-bottom:17px}
+.review p{white-space:pre-wrap;overflow-wrap:anywhere}.meta{color:#b9ab91;font-size:13px}
+.gallery{display:flex;gap:12px;flex-wrap:wrap;margin:15px 0}.gallery img{height:150px;max-width:190px;object-fit:contain;border:1px solid #7c612f;border-radius:9px;cursor:pointer}
+.toolbar{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0 20px}.toolbar button{min-width:90px}.panel h2{margin-bottom:13px}
+#login{max-width:530px}#login input{margin:10px 0 14px}.buttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.status{color:#f2d28a;margin:10px 0}
+</style></head><body>
+<header><h1>玩家評價審核</h1><a href="/reviews/">返回玩家評價</a></header>
+<main>
+<section id="setup" class="panel" hidden><h2>尚未啟用自動投稿</h2><p>目前需先部署 Cloudflare 收件服務。部署完成後，在 reviews/config.js 設定 Worker 網址即可啟用。</p><a href="https://github.com/seth-oracle/seth-oracle.github.io/tree/main/review-service">查看部署程式</a></section>
+<section id="login" class="panel"><h2>管理員登入</h2><p class="meta">請輸入部署 Cloudflare Worker 時設定的管理密鑰。切勿分享給玩家。</p>
+<form id="login-form"><input id="token" type="password" autocomplete="off" placeholder="管理密鑰（ADMIN_TOKEN）" required><button type="submit">登入並讀取投稿</button></form>
+<div class="status" id="login-status" role="status"></div></section>
+<section id="dashboard" hidden>
+<div class="toolbar"><button type="button" id="refresh">重新整理</button><button type="button" class="alt" id="logout">登出</button></div>
+<p class="status" id="status" role="status"></p>
+<div id="items"></div>
+</section>
+</main>
+<script src="/reviews/config.js"></script>
+<script>
+(function(){
+const api=window.SETH_REVIEWS_API;
+const setup=document.getElementById("setup"),login=document.getElementById("login"),dashboard=document.getElementById("dashboard"),items=document.getElementById("items"),status=document.getElementById("status"),loginStatus=document.getElementById("login-status");
+if(!api||api.includes("REPLACE_WITH")){setup.hidden=false;login.hidden=true;return;}
+let token=sessionStorage.getItem("sethReviewAdminToken")||"";
+const endpoint=p=>api.replace(/\/$/,"")+p;
+async function request(path,method="GET"){
+ const res=await fetch(endpoint(path),{method,headers:{Authorization:"Bearer "+token}});
+ const data=await res.json().catch(()=>({error:"無法讀取伺服器回應"}));
+ if(!res.ok)throw Error(data.error||"伺服器錯誤 "+res.status);
+ return data;
+}
+async function photoThumb(path,container){
+ try{
+  const r=await fetch(endpoint(path),{headers:{Authorization:"Bearer "+token}});
+  if(!r.ok)return;
+  const url=URL.createObjectURL(await r.blob());
+  const img=document.createElement("img");img.src=url;img.alt="投稿照片（按一下可查看）";img.onclick=()=>window.open(url,"_blank");container.append(img);
+ }catch(e){}
+}
+function renderReview(r){
+ const article=document.createElement("article");article.className="review";
+ const title=document.createElement("h2");title.textContent=r.nickname+"｜"+r.rating+"/5 ★｜"+({"pending":"待審核","approved":"已公開","rejected":"未通過"}[r.status]||r.status);
+ const meta=document.createElement("div");meta.className="meta";meta.textContent="投稿時間："+r.submitted_at+" ｜編號："+r.id;
+ const content=document.createElement("p");content.textContent=r.content;
+ const gallery=document.createElement("div");gallery.className="gallery";
+ (r.photos||[]).forEach(p=>photoThumb(p,gallery));
+ const controls=document.createElement("div");controls.className="buttons";
+ for(const [action,label,cls] of [["approve","核准並公開",""],["reject","不公開","warn"],["pending","改回待審核","alt"]]){
+  const b=document.createElement("button");b.textContent=label;b.className=cls;b.type="button";
+  b.onclick=async()=>{if(!confirm("確定要將這則評價設為「"+label+"」？"))return;
+   b.disabled=true;try{await request("/api/admin/"+encodeURIComponent(r.id)+"/"+action,"POST");await load();}catch(e){status.textContent="操作失敗："+e.message;b.disabled=false;}};
+  controls.appendChild(b);
+ }
+ article.append(title,meta,content,gallery,controls);return article;
+}
+async function load(){
+ status.textContent="讀取中…";
+ try{const data=await request("/api/admin/submissions");items.replaceChildren();
+  (data.reviews||[]).forEach(r=>items.appendChild(renderReview(r)));
+  status.textContent="共 "+(data.reviews||[]).length+" 筆（包含待審核、已公開與未通過）。";
+  login.hidden=true;dashboard.hidden=false;loginStatus.textContent="";
+ }catch(e){status.textContent="讀取失敗："+e.message;loginStatus.textContent="登入或讀取失敗："+e.message;login.hidden=false;dashboard.hidden=true;}
+}
+document.getElementById("login-form").onsubmit=e=>{e.preventDefault();token=document.getElementById("token").value.trim();sessionStorage.setItem("sethReviewAdminToken",token);load();};
+document.getElementById("refresh").onclick=load;
+document.getElementById("logout").onclick=()=>{token="";sessionStorage.removeItem("sethReviewAdminToken");dashboard.hidden=true;login.hidden=false;document.getElementById("token").value="";};
+if(token)load();
+})();
+</script></body></html>
