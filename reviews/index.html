@@ -42,7 +42,7 @@ footer{text-align:center;color:#968b78;font-size:12px;padding:20px}
 <div class="eyebrow">SETH ORACLE · COMMUNITY</div>
 <h1>玩家評價</h1>
 <p class="intro">看看玩家對賽特神諭功能與使用體驗的真實分享。公開內容由管理者人工審核，不會自動上架；心得屬個人觀點，不代表遊戲結果或收益保證。</p>
-<div class="actions"><a class="btn primary" href="#submit">我要投稿心得</a><a class="btn alt" href="#published">查看公開評價</a></div>
+<div class="actions"><a class="btn primary" href="#submit">我要投稿心得</a></div>
 <section id="published" aria-labelledby="published-title"><h2 id="published-title">玩家心得分享</h2>
 {% assign approved_reviews = site.reviews | where: "published", true | sort: "order" %}
 {% if approved_reviews.size > 0 %}
