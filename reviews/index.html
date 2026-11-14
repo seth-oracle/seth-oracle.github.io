@@ -50,7 +50,7 @@ footer{text-align:center;color:#968b78;font-size:12px;padding:20px}
 <article class="review">
 <div class="review-head"><strong>{{ review.nickname | escape }}</strong>{% if review.date and review.date != "" %}<time>{{ review.date | date: "%Y/%m/%d" }}</time>{% endif %}</div>
 {% if review.rating %}<div class="rating" aria-label="評分 {{ review.rating }} / 5">{% assign stars = review.rating | plus: 0 %}{% for i in (1..5) %}{% if i <= stars %}★{% else %}☆{% endif %}{% endfor %}</div>{% endif %}
-<div class="content">{{ review.content | escape }}</div>
+<div class="content">{{ review.review_text | escape }}</div>
 {% if review.photos and review.photos.size > 0 %}
 <div class="review-gallery">{% for photo in review.photos %}{% if photo != "" %}<img class="review-photo" src="{{ photo | relative_url }}" alt="{{ review.nickname | escape }} 提供的心得照片 {{ forloop.index }}" loading="lazy">{% endif %}{% endfor %}</div>
 {% elsif review.photo and review.photo != "" %}<img class="review-photo" src="{{ review.photo | relative_url }}" alt="{{ review.nickname | escape }} 提供的心得照片" loading="lazy">{% endif %}
