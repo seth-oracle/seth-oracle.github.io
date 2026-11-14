@@ -137,3 +137,41 @@ content:
           format: markdown
           switcher: true
           rename: true
+
+  - name: reviews
+    label: 玩家評價管理
+    type: collection
+    path: _reviews
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{hour}-{minute}-{second}.md"
+    view:
+      fields: [nickname, rating, published, order]
+      primary: nickname
+      sort: [order, nickname]
+    fields:
+      - name: nickname
+        label: 玩家公開暱稱
+        type: string
+        required: true
+      - name: rating
+        label: 使用體驗評分（1～5）
+        type: number
+        required: true
+      - name: date
+        label: 評價日期
+        type: date
+      - name: content
+        label: 玩家心得
+        type: text
+        required: true
+      - name: reply
+        label: 官方回覆（選填）
+        type: text
+      - name: order
+        label: 顯示順序（小數字優先）
+        type: number
+        default: 10
+      - name: published
+        label: 公開顯示（審核後才開啟）
+        type: boolean
+        default: false
