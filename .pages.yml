@@ -164,6 +164,10 @@ content:
         label: 玩家心得
         type: text
         required: true
+      - name: photo
+        label: 玩家心得照片（選填）
+        type: image
+        description: 玩家從 LINE 提供照片後，由管理員審核、上傳並決定是否公開
       - name: reply
         label: 官方回覆（選填）
         type: text
