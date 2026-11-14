@@ -77,6 +77,15 @@ footer{text-align:center;color:#968b78;font-size:12px;padding:20px}
 <script>
 (function(){
 const form=document.getElementById('review-form'),status=document.getElementById('status'),fallback=document.getElementById('fallback'),preview=document.getElementById('preview'),photoInput=document.getElementById('photo'),photoPreview=document.getElementById('photo-preview');
+if(window.SETH_REVIEWS_API&&!window.SETH_REVIEWS_API.includes('REPLACE_WITH')){
+ const intro=document.querySelector('#submit > p.small');
+ if(intro)intro.textContent='填寫心得與照片後直接送交管理員審核；只有管理員核准後才會顯示在網站。';
+ const photoNote=document.getElementById('photo-note');
+ if(photoNote)photoNote.textContent='照片會隨投稿直接上傳至待審核資料庫。每次最多 20 張、每張最多 8MB；管理員審核通過後才會公開。';
+ const submitBtn=form.querySelector('button[type="submit"]');
+ if(submitBtn)submitBtn.textContent='送出心得與照片（待審核）';
+}
+
 let photoUrls=[];
 photoInput.addEventListener('change',()=>{
 photoUrls.forEach(url=>URL.revokeObjectURL(url));photoUrls=[];photoPreview.replaceChildren();
