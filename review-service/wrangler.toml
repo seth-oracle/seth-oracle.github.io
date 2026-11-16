@@ -12,5 +12,10 @@ database_id = "aecbaf79-70df-4d53-9401-fb42022ad836"
 binding = "PHOTOS"
 id = "REPLACE_WITH_KV_NAMESPACE_ID"
 
+# 在 Cloudflare Worker Settings → Bindings 中新增相同服務綁定：
+[[services]]
+binding = "ATG_ADMIN_SERVICE"
+service = "xinyao-atg-admin-api"
+
 [vars]
 SITE_ORIGIN = "https://seth-oracle.github.io"
