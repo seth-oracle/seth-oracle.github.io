@@ -31,11 +31,10 @@ async function authorizedAdmin(req,env) {
   const supplied=(req.headers.get("Authorization")||"").replace(/^Bearer\s+/i,"");
   if (!supplied || supplied.length>4096) return false;
   try {
-    const response=await fetch("https://xinyao-atg-admin-api.love06130430.workers.dev/admin/session",{
-      headers:{"Authorization":"Bearer "+supplied,"Accept":"application/json"},
-      redirect:"error",
-      signal:AbortSignal.timeout(5000)
-    });
+    if (!env.ATG_ADMIN_SERVICE) return false;
+    const response=await env.ATG_ADMIN_SERVICE.fetch(new Request("https://atg-admin.internal/admin/session",{
+      headers:{"Authorization":"Bearer "+supplied,"Accept":"application/json"}
+    }));
     if(!response.ok)return false;
     const data=await response.json();
     return data && data.ok===true;
