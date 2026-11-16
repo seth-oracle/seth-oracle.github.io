@@ -1,1 +1,2 @@
-// Cloudflare Worker deploy 完成後，將下面網址改成實際 Worker HTTPS 網址。\nwindow.SETH_REVIEWS_API = "REPLACE_WITH_WORKER_URL";\n
+// 玩家評價投稿與公開資料 API；此檔案不可放管理員密鑰。
+window.SETH_REVIEWS_API = "https://seth-review-service.love06130430.workers.dev";
