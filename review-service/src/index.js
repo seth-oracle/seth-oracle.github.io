@@ -8,7 +8,11 @@ const SECURITY_HEADERS = {
 function json(data, status=200, headers={}) {
   return new Response(JSON.stringify(data), {status,headers:{"Content-Type":"application/json; charset=utf-8",...SECURITY_HEADERS,...headers}});
 }
-function cors(env) {return {"Access-Control-Allow-Origin":env.SITE_ORIGIN || "https://seth-oracle.github.io","Access-Control-Allow-Methods":"GET,POST,OPTIONS","Access-Control-Allow-Headers":"Authorization,Content-Type","Vary":"Origin"};}
+function cors(env,req) {
+  const origin=req.headers.get("Origin");
+  const allowed=["https://seth-oracle.github.io","https://xinyao-ai.github.io"];
+  return {"Access-Control-Allow-Origin":allowed.includes(origin)?origin:(env.SITE_ORIGIN || allowed[0]),"Access-Control-Allow-Methods":"GET,POST,OPTIONS","Access-Control-Allow-Headers":"Authorization,Content-Type","Vary":"Origin"};
+}
 function authorized(req, env) {
   const token=env.ADMIN_TOKEN;
   if(!token || token.length<24) return false;
@@ -19,7 +23,23 @@ function authorized(req, env) {
 }
 function allowedOrigin(req,env) {
   const origin=req.headers.get("Origin");
-  return !origin || origin === (env.SITE_ORIGIN || "https://seth-oracle.github.io");
+  return !origin || ["https://seth-oracle.github.io","https://xinyao-ai.github.io"].includes(origin);
+}
+async function authorizedAdmin(req,env) {
+  if (authorized(req,env)) return true; // Allow existing standalone admin.
+  // Verify the current ATG admin session server-side. Never expose ADMIN_TOKEN to the browser.
+  const supplied=(req.headers.get("Authorization")||"").replace(/^Bearer\s+/i,"");
+  if (!supplied || supplied.length>4096) return false;
+  try {
+    const response=await fetch("https://xinyao-atg-admin-api.love06130430.workers.dev/admin/session",{
+      headers:{"Authorization":"Bearer "+supplied,"Accept":"application/json"},
+      redirect:"error",
+      signal:AbortSignal.timeout(5000)
+    });
+    if(!response.ok)return false;
+    const data=await response.json();
+    return data && data.ok===true;
+  } catch {return false;}
 }
 async function getReviewPhotos(env,id) {
   const r=await env.DB.prepare("SELECT photos_json FROM reviews WHERE id=?").bind(id).first();
@@ -29,7 +49,7 @@ async function getReviewPhotos(env,id) {
 export default {
  async fetch(req,env) {
   const url=new URL(req.url),path=url.pathname.replace(/\/+$/,"")||"/";
-  const corsHeaders=cors(env);
+  const corsHeaders=cors(env,req);
   if(req.method==="OPTIONS")return new Response(null,{status:204,headers:{...corsHeaders,"Access-Control-Max-Age":"600"}});
   if(!allowedOrigin(req,env))return json({error:"Origin not allowed"},403,corsHeaders);
   try{
@@ -42,7 +62,7 @@ export default {
     const [,id,name]=matchPhoto;
     const row=await env.DB.prepare("SELECT photos_json,status FROM reviews WHERE id=?").bind(id).first();
     if(!row)return new Response("Not found",{status:404});
-    if(row.status!=="approved"&&!authorized(req,env))return new Response("Not found",{status:404});
+    if(row.status!=="approved"&&!(await authorizedAdmin(req,env)))return new Response("Not found",{status:404});
     const photos=JSON.parse(row.photos_json||"[]");
     const found=photos.find(p=>p.key===name);
     if(!found)return new Response("Not found",{status:404});
@@ -82,7 +102,7 @@ export default {
     return json({ok:true,message:"投稿已送交審核，發布前不會公開。"},201,corsHeaders);
    }
    if(path.startsWith("/api/admin/")){
-     if(!authorized(req,env))return json({error:"未授權"},401,corsHeaders);
+     if(!(await authorizedAdmin(req,env)))return json({error:"未授權"},401,corsHeaders);
      if(req.method==="GET"&&path==="/api/admin/submissions"){
        const rows=await env.DB.prepare("SELECT id,nickname,rating,content,status,photos_json,submitted_at,reviewed_at FROM reviews ORDER BY CASE status WHEN 'pending' THEN 0 WHEN 'approved' THEN 1 ELSE 2 END, submitted_at DESC LIMIT 300").all();
        return json({reviews:rows.results.map(x=>({...x,photos:JSON.parse(x.photos_json||"[]").map(p=>"/api/photo/"+encodeURIComponent(x.id)+"/"+encodeURIComponent(p.key))}))},200,corsHeaders);
