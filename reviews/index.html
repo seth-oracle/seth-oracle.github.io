@@ -65,7 +65,8 @@ footer{text-align:center;color:#968b78;font-size:12px;padding:20px}
 <div><label for="nick">顯示暱稱（請勿填真實帳號）</label><input id="nick" required maxlength="30" placeholder="例如：阿明"></div>
 <div><label for="rating">使用體驗評分</label><select id="rating"><option value="5">★★★★★ 5 分</option><option value="4">★★★★☆ 4 分</option><option value="3">★★★☆☆ 3 分</option><option value="2">★★☆☆☆ 2 分</option><option value="1">★☆☆☆☆ 1 分</option></select></div>
 <div><label for="comment">心得內容</label><textarea id="comment" required minlength="10" maxlength="1000" placeholder="你使用賽特神諭的真實感想、喜歡的功能，或希望改進的地方…"></textarea></div>
-<div><label for="photo">附上照片（選填，可一次選多張）</label><input id="photo" type="file" accept="image/jpeg,image/png,image/webp" multiple aria-describedby="photo-note"><p id="photo-note" class="small">可選多張照片並預覽；投稿時請在 LINE 對話中另外傳送全部原圖。本站不會直接上傳或儲存照片。（每張最多 8MB）</p><div id="photo-preview" class="upload-gallery" aria-live="polite"></div></div>
+<div><label for="photo">附上照片（選填，可一次選多張）</label><input id="photo" type="file" accept="image/jpeg,image/png,image/webp" multiple aria-describedby="photo-note"><p id="photo-note" class="small">可選多張照片並預覽；投稿時請在 LINE 對話中另外傳送全部原圖。本站不會直接上傳或儲存照片。（每張最多 2MB，總計最多 8MB）</p><div id="photo-preview" class="upload-gallery" aria-live="polite"></div></div>
+<div class="spam-trap" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label for="website">網站網址（請留空）</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
 <label class="check"><input id="consent" type="checkbox" required><span>我同意將這份心得送交管理員審核，管理員可依內容適度刪除個資或不適當文字，未經核准不會公開。請勿輸入密碼、帳號、電話或其他敏感資料。</span></label>
 <button class="btn primary" type="submit">複製投稿並前往官方 LINE</button>
 <div id="status" class="hint" role="status" aria-live="polite"></div>
@@ -82,7 +83,7 @@ if(window.SETH_REVIEWS_API&&!window.SETH_REVIEWS_API.includes('REPLACE_WITH')){
  const intro=document.querySelector('#submit > p.small');
  if(intro)intro.textContent='填寫心得與照片後直接送交管理員審核；只有管理員核准後才會顯示在網站。';
  const photoNote=document.getElementById('photo-note');
- if(photoNote)photoNote.textContent='照片會隨投稿直接上傳至待審核資料庫。每次最多 20 張、每張最多 8MB；管理員審核通過後才會公開。';
+ if(photoNote)photoNote.textContent='照片會隨投稿直接上傳至待審核資料庫。每次最多 10 張、每張最多 2MB，全部照片總計 8MB；管理員審核通過後才會公開。';
  const submitBtn=form.querySelector('button[type="submit"]');
  if(submitBtn)submitBtn.textContent='送出心得與照片（待審核）';
 }
@@ -91,9 +92,10 @@ let photoUrls=[];
 photoInput.addEventListener('change',()=>{
 photoUrls.forEach(url=>URL.revokeObjectURL(url));photoUrls=[];photoPreview.replaceChildren();
 const files=Array.from(photoInput.files||[]);
-if(files.some(file=>!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>8*1024*1024)){
- alert('請選擇 JPG、PNG 或 WebP 照片，每張需小於 8MB。');photoInput.value='';return;
+if(files.some(file=>!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>2*1024*1024)){
+ alert('請選擇 JPG、PNG 或 WebP 照片，每張不得超過 2MB。');photoInput.value='';return;
 }
+if(files.length>10 || files.reduce((total,file)=>total+file.size,0)>8*1024*1024){alert('每次最多 10 張照片，全部照片不得超過 8MB。');photoInput.value='';return;}
 files.forEach((file,i)=>{
  const url=URL.createObjectURL(file);photoUrls.push(url);
  const img=document.createElement('img');img.src=url;img.alt='照片預覽 '+(i+1);img.className='upload-preview';
@@ -110,6 +112,7 @@ if(api&&!api.includes('REPLACE_WITH')){
  data.append('rating',document.getElementById('rating').value);
  data.append('content',document.getElementById('comment').value.trim());
  data.append('consent',document.getElementById('consent').checked?'yes':'no');
+ data.append('website',document.getElementById('website').value);
  Array.from(photoInput.files||[]).forEach(f=>data.append('photos',f));
  const btn=form.querySelector('button[type="submit"]');
  btn.disabled=true;status.textContent='正在上傳心得與照片，請勿關閉頁面…';
