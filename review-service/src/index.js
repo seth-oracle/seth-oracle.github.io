@@ -1,4 +1,4 @@
-const MAX_BYTES = 8 * 1024 * 1024;
+const MAX_BYTES = 2 * 1024 * 1024; // KV free tier: cap image size to protect quota
 const ALLOWED = new Map([["image/jpeg","jpg"],["image/png","png"],["image/webp","webp"]]);
 const SECURITY_HEADERS = {
   "X-Content-Type-Options":"nosniff",
@@ -46,9 +46,9 @@ export default {
     const photos=JSON.parse(row.photos_json||"[]");
     const found=photos.find(p=>p.key===name);
     if(!found)return new Response("Not found",{status:404});
-    const photo=await env.PHOTOS.get(id+"/"+name);
+    const photo=await env.PHOTOS.get(id+"/"+name,"arrayBuffer");
     if(!photo)return new Response("Not found",{status:404});
-    return new Response(photo.body,{headers:{"Content-Type":found.type,"X-Content-Type-Options":"nosniff","Cache-Control":"public,max-age=3600",...corsHeaders}});
+    return new Response(photo,{headers:{"Content-Type":found.type,"X-Content-Type-Options":"nosniff","Cache-Control":"public,max-age=3600",...corsHeaders}});
    }
    if(req.method==="POST"&&path==="/api/submissions"){
     // A short-lived Cloudflare rate limiting rule/Turnstile is recommended before production.
@@ -63,14 +63,15 @@ export default {
     if(honeypot)return json({ok:true},200,corsHeaders);
     if(!consent||nickname.length<1||nickname.length>30||content.length<10||content.length>1000||!Number.isInteger(rating)||rating<1||rating>5)return json({error:"投稿欄位不完整或超過長度限制"},400,corsHeaders);
     const files=form.getAll("photos").filter(f=>f instanceof File && f.size>0);
-    if(files.length>20)return json({error:"單次最多上傳 20 張。可分次投稿其他照片。"},400,corsHeaders);
-    if(files.some(f=>f.size>MAX_BYTES||!ALLOWED.has(f.type)))return json({error:"每張照片須為 JPG、PNG 或 WebP 且不超過 8MB"},400,corsHeaders);
+    if(files.length>10)return json({error:"免費方案每次投稿最多 10 張照片。"},400,corsHeaders);
+    if(files.some(f=>f.size>MAX_BYTES||!ALLOWED.has(f.type)))return json({error:"每張照片須為 JPG、PNG 或 WebP 且不超過 2MB"},400,corsHeaders);
+    if(files.reduce((sum,f)=>sum+f.size,0)>8*1024*1024)return json({error:"照片總大小不得超過 8MB"},400,corsHeaders);
     const id=crypto.randomUUID();
     const photos=[];
     try{
       for(const f of files){
         const name=crypto.randomUUID()+"."+ALLOWED.get(f.type);
-        await env.PHOTOS.put(id+"/"+name,await f.arrayBuffer(),{httpMetadata:{contentType:f.type}});
+        await env.PHOTOS.put(id+"/"+name,await f.arrayBuffer());
         photos.push({key:name,type:f.type});
       }
       await env.DB.prepare("INSERT INTO reviews (id,nickname,rating,content,photos_json) VALUES (?,?,?,?,?)").bind(id,nickname,rating,content,JSON.stringify(photos)).run();
