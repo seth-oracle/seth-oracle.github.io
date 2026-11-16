@@ -19,6 +19,7 @@ main{max-width:1080px;margin:0 auto;padding:46px 20px 90px}
 .eyebrow{color:var(--gold);letter-spacing:.23em;font-size:12px;font-weight:800}
 h1{font-size:clamp(32px,5vw,52px);color:#ffe0a1;margin:6px 0 12px}h2{color:#ffe0a1;margin:0 0 12px;font-size:25px}
 .intro{color:var(--muted);max-width:780px;margin-bottom:24px}
+.review-reward-note{margin:0 0 18px;color:#f5cf79;font-weight:700;font-size:17px}
 .actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:45px}
 .btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:12px 19px;border-radius:9px;border:1px solid #cca154;font-weight:800;cursor:pointer}
 .btn.primary{background:linear-gradient(100deg,#f8e2a4,#d5a044);color:#281b0c}.btn.alt{background:#171713;color:#e9cf93}
@@ -40,6 +41,7 @@ footer{text-align:center;color:#968b78;font-size:12px;padding:20px}
 <header><a class="brand" href="/">賽特神諭</a><a class="back" href="/">返回官方首頁</a></header>
 <main>
 <h1>玩家評價</h1>
+<p class="review-reward-note">投稿心得即可至官方申請發財金</p>
 <div class="actions"><a class="btn primary" href="#submit">我要投稿心得</a></div>
 <section id="published" aria-labelledby="published-title"><h2 id="published-title">玩家心得分享</h2>
 {% assign approved_reviews = site.reviews | where: "published", true | sort: "order" %}
