@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>賽特神諭｜首頁輪播圖管理</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#efe2cd;color:#4e341c;font-family:"Microsoft JhengHei",system-ui,sans-serif;padding:24px 15px 65px}main{max-width:850px;margin:auto}h1{margin:0 0 12px;font-size:27px}p{line-height:1.7}.hint{background:#fff6e7;padding:16px 20px;border:1px solid #c9a779;border-radius:12px}.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0}button,.button{border:1px solid #a67943;border-radius:9px;background:linear-gradient(#e7c28d,#c79859);padding:11px 18px;color:#37230f;font-size:15px;font-weight:800;cursor:pointer;text-decoration:none}button.secondary{background:#f9f1e4}button.danger{background:#fff0e6;color:#923e2f}section.card{background:#fffaf1;border:1px solid #c6a47a;border-radius:13px;margin:15px 0;padding:17px}section.card h2{font-size:19px;margin:0 0 14px}label{display:block;font-size:14px;font-weight:800;margin:11px 0 6px}input{display:block;width:100%;padding:11px;border:1px solid #b79b78;border-radius:8px;background:white;font-size:14px}input[type=checkbox]{display:inline;width:auto;margin-right:5px}img.preview{width:100%;max-height:240px;object-fit:contain;background:#e6d8c4;border-radius:8px;margin-top:10px}.buttons{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}code{overflow-wrap:anywhere}.help{font-size:13px;color:#674e35}.status{font-size:14px;font-weight:700}a{color:#7b4313}ol{line-height:1.85}.row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+</style></head><body><main>
+<h1>🌳 賽特神諭｜首頁輪播圖管理</h1>
+<div class="hint">在這裡調整每張輪播圖、手機版圖片、點擊後開啟的網址與排序。<strong>不用改 HTML。</strong><br>編輯完成後下載設定檔，再上傳覆蓋 GitHub 的 <code>homepage-carousel.json</code>，網站就會更新。</div>
+<div class="toolbar"><button id="add" type="button">＋ 新增輪播圖</button><button id="download" type="button">⬇ 下載輪播設定檔</button><button id="reload" type="button" class="secondary">重新讀取線上設定</button></div>
+<div class="row"><label for="speed">自動切換間隔（秒）</label><input id="speed" type="number" min="3" max="60" value="6.5" step=".5" style="max-width:90px"></div>
+<p id="status" class="status" aria-live="polite"></p>
+<div id="cards"></div>
+<section class="card"><h2>📁 如何新增自己的圖片？</h2>
+<ol><li>先到 <a href="https://github.com/seth-oracle/seth-oracle.github.io/upload/main/assets" target="_blank" rel="noopener noreferrer">GitHub 上傳圖片</a>，圖片建議用英數檔名，例如 <code>banner01.png</code>。</li>
+<li>按下 GitHub 的 <strong>Commit changes</strong> 完成上傳。</li><li>將圖片網址填成 <code>https://seth-oracle.github.io/assets/banner01.png</code>，也可填手機版圖片網址。</li><li>填入要跳轉的網址，按「下載輪播設定檔」。</li><li>到 <a href="https://github.com/seth-oracle/seth-oracle.github.io/blob/main/homepage-carousel.json" target="_blank" rel="noopener noreferrer">GitHub 的輪播設定檔</a>，點鉛筆編輯，將下載的 JSON 內容完整貼上並 Commit changes。</li></ol>
+<p class="help">注意：此頁僅在妳的瀏覽器編輯與預覽，不會自行更動 GitHub；要按最後一步儲存才會正式上線。圖片使用公開網址，不用輸入 GitHub 密碼或權杖。</p></section>
+<p><a href="/" class="button">← 回到落地頁</a></p>
+</main>
+<script>
+const cards=document.getElementById('cards'),status=document.getElementById('status'),speed=document.getElementById('speed');
+let slides=[];
+function valid(v){return /^(https?:\/\/|\/(?!\/))/.test(v||'')}
+function field(c,label,key,hint){
+ const lab=document.createElement('label');lab.textContent=label;
+ const input=document.createElement('input');input.value=c[key]||'';input.placeholder=hint||'';input.addEventListener('input',()=>{c[key]=input.value;if(key==='desktop')preview.src=valid(input.value)?input.value:''});
+ lab.appendChild(input);return {lab,input};
+}
+function draw(){
+ cards.replaceChildren();
+ slides.forEach((c,i)=>{
+  const section=document.createElement('section');section.className='card';
+  const title=document.createElement('h2');title.textContent='第 '+(i+1)+' 張輪播圖';section.appendChild(title);
+  const preview=document.createElement('img');preview.className='preview';preview.alt='圖片預覽';preview.src=valid(c.desktop)?c.desktop:'';
+  for(const [label,key,placeholder] of [['圖片網址（電腦版）','desktop','https://seth-oracle.github.io/assets/banner01.png'],['圖片網址（手機版，可留空）','mobile','不填就使用電腦版圖片'],['點擊後開啟的網址（可留空）','link','https://example.com'],['備註名稱（不會顯示在圖片上）','title','活動名稱']]){
+   const lab=document.createElement('label');lab.textContent=label;const inp=document.createElement('input');inp.value=c[key]||'';inp.placeholder=placeholder;inp.addEventListener('input',()=>{c[key]=inp.value;if(key==='desktop')preview.src=valid(inp.value)?inp.value:''});lab.appendChild(inp);section.appendChild(lab);
+  }
+  section.appendChild(preview);
+  const enabled=document.createElement('label');const check=document.createElement('input');check.type='checkbox';check.checked=c.enabled!==false;check.addEventListener('change',()=>c.enabled=check.checked);enabled.append(check,'啟用這張輪播圖');section.appendChild(enabled);
+  const row=document.createElement('div');row.className='buttons';
+  for(const [text,action,cls] of [['↑ 上移',()=>{if(i){[slides[i],slides[i-1]]=[slides[i-1],slides[i]];draw()}},'secondary'],['↓ 下移',()=>{if(i<slides.length-1){[slides[i],slides[i+1]]=[slides[i+1],slides[i]];draw()}},'secondary'],['刪除',()=>{slides.splice(i,1);draw()},'danger']]){
+   const b=document.createElement('button');b.type='button';b.textContent=text;b.className=cls;b.addEventListener('click',action);row.appendChild(b)
+  }section.appendChild(row);cards.appendChild(section);
+ })
+}
+document.getElementById('add').onclick=()=>{slides.push({title:'',desktop:'',mobile:'',link:'',enabled:true});draw();cards.lastElementChild?.scrollIntoView({behavior:'smooth'})};
+document.getElementById('download').onclick=()=>{
+ for(let i=0;i<slides.length;i++){if(slides[i].enabled!==false&&!valid(slides[i].desktop)){status.textContent='第 '+(i+1)+' 張缺少有效的圖片網址';return}if(slides[i].link&&!/^https?:\/\//i.test(slides[i].link)){status.textContent='第 '+(i+1)+' 張的連結需以 https:// 或 http:// 開頭';return}}
+ const data={intervalMs:Math.max(3000,Math.min(60000,Number(speed.value)*1000||6500)),slides};
+ const blob=new Blob([JSON.stringify(data,null,2)+'\n'],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='homepage-carousel.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),3000);status.textContent='設定檔已下載，記得到 GitHub 更新才會正式上線。';
+};
+async function load(){
+ try{status.textContent='讀取線上設定中…';const r=await fetch('/homepage-carousel.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);const data=await r.json();slides=Array.isArray(data.slides)?data.slides.map(s=>({...s})):[];speed.value=(Number(data.intervalMs)||6500)/1000;draw();status.textContent='已載入 '+slides.length+' 張線上輪播圖';}catch(e){status.textContent='無法讀取線上設定：'+e.message}
+}
+document.getElementById('reload').onclick=load;load();
+</script></body></html>
