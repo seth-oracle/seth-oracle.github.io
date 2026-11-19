@@ -9,15 +9,26 @@ let room="A-018",game="",round=0,spinning=false,position=false,scanned=false,dem
 function randomSymbols(){for(const cell of reels.children)cell.textContent=symbols[Math.floor(Math.random()*symbols.length)];}
 function closeDrawer(){drawer.hidden=true;buttons.forEach(b=>b.setAttribute("aria-pressed","false"));}
 function display(title,desc,values=[],rooms=false){
-drawer.hidden=false;drawerTitle.textContent=title;drawerText.textContent=desc;drawerStats.replaceChildren();
+drawer.classList.remove("oracle-data-mode");drawer.hidden=false;drawerTitle.textContent=title;drawerText.textContent=desc;drawerStats.replaceChildren();
 if(rooms){const list=document.createElement("div");list.className="demo-room-list";["A-018","A-032","A-107","B-015","B-026","C-009"].forEach(name=>{const b=document.createElement("button");b.className="demo-room"+(name===room?" is-selected":"");b.type="button";b.textContent="房間 "+name;b.addEventListener("click",()=>{room=name;roomIndicator.textContent="房號 "+name;display("🏠 全房掃描","目前查看示範房號："+name+"。這是房間列表展示，不是真實排行。",[],true);});list.appendChild(b);});drawerStats.appendChild(list);return;}
 const row=document.createElement("div");row.className="demo-kpis";for(const value of values){const chip=document.createElement("span");chip.className="demo-kpi";chip.textContent=value;row.appendChild(chip);}drawerStats.appendChild(row);
 }
 const actions={
 data:()=>{
-const table=document.createElement("div");table.className="oracle-data-table";
-[["目前房號",room],["本次展示遊戲",game],["觀測範圍","最近 50 局（範例）"],["示範累積流水","18,500 點"],["示範盈虧","-680 點"],["免遊購買紀錄","2 次（範例）"]].forEach(([k,v])=>{const r=document.createElement("div");r.className="oracle-data-row";const label=document.createElement("span");label.textContent=k;const value=document.createElement("strong");value.textContent=v;r.append(label,value);table.appendChild(r)});
-display("📋 遊戲資料","資料面板：房號、近期遊戲與盈虧資訊。以下全部為展示用的範例紀錄。");drawerStats.appendChild(table);
+display("賽特神諭","● 模擬體驗中");
+drawer.classList.add("oracle-data-mode");
+const info=document.createElement("div");info.className="oracle-mini-grid";
+const items=[["進房金額","0.71"],["目前點數","0.71"],["本房盈虧","0.00"],["下輪開獎結果","—"],["本房免遊次數","0 次"],["本次完成轉數",String(round)]];
+for(const [label,value] of items){const tile=document.createElement("div");tile.className="oracle-mini-tile";const k=document.createElement("span");k.textContent=label;const v=document.createElement("strong");v.textContent=value;tile.append(k,v);info.appendChild(tile);}
+const stop=document.createElement("button");stop.type="button";stop.className="oracle-stop-button";stop.textContent="🛡️ 止盈／止損";
+const options=document.createElement("div");options.className="oracle-stop-settings";options.hidden=true;
+const explanation=document.createElement("p");explanation.textContent="止盈／止損門檻設定示範，不會控制真實遊戲或金額。";
+options.appendChild(explanation);
+for(const [label,value] of [["止盈點數","300"],["止損點數","200"]]){const row=document.createElement("label");row.textContent=label;const field=document.createElement("input");field.type="number";field.min="0";field.max="1000000";field.value=value;field.inputMode="numeric";field.setAttribute("aria-label",label);row.appendChild(field);options.appendChild(row);}
+stop.addEventListener("click",()=>{options.hidden=!options.hidden;stop.setAttribute("aria-expanded",String(!options.hidden));});
+stop.setAttribute("aria-expanded","false");
+const note=document.createElement("div");note.className="oracle-data-footnote";note.textContent="以上數值僅為介面示範，非即時會員資料。";
+drawerStats.append(info,stop,options,note);
 },
 speed:()=>{
 display("🚀 極速加速器","單一加速入口，可切換展示速度。這只控制模擬畫面的動畫，不影響實際 ATG 遊戲。");
