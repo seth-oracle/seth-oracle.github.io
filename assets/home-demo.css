@@ -73,3 +73,14 @@
 .demo-assistant.to-bottom{top:auto}
 .demo-overlay{inset:0}
 @media(max-width:740px){.demo-game-choice img{width:84px;height:77px}.demo-workflow{padding:12px 8px}.demo-assistant{top:104px}}
+
+/* 六格功能面板獨立版型 */
+.oracle-data-table{display:grid;gap:5px}
+.oracle-data-row{display:flex;justify-content:space-between;gap:8px;align-items:center;border-bottom:1px solid #655035;padding:7px 2px;color:#d7c8aa;font-size:11px}
+.oracle-data-row strong{color:#ffe1a2;text-align:right}
+.oracle-speed-choices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}
+.oracle-speed-choices .demo-room{padding:8px 2px}
+.oracle-signal-bars{height:70px;display:flex;align-items:flex-end;gap:4px;border-bottom:1px solid #b58c4a;padding:5px 4px 0;margin:6px 0 12px;background:linear-gradient(180deg,#2e2a180d,#ab7a2522)}
+.oracle-signal-bars span{flex:1;min-width:0;border-radius:4px 4px 0 0;background:linear-gradient(#ffe4a6,#aa7733)}
+.oracle-result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:8px}
+.oracle-result-grid div{border:1px solid #97763e;border-radius:8px;padding:12px 0;text-align:center;color:#ecd299;font-size:20px;font-weight:800;background:#1c201c}
