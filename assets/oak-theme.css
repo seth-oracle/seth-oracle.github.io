@@ -196,3 +196,45 @@ body::before{
 @media(max-width:750px){
   .download-grid.wood-image-downloads{gap:3px!important}
 }
+
+
+/* 2026-11-19: compact four-image quick links across desktop and mobile */
+.hero{min-height:0!important;align-items:center!important;padding:105px 20px 22px!important}
+.hero .hero-content{width:100%;max-width:860px}
+.hero .mobile-quick-links.image-shortcuts{
+ display:grid!important;
+ grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ gap:4px 12px!important;
+ width:min(100%,650px)!important;
+ margin:12px auto 0!important;
+ align-items:center!important;
+}
+.hero .mobile-quick-links.image-shortcuts>a{
+ display:block!important;min-height:0!important;
+ padding:0!important;margin:0!important;
+ border:0!important;border-radius:0!important;
+ background:transparent!important;box-shadow:none!important;
+ overflow:hidden!important;
+ aspect-ratio:3.12/1;
+}
+.hero .mobile-quick-links.image-shortcuts>a>img{
+ display:block!important;width:100%!important;height:100%!important;
+ object-fit:cover!important;object-position:center!important;
+}
+@media(min-width:701px){
+ .hero .mobile-quick-links.image-shortcuts{display:grid!important}
+ .hero .homepage-banner{max-width:760px}
+ .hero .hero-core-graphic{max-width:700px;margin:12px auto 14px!important}
+ .hero .actions{margin-bottom:8px}
+ #features.feature-section{padding-top:25px!important}
+}
+@media(max-width:700px){
+ .hero{padding:16px 15px 12px!important}
+ .hero .hero-core-graphic{margin:7px auto 12px!important}
+ .hero .mobile-quick-links.image-shortcuts{
+  display:grid!important;width:100%!important;
+  gap:0 6px!important;margin:8px auto 0!important;
+ }
+ .hero .mobile-quick-links.image-shortcuts>a{aspect-ratio:3.05/1}
+ #features.feature-section{padding-top:22px!important}
+}
