@@ -1,0 +1,101 @@
+/* Seth Oracle subpage wood edition — shared with homepage oak texture */
+:root{color-scheme:light!important;--gold:#70451e!important;--line:#b28b5c!important;--muted:#644b32!important;--soft:#644b32!important}
+html{background:#efe3d1!important}
+body.oak-subpage{
+  background:#efe3d1 url('/assets/photo_2026-11-19_18-11-07.jpg') center top/min(100%,1152px) auto repeat fixed!important;
+  color:#402b19!important;
+}
+.oak-subpage .topbar,.oak-subpage .sitebar,.oak-subpage header,.oak-subpage .top{
+ background:linear-gradient(120deg,#fff6e7f2,#ead8bdf2)!important;
+ border-color:#ae8859!important;color:#483018!important;
+ box-shadow:0 2px 11px #62432122!important;
+}
+.oak-subpage .brand,.oak-subpage .logo,.oak-subpage .topnav,.oak-subpage .topnav a,.oak-subpage .navigation,.oak-subpage .navigation a,.oak-subpage .nav,.oak-subpage .nav a,.oak-subpage .back{
+ color:#603d1e!important;text-shadow:none!important;
+}
+.oak-subpage h1,.oak-subpage h2,.oak-subpage h3,.oak-subpage .section-title,.oak-subpage .article-head h1,
+.oak-subpage .hero h1,.oak-subpage .masthead h1,.oak-subpage .eyebrow,.oak-subpage .hero .eyebrow{
+ color:#693e19!important;text-shadow:0 1px 0 #fff5e0!important;
+}
+.oak-subpage .hero,.oak-subpage .masthead,.oak-subpage .features-area,.oak-subpage .cta,.oak-subpage .bottom{
+ background:transparent!important;border-color:#b693652f!important;
+}
+.oak-subpage .hero{padding-top:55px!important;padding-bottom:47px!important}
+.oak-subpage .masthead{padding-top:60px!important;padding-bottom:55px!important}
+.oak-subpage .hero p,.oak-subpage .masthead p,.oak-subpage .intro,.oak-subpage .section-lead,
+.oak-subpage .desc,.oak-subpage .small,.oak-subpage .count,.oak-subpage .note,
+.oak-subpage .cta p,.oak-subpage .bottom p{
+ color:#62492f!important;
+}
+.oak-subpage .hero-points span,.oak-subpage .pills span,.oak-subpage .tag{
+ color:#65401e!important;background:#fff3dcce!important;border-color:#b18b5a!important;
+}
+.oak-subpage .btn,.oak-subpage .filters button.active,.oak-subpage .cta a{
+ background:linear-gradient(120deg,#f5dfb6,#c59658)!important;color:#42260e!important;border-color:#b88e57!important;
+}
+.oak-subpage .filters button,.oak-subpage .btn.alt,.oak-subpage .btn.ghost,.oak-subpage .article-links a,
+.oak-subpage .slide-controls button,.oak-subpage .review-photo-controls button{
+ background:#fff1dbf0!important;color:#603d1b!important;border:1px solid #aa8350!important;
+}
+.oak-subpage .search,.oak-subpage input,.oak-subpage select,.oak-subpage textarea{
+ background:#fff9ed!important;color:#402a17!important;border-color:#ad895c!important;
+}
+.oak-subpage .search::placeholder,.oak-subpage input::placeholder,.oak-subpage textarea::placeholder{
+ color:#816c53!important;
+}
+.oak-subpage .guide-card,.oak-subpage .panel,.oak-subpage .review,.oak-subpage .article,
+.oak-subpage .related-guides,.oak-subpage .feature-shot,.oak-subpage .tutorial-video,
+.oak-subpage .demo-aside,.oak-subpage .feature-card,.oak-subpage .truth-panel,
+.oak-subpage .step,.oak-subpage .faq details,.oak-subpage .demo-visual{
+ color:#3b2918!important;
+ background:linear-gradient(145deg,#fff8eaf3,#ead7baf1)!important;
+ border:1px solid #aa875d!important;box-shadow:0 7px 19px #5f421725!important;
+}
+.oak-subpage .guide-card h2,.oak-subpage .guide-card h2 a,
+.oak-subpage .review strong,.oak-subpage .review-head strong,.oak-subpage .rating,
+.oak-subpage .feature-card h3,.oak-subpage .step h3,.oak-subpage .truth-panel h3,
+.oak-subpage .demo-aside h3,.oak-subpage .related-guides h2,
+.oak-subpage .feature-prose h2,.oak-subpage .feature-prose h3,.oak-subpage .prose h2,.oak-subpage .prose h3,
+.oak-subpage .feature-shot figcaption,.oak-subpage .tutorial-video figcaption,
+.oak-subpage .review-reward-note,.oak-subpage label,.oak-subpage .hint{
+ color:#6e441d!important;text-shadow:none!important;
+}
+.oak-subpage .guide-content .desc,.oak-subpage .article-body p,.oak-subpage .intro,
+.oak-subpage .feature-prose p,.oak-subpage .feature-prose ul,.oak-subpage .feature-prose ol,
+.oak-subpage .prose,.oak-subpage .prose p,.oak-subpage .prose li,
+.oak-subpage .content,.oak-subpage .review time,.oak-subpage .small,
+.oak-subpage .demo-aside p,.oak-subpage .demo-points li,
+.oak-subpage .feature-card p,.oak-subpage .truth-panel p,.oak-subpage .step p,
+.oak-subpage .faq p,.oak-subpage .guide-read,.oak-subpage .guide-card summary{
+ color:#49321e!important;
+}
+.oak-subpage .feature-prose a,.oak-subpage .prose a,.oak-subpage .related-guides a{
+ color:#825018!important;
+}
+.oak-subpage .notice,.oak-subpage .tip,.oak-subpage .prose blockquote,
+.oak-subpage #preview{background:#f5e5c9!important;color:#5b4025!important}
+.oak-subpage .demo-bottom{background:#f5e5cd!important;border-color:#ad8b5d!important}
+.oak-subpage .demo-caption strong,.oak-subpage .demo-caption small{color:#694724!important}
+.oak-subpage .slide-count,.oak-subpage .review-photo-controls{color:#694724!important}
+.oak-subpage .empty{color:#64492e!important;border-color:#aa875d!important}
+.oak-subpage footer,.oak-subpage .footer{
+ background:transparent!important;color:#77583a!important;border-color:#b18b5e!important;
+}
+.oak-subpage .cover,.oak-subpage .feature-shot a,
+.oak-subpage .tutorial-video-frame,.oak-subpage .phone-stage,
+.oak-subpage .review-photo{background:#e8d6b9!important}
+.oak-subpage .guide-cover img{filter:none!important}
+.oak-subpage .guide-cover::after{background:linear-gradient(180deg,transparent 65%,#211207ad 100%)!important}
+.oak-subpage .guide-cover .cover-caption{color:#fff7e7!important}
+.oak-subpage .review-photos{scrollbar-color:#b38a53 #ead7bd!important}
+.oak-subpage .check{color:#5a4129!important}
+.oak-subpage input[type="checkbox"]{accent-color:#8e5f28}
+.oak-subpage a:focus-visible,.oak-subpage button:focus-visible,.oak-subpage input:focus-visible{
+ outline:2px solid #8c602d!important;outline-offset:3px;
+}
+@media(max-width:700px){
+ body.oak-subpage{background-size:320px auto!important;background-attachment:scroll!important}
+ .oak-subpage .hero{padding:37px 15px 38px!important}
+ .oak-subpage .masthead{padding:38px 16px 53px!important}
+ .oak-subpage .wrap{margin:-17px auto 0!important}
+}
