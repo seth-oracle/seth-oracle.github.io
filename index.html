@@ -399,6 +399,13 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
 .homepage-banner.single .homepage-banner-prev,.homepage-banner.single .homepage-banner-next,.homepage-banner.single .homepage-banner-dots{display:none}
 .homepage-banner:focus-visible{outline:2px solid #a76e2c;outline-offset:3px}
 @media(max-width:700px){.homepage-banner{margin:18px auto 5px;aspect-ratio:2.45/1;border-radius:10px}.homepage-banner-prev,.homepage-banner-next{width:25px;height:33px;font-size:21px}}
+
+/* Place homepage carousel first, immediately below the navigation on mobile */
+.hero .homepage-banner{margin:0 auto 22px!important}
+@media(max-width:700px){
+  .hero{padding-top:18px!important}
+  .hero .homepage-banner{margin-bottom:24px!important}
+}
 </style>
 <link rel="stylesheet" href="/assets/oak-theme.css?v=7">
 </head>
@@ -409,16 +416,16 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
   </header>
   <main>
     <div class="hero" id="home"><div class="hero-content">
-      <div class="eyebrow">SETH ORACLE · ATG ANALYTICS</div>
-      <h1>賽特神諭</h1>
-      <p>專為 ATG 戰神賽特等電子遊戲打造的賽特神諭智慧輔助系統。<br>全房掃描・盤面監測・數據觀察</p>
-      <div class="actions"><a class="btn primary" href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer">立即啟動</a><a class="btn secondary" href="#features">探索功能</a></div>
       <div class="homepage-banner" id="homepageBanner" aria-label="賽特神諭首頁輪播公告" tabindex="0">
         <div class="homepage-banner-stage" id="homepageBannerStage" aria-live="off"></div>
         <button class="homepage-banner-prev" type="button" aria-label="上一張">‹</button>
         <button class="homepage-banner-next" type="button" aria-label="下一張">›</button>
         <div class="homepage-banner-dots" id="homepageBannerDots"></div>
       </div>
+      <div class="eyebrow">SETH ORACLE · ATG ANALYTICS</div>
+      <h1>賽特神諭</h1>
+      <p>專為 ATG 戰神賽特等電子遊戲打造的賽特神諭智慧輔助系統。<br>全房掃描・盤面監測・數據觀察</p>
+      <div class="actions"><a class="btn primary" href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer">立即啟動</a><a class="btn secondary" href="#features">探索功能</a></div>
     <div class="mobile-quick-links" aria-label="熱門功能入口">
       <a href="#games"><span aria-hidden="true">◈</span><strong>支援遊戲</strong><small>8 款遊戲</small></a>
       <a href="/assistant/"><span class="app-symbol-container" aria-hidden="true"><img class="app-symbol-img" src="https://xinyao-ai.github.io/xinyao-ai/icon-192.png" alt="" loading="lazy"></span><strong>神諭助手</strong><small>功能介紹</small></a>
