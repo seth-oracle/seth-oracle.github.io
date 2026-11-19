@@ -44,3 +44,20 @@ header .nav{background:#f9efdf!important;border:1px solid #ad895f!important}
 header .nav a{color:#4b3018!important}
 .hero{background-size:cover,320px auto!important}
 }
+
+
+/* Accessibility: dark legible typography over pale oak, including FAQ and how-to */
+.guide-section,.faq-section{color:#382515!important}
+.guide-section .section-title,.faq-section .faq-title,.faq-title{color:#573316!important;text-shadow:0 1px 0 #fff7e7!important;font-weight:900!important}
+.guide-step{background:linear-gradient(140deg,#fff9ecf0,#e9d7bbee)!important;border-color:#aa8353!important;color:#3b2717!important}
+.guide-step h3{color:#603819!important}
+.guide-step p{color:#4f3824!important}
+.guide-step a{color:#71451e!important;border-bottom-color:#90683b!important}
+.guide-num{background:linear-gradient(#f0d6a7,#bf945b)!important;color:#302011!important}
+.faq-list .faq-item{background:linear-gradient(130deg,#fff8eaed,#efe0c8ef)!important;border:1px solid #a88255!important}
+.faq-list .faq-item summary{color:#432a16!important;font-weight:850!important;text-shadow:none!important}
+.faq-list .faq-item summary::after{color:#563517!important;background:none!important;box-shadow:none!important;font-weight:900!important}
+.faq-list .faq-item[open]{border-color:#81572e!important}
+.faq-list .faq-answer,.faq-list .faq-answer p{color:#44301d!important}
+.faq-list .faq-answer a{color:#72401c!important;font-weight:800}
+.guide-section .section-sub,.faq-section .section-sub{color:#513923!important}
