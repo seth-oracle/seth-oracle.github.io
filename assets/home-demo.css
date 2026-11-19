@@ -103,3 +103,38 @@
 .oracle-stop-settings label{font-size:10px;color:#f0d6a4}
 .oracle-stop-settings input{box-sizing:border-box;width:100%;margin-top:3px;background:#0a0d0d;color:#ffe5aa;border:1px solid #8b7046;border-radius:5px;padding:6px;font-size:12px}
 .oracle-data-footnote{font-size:9px;color:#a99b9b;text-align:center;line-height:1.45}
+
+
+/* 正式六格助手的側邊工具版型：左側 2×3、縱向、不橫跨盤面 */
+.demo-assistant{
+  --demo-zoom:1;
+  top:93px;left:7px;right:auto;bottom:auto!important;
+  width:132px;max-width:calc(100% - 18px);
+  padding:8px 6px 7px;
+  border:2px solid #d4a54f;border-radius:17px;
+  background:linear-gradient(165deg,#161216f2,#0a090df0);
+  box-shadow:0 4px 18px #000b,0 0 0 1px #523918b0;
+  transform:scale(var(--demo-zoom));transform-origin:top left;
+  backdrop-filter:blur(8px);
+}
+.demo-assistant.to-bottom{top:auto!important;bottom:78px!important;transform-origin:bottom left}
+.demo-assistant-title{display:flex;justify-content:space-between;align-items:center;margin:0 1px 5px;font-size:11px;color:#f5d89f;line-height:1.35}
+.demo-led{display:inline-block;width:8px;height:8px;background:#ffd563;border-radius:50%;box-shadow:0 0 5px #f9cb52;margin-right:2px;vertical-align:middle}
+.demo-assistant-handle{color:#c2a37a}
+.demo-assistant-signal{font-size:12px;color:#fff0c5;font-weight:800;line-height:1.5;padding:0 2px 7px}
+.demo-assistant-signal strong{color:#efd18f}
+.demo-assistant .demo-toolbar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.demo-assistant .demo-tool{
+  min-height:53px;padding:5px 2px;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;gap:3px;
+  border:1px solid #e6bb59;border-radius:12px;
+  background:#0c0d10e8;color:#fff1d9;box-shadow:inset 0 0 6px #e0a64a19;
+}
+.demo-assistant .demo-tool-icon{font-size:22px;line-height:1.1;font-weight:900;color:#ffdf8d}
+.demo-assistant .demo-tool-label{font-size:10px;line-height:1.15;font-weight:900}
+.demo-assistant .demo-tool[aria-pressed=true]{background:linear-gradient(#f7dfa3,#bc8b37);color:#271808}
+.demo-assistant .demo-tool[aria-pressed=true] .demo-tool-icon{color:#291804}
+.demo-assistant-zoom{display:flex;align-items:center;justify-content:space-between;margin-top:7px;color:#e8cb83;font-size:11px}
+.demo-assistant-zoom button{width:25px;height:24px;border-radius:7px;border:1px solid #d4a64f;color:#f9dba1;background:#151212;font-weight:900;cursor:pointer}
+.demo-assistant-zoom output{font-size:11px;font-weight:800}
+@media(max-width:740px){.demo-assistant{top:85px;left:6px;width:126px;padding:6px 5px}.demo-assistant .demo-tool{min-height:50px}.demo-assistant .demo-tool-icon{font-size:20px}}
