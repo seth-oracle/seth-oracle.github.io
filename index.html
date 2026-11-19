@@ -383,6 +383,22 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
   color:#51351e!important;
   text-shadow:0 1px 0 rgba(255,250,235,.45)!important;
 }
+
+/* Editable homepage announcement carousel */
+.homepage-banner{position:relative;width:100%;aspect-ratio:2.9/1;max-width:760px;margin:23px auto 2px;border:1px solid #bb854a;border-radius:12px;background:#2c1a0e;overflow:hidden;box-shadow:0 6px 22px #2e190733;isolation:isolate}
+.homepage-banner-stage,.homepage-banner-slide{position:absolute;inset:0}
+.homepage-banner-slide{display:none;width:100%;height:100%}
+.homepage-banner-slide.active{display:block}
+.homepage-banner-slide a,.homepage-banner-slide picture{display:block;width:100%;height:100%}
+.homepage-banner-slide img{display:block;width:100%;height:100%;object-fit:cover}
+.homepage-banner-prev,.homepage-banner-next{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:30px;height:38px;border:1px solid #e2be86;border-radius:6px;background:#241506b5;color:#fff4dc;font-size:24px;cursor:pointer}
+.homepage-banner-prev{left:7px}.homepage-banner-next{right:7px}
+.homepage-banner-dots{position:absolute;bottom:7px;left:0;right:0;z-index:2;display:flex;gap:7px;justify-content:center}
+.homepage-banner-dots button{width:8px;height:8px;border-radius:99px;background:#fffb;border:1px solid #fff9;padding:0;cursor:pointer}
+.homepage-banner-dots button.active{width:20px;background:#f2bf68;border-color:#f2bf68}
+.homepage-banner.single .homepage-banner-prev,.homepage-banner.single .homepage-banner-next,.homepage-banner.single .homepage-banner-dots{display:none}
+.homepage-banner:focus-visible{outline:2px solid #a76e2c;outline-offset:3px}
+@media(max-width:700px){.homepage-banner{margin:18px auto 5px;aspect-ratio:2.45/1;border-radius:10px}.homepage-banner-prev,.homepage-banner-next{width:25px;height:33px;font-size:21px}}
 </style>
 <link rel="stylesheet" href="/assets/oak-theme.css?v=7">
 </head>
@@ -397,6 +413,12 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
       <h1>賽特神諭</h1>
       <p>專為 ATG 戰神賽特等電子遊戲打造的賽特神諭智慧輔助系統。<br>全房掃描・盤面監測・數據觀察</p>
       <div class="actions"><a class="btn primary" href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer">立即啟動</a><a class="btn secondary" href="#features">探索功能</a></div>
+      <div class="homepage-banner" id="homepageBanner" aria-label="賽特神諭首頁輪播公告" tabindex="0">
+        <div class="homepage-banner-stage" id="homepageBannerStage" aria-live="off"></div>
+        <button class="homepage-banner-prev" type="button" aria-label="上一張">‹</button>
+        <button class="homepage-banner-next" type="button" aria-label="下一張">›</button>
+        <div class="homepage-banner-dots" id="homepageBannerDots"></div>
+      </div>
     <div class="mobile-quick-links" aria-label="熱門功能入口">
       <a href="#games"><span aria-hidden="true">◈</span><strong>支援遊戲</strong><small>8 款遊戲</small></a>
       <a href="/assistant/"><span class="app-symbol-container" aria-hidden="true"><img class="app-symbol-img" src="https://xinyao-ai.github.io/xinyao-ai/icon-192.png" alt="" loading="lazy"></span><strong>神諭助手</strong><small>功能介紹</small></a>
@@ -577,5 +599,52 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
     });
   });
 })();
-</script></body>
+</script>
+<script id="homepage-banner-carousel-script">
+(()=>{
+ const root=document.getElementById('homepageBanner');
+ if(!root)return;
+ const stage=document.getElementById('homepageBannerStage'),dots=document.getElementById('homepageBannerDots');
+ let slides=[],idx=0,intervalMs=6500,changed=Date.now(),startX=null;
+ const validUrl=url=>typeof url==='string'&&(/^(https?:\/\/)/i.test(url)||/^\/(?!\/)/.test(url));
+ function show(n){
+  if(!slides.length)return;
+  idx=(n+slides.length)%slides.length;
+  [...stage.children].forEach((el,i)=>{el.classList.toggle('active',i===idx);el.setAttribute('aria-hidden',String(i!==idx));});
+  [...dots.children].forEach((el,i)=>{el.classList.toggle('active',i===idx);el.setAttribute('aria-current',i===idx?'true':'false');});
+  changed=Date.now();
+ }
+ function render(items){
+  slides=items;idx=0;stage.replaceChildren();dots.replaceChildren();root.hidden=!items.length;root.classList.toggle('single',items.length<2);
+  items.forEach((item,i)=>{
+   const slide=document.createElement('div');slide.className='homepage-banner-slide';
+   const pic=document.createElement('picture');
+   if(validUrl(item.mobile)){const source=document.createElement('source');source.media='(max-width:700px)';source.srcset=item.mobile;pic.appendChild(source);}
+   const img=document.createElement('img');img.src=item.desktop;img.alt=item.title||'賽特神諭輪播公告 '+(i+1);img.loading=i===0?'eager':'lazy';img.decoding='async';pic.appendChild(img);
+   if(validUrl(item.link)){const a=document.createElement('a');a.href=item.link;a.target='_blank';a.rel='noopener noreferrer';a.setAttribute('aria-label',item.title||'查看輪播公告 '+(i+1));a.appendChild(pic);slide.appendChild(a);}
+   else slide.appendChild(pic);
+   stage.appendChild(slide);
+   const dot=document.createElement('button');dot.type='button';dot.setAttribute('aria-label','第 '+(i+1)+' 張輪播圖');dot.addEventListener('click',()=>show(i));dots.appendChild(dot);
+  });
+  if(items.length)show(0);
+ }
+ async function load(){
+  try{
+   const response=await fetch('/homepage-carousel.json?t='+Date.now(),{cache:'no-store'});
+   if(!response.ok)throw Error('輪播設定讀取失敗');
+   const cfg=await response.json();intervalMs=Math.max(2500,Number(cfg.intervalMs)||6500);
+   const items=(Array.isArray(cfg.slides)?cfg.slides:[]).filter(x=>x.enabled!==false&&validUrl(x.desktop));
+   render(items);
+  }catch(err){console.warn('首頁輪播:',err);if(!slides.length)root.hidden=true;}
+ }
+ root.querySelector('.homepage-banner-prev').addEventListener('click',()=>show(idx-1));
+ root.querySelector('.homepage-banner-next').addEventListener('click',()=>show(idx+1));
+ root.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();show(idx+(e.key==='ArrowRight'?1:-1));}});
+ root.addEventListener('touchstart',e=>{startX=e.changedTouches[0]?.clientX??null;},{passive:true});
+ root.addEventListener('touchend',e=>{if(startX===null)return;let dist=(e.changedTouches[0]?.clientX??startX)-startX;startX=null;if(Math.abs(dist)>40)show(idx+(dist<0?1:-1));},{passive:true});
+ setInterval(()=>{if(!document.hidden&&slides.length>1&&Date.now()-changed>=intervalMs)show(idx+1);},1000);
+ load();setInterval(()=>{if(!document.hidden)load();},300000);
+})();
+</script>
+</body>
 </html>
