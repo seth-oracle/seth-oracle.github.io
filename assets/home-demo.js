@@ -1,30 +1,36 @@
-(function(){
+(()=>{
 "use strict";
-const root=document.getElementById("oracleDemo");
-if(!root)return;
-const start=document.getElementById("demoStart"),reset=document.getElementById("demoReset");
-const heading=document.getElementById("demoHeading"),details=document.getElementById("demoDetails"),stats=document.getElementById("demoStats");
+const root=document.getElementById("oracleDemo");if(!root)return;
+const $=id=>document.getElementById(id);
+const overlay=$("demoOverlay"),start=$("demoStart"),spin=$("demoSpin"),reset=$("demoReset"),reels=$("demoReels"),drawer=$("demoDrawer"),drawerTitle=$("demoDrawerTitle"),drawerText=$("demoDrawerText"),drawerStats=$("demoDrawerStats"),assistant=$("demoAssistant"),roomIndicator=$("demoRoomIndicator"),status=$("demoPlayStatus");
+const symbols=["𓂀","☥","💎","🔱","🪙","𓃭","🪲","✦"];
 const buttons=[...root.querySelectorAll("[data-demo-tool]")];
-let started=false;
-const stages={
-  data:{title:"📋 資料",desc:"查看模擬房間編號、觀察狀態與資料摘要。這些是介面示範資訊，不代表實際遊戲紀錄。",metrics:["目前房號｜A-018","觀察紀錄｜50 筆","資料狀態｜示範模式"]},
-  speed:{title:"🚀 極速",desc:"展示極速操作的功能入口。正式操作需在支援的遊戲環境中使用；體驗區不會控制遊戲。",metrics:["功能入口｜已選擇","模式｜預覽","遊戲控制｜未連線"]},
-  board:{title:"🎯 盤面",desc:"觀察近期畫面與盤面訊號的呈現方式。模擬數字僅用於介面演示，不能預測真實結果。",metrics:["觀察窗｜最近 50 筆","訊號｜資料不足","真實預測｜不提供"]},
-  rooms:{title:"🏠 全房",desc:"試試全房掃描結果的排列方式，點擊模擬房間可切換正在查看的房號。",rooms:["A-018","A-032","A-107"]},
-  result:{title:"💎 結果",desc:"展示「下輪開獎結果」資訊區的外觀。此處沒有連接實際遊戲資料，不會產生或揭露真實下一輪結果。",metrics:["結果區｜展示","即時資料｜未連線","狀態｜僅供教學"]},
-  switch:{title:"↔️ 換邊",desc:"展示助手工具列位置切換的操作體驗，不會修改任何正式介面設定。",metrics:["工具列｜位置已切換","目前模式｜示範","正式遊戲｜未連線"]}
-};
-function render(tool){
-const state=stages[tool];heading.textContent=state.title;details.textContent=state.desc;
-stats.replaceChildren();
-if(state.rooms){const grid=document.createElement("div");grid.className="demo-rooms";state.rooms.forEach((room,i)=>{
- const b=document.createElement("button");b.type="button";b.className="demo-room";b.textContent="房間 "+room;b.addEventListener("click",()=>{heading.textContent="🏠 房間 "+room;details.textContent="已選擇模擬房間 "+room+"，此操作僅展示選房介面，不連接遊戲。";});grid.appendChild(b);
-});stats.appendChild(grid);}
-else{const row=document.createElement("div");row.className="demo-kpis";for(const item of state.metrics){const chip=document.createElement("span");chip.className="demo-kpi";chip.textContent=item;row.appendChild(chip)}stats.appendChild(row)}
-buttons.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.demoTool===tool)));
+let room="A-018",round=0,spinning=false,position=false;
+function randomSymbols(){const items=reels.children;for(const cell of items)cell.textContent=symbols[Math.floor(Math.random()*symbols.length)];}
+function closeDrawer(){drawer.hidden=true;buttons.forEach(b=>b.setAttribute("aria-pressed","false"));}
+function display(title,desc,values=[],rooms=false){
+drawer.hidden=false;drawerTitle.textContent=title;drawerText.textContent=desc;drawerStats.replaceChildren();
+if(rooms){
+const list=document.createElement("div");list.className="demo-room-list";
+["A-018","A-032","A-107","B-015","B-026","C-009"].forEach(name=>{
+const b=document.createElement("button");b.className="demo-room"+(name===room?" is-selected":"");b.type="button";b.textContent="🏠 "+name;
+b.addEventListener("click",()=>{room=name;roomIndicator.textContent="房號 "+name;display("🏠 全房掃描","已切換至模擬房間 "+name+"。此清單為示範排列，不是真實房間排名。",[],true);});list.appendChild(b);
+});drawerStats.appendChild(list);return;
 }
-function begin(){started=true;buttons.forEach(b=>b.disabled=false);start.textContent="體驗進行中";start.disabled=true;render("rooms");}
-start.addEventListener("click",begin);
-reset.addEventListener("click",()=>{started=false;start.disabled=false;start.textContent="▶ 開始免費體驗";buttons.forEach(b=>{b.disabled=true;b.setAttribute("aria-pressed","false")});heading.textContent="準備開始體驗";details.textContent="按左側「開始免費體驗」，再點六個功能按鈕試操作。";stats.replaceChildren();});
-buttons.forEach(b=>b.addEventListener("click",()=>{if(started)render(b.dataset.demoTool)}));
+const row=document.createElement("div");row.className="demo-kpis";for(const t of values){const el=document.createElement("span");el.className="demo-kpi";el.textContent=t;row.appendChild(el)}drawerStats.appendChild(row);
+}
+const actions={
+data:()=>display("📋 資料摘要","目前僅展示賽特神諭資料面板的呈現方式。",["房號 "+room,"觀測 50 筆（示例）","即時連線：否"]),
+speed:()=>display("🚀 極速加速器","已切換至加速器示範畫面，未對任何遊戲發送操作。",["示範：開啟","實際加速：無"]),
+board:()=>display("🎯 盤面分析","可查看近期訊號展示。示意資料無法推測真實中獎機率。",["近 50 筆（示例）","訊號：僅展示","機率預測：不提供"]),
+rooms:()=>display("🏠 全房掃描","點選一間模擬房間，查看切換效果。",[],true),
+result:()=>display("💎 下輪開獎結果","這是結果資訊面板示範，不包含任何真實或可預先取得的開獎結果。",["結果：示例畫面","真實開獎：未連線"]),
+switch:()=>{position=!position;assistant.classList.toggle("to-bottom",position);display("↔️ 換邊","已切換工具面板位置。可再次按下切回。",["位置："+(position?"下方":"上方")]);}
+};
+buttons.forEach(b=>b.addEventListener("click",()=>{buttons.forEach(x=>x.setAttribute("aria-pressed",String(x===b)));actions[b.dataset.demoTool]?.();}));
+start.addEventListener("click",()=>{overlay.hidden=true;assistant.hidden=false;spin.disabled=false;status.textContent="可點擊旋轉及六格助手，體驗示範互動";randomSymbols();display("🏠 全房掃描","歡迎體驗賽特神諭！先選一間模擬房間，再試試六格功能。",[],true);});
+spin.addEventListener("click",()=>{if(spinning)return;spinning=true;spin.disabled=true;closeDrawer();reels.classList.add("is-spinning");status.textContent="模擬盤面旋轉中（沒有下注或派彩）";let ticks=0;const ticker=setInterval(()=>{randomSymbols();ticks++;if(ticks>=8){clearInterval(ticker);reels.classList.remove("is-spinning");spinning=false;spin.disabled=false;round++;status.textContent="示範旋轉 "+round+" 次 · 無投注、無獎金";}},95);});
+$("demoClose").addEventListener("click",closeDrawer);
+reset.addEventListener("click",()=>{overlay.hidden=false;assistant.hidden=true;spin.disabled=true;room="A-018";roomIndicator.textContent="房號 "+room;round=0;position=false;assistant.classList.remove("to-bottom");closeDrawer();status.textContent="等待開始體驗";});
+randomSymbols();
 })();
