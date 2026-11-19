@@ -354,6 +354,15 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
 .download-buttons-only .download-platform-button img{flex:none;width:40px;height:40px;object-fit:contain;filter:drop-shadow(0 2px 2px #0004)}
 .download-buttons-only .download-platform-button span{display:block;min-width:0}
 @media(max-width:750px){.download-buttons-only{grid-template-columns:1fr;max-width:430px;gap:14px;margin-top:23px}.download-buttons-only .download-platform-button{min-height:61px;font-size:16px;gap:13px}.download-buttons-only .download-platform-button img{width:35px;height:35px}}
+/* Installation guide image button + native modal */
+.wood-image-downloads .install-guide-trigger{appearance:none;-webkit-appearance:none;cursor:pointer;font:inherit;color:inherit;padding:0;background:transparent;border:0;display:block;width:100%;min-width:0}
+.wood-image-downloads .install-guide-trigger img{display:block;width:100%;height:auto}
+.install-guide-dialog{width:min(560px,calc(100% - 32px));max-height:85dvh;overflow:auto;margin:auto;padding:0;border:1px solid #b98548;border-radius:17px;background:#f1dfc2;color:#43290f;box-shadow:0 25px 80px #0009}
+.install-guide-dialog::backdrop{background:rgba(0,0,0,.72)}
+.install-guide-inner{position:relative;padding:34px 25px 30px;text-align:center}
+.install-guide-inner h2{margin:0 35px 22px;color:#54300e;font-size:clamp(20px,5vw,27px)}
+.install-guide-close{position:absolute;top:10px;right:12px;background:transparent;border:0;color:#6d441b;font-size:34px;line-height:1;cursor:pointer}
+.install-guide-content{padding:22px 12px;border:1px dashed #b69569;border-radius:11px;font-size:15px;line-height:1.8}
 </style>
 <link rel="stylesheet" href="/assets/oak-theme.css?v=7">
 </head>
@@ -490,8 +499,19 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
         <a class="download-platform-image" href="https://w.zhijia.art/apps/m9od.html" target="_blank" rel="noopener noreferrer" aria-label="下載 iPhone / iOS 版">
           <img src="/assets/06f66ff4-63fd-4109-b8cb-41eda64c3a2c.png" alt="下載 iPhone / iOS 版" decoding="async">
         </a>
+        <button class="download-platform-image install-guide-trigger" type="button" onclick="document.getElementById('installGuideDialog').showModal()" aria-label="開啟賽特神諭安裝說明">
+          <img src="/16312d53-cfaa-42e1-bcf1-df8148a338c8.png" alt="賽特神諭安裝說明" decoding="async">
+        </button>
       </div>
     </section>
+
+    <dialog id="installGuideDialog" class="install-guide-dialog" aria-labelledby="installGuideTitle" onclick="if(event.target===this)this.close()">
+      <div class="install-guide-inner">
+        <button class="install-guide-close" type="button" onclick="document.getElementById('installGuideDialog').close()" aria-label="關閉安裝說明">×</button>
+        <h2 id="installGuideTitle">賽特神諭安裝說明</h2>
+        <div class="install-guide-content">安裝教學內容即將更新。</div>
+      </div>
+    </dialog>
 
     <section class="guide-section faq-section">
       <h3 class="faq-title" id="faq">常見問題 FAQ</h3>
