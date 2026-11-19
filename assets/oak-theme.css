@@ -61,3 +61,44 @@ header .nav a{color:#4b3018!important}
 .faq-list .faq-answer,.faq-list .faq-answer p{color:#44301d!important}
 .faq-list .faq-answer a{color:#72401c!important;font-weight:800}
 .guide-section .section-sub,.faq-section .section-sub{color:#513923!important}
+
+/* Clear, unfiltered woodgrain: no white mist, overlays or gradient on background */
+html,body{filter:none!important;backdrop-filter:none!important}
+body{
+  background-image:var(--oak)!important;
+  background-color:#efe1ce!important;
+  background-size:320px auto!important;
+  background-repeat:repeat!important;
+  background-position:left top!important;
+  background-attachment:scroll!important;
+}
+body::before,body::after{
+  background:none!important;
+  backdrop-filter:none!important;
+  filter:none!important;
+}
+.hero{
+  background-image:var(--oak)!important;
+  background-color:transparent!important;
+  background-size:320px auto!important;
+  background-position:left top!important;
+  background-repeat:repeat!important;
+  background-blend-mode:normal!important;
+}
+.hero::before,.hero::after,
+section::before,section::after{
+  backdrop-filter:none!important;
+  filter:none!important;
+}
+.hero::before,.hero::after{background:transparent!important;box-shadow:none!important}
+main>section,.downloads,.showcase,.games,.guide-section,.faq-section,.foot{
+  background-image:none!important;
+  background-color:transparent!important;
+  backdrop-filter:none!important;
+}
+.feature,.feature-accordion,.showcase-card,.game-card,.download-card,.faq-item,.guide-step,.faq-list .faq-item{
+  backdrop-filter:none!important;
+}
+@media(min-width:751px){
+  body,.hero{background-size:320px auto!important}
+}
