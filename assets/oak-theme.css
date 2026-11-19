@@ -134,3 +134,43 @@ body::before{
 .hero{
   background:transparent!important;
 }
+
+
+/* Original uploaded wood PNG buttons — preserve transparency and aspect ratio */
+.download-grid.wood-image-downloads{
+ display:grid!important;
+ grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ align-items:center!important;
+ gap:18px!important;
+ max-width:1160px!important;
+ margin:24px auto 0!important;
+}
+.wood-image-downloads .download-platform-image{
+ display:block!important;
+ width:100%!important;
+ padding:0!important;
+ margin:0!important;
+ border:0!important;
+ border-radius:0!important;
+ background:none!important;
+ box-shadow:none!important;
+ line-height:0!important;
+ transition:transform .15s ease!important;
+}
+.wood-image-downloads .download-platform-image img{
+ width:100%!important;
+ max-width:100%!important;
+ height:auto!important;
+ display:block!important;
+ object-fit:contain!important;
+ border:0!important;
+ border-radius:0!important;
+ background:transparent!important;
+ box-shadow:none!important;
+ filter:none!important;
+}
+.wood-image-downloads .download-platform-image:hover{transform:translateY(-2px)!important}
+.wood-image-downloads .download-platform-image:focus-visible{outline:3px solid #74491f!important;outline-offset:4px!important;border-radius:10px!important}
+@media(max-width:750px){
+ .download-grid.wood-image-downloads{grid-template-columns:1fr!important;gap:12px!important;max-width:430px!important;margin:15px auto 0!important}
+}
