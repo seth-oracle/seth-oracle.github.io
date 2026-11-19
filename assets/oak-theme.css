@@ -106,3 +106,31 @@ main>section,.downloads,.showcase,.games,.guide-section,.faq-section,.foot{
 /* Source-image wood: full-resolution uploaded JPEG, no scaling up, no haze. */
 html,body{background-image:var(--oak)!important;background-color:#f0e5d5!important;background-size:min(100%, 1152px) auto!important;background-position:center top!important;background-repeat:repeat!important;background-attachment:scroll!important;filter:none!important;backdrop-filter:none!important}
 .hero{background-image:var(--oak)!important;background-size:min(100%, 1152px) auto!important;background-position:center top!important;background-repeat:repeat!important;background-blend-mode:normal!important;background-color:transparent!important;filter:none!important}
+
+/* Fixed full-page original wood background. Contents scroll, photo stays still. */
+html{background:#f0e5d5!important}
+body{
+  position:relative!important;
+  isolation:isolate;
+  min-height:100vh;
+  background:transparent!important;
+}
+body::before{
+  content:""!important;
+  display:block!important;
+  position:fixed!important;
+  inset:0!important;
+  z-index:-1!important;
+  pointer-events:none!important;
+  background-image:url("/assets/photo_2026-11-19_18-11-07.jpg")!important;
+  background-color:#f0e5d5!important;
+  background-size:min(100vw, 1152px) auto!important;
+  background-position:center top!important;
+  background-repeat:repeat!important;
+  filter:none!important;
+  backdrop-filter:none!important;
+  opacity:1!important;
+}
+.hero{
+  background:transparent!important;
+}
