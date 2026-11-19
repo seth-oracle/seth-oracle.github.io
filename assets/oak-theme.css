@@ -174,3 +174,25 @@ body::before{
 @media(max-width:750px){
  .download-grid.wood-image-downloads{grid-template-columns:1fr!important;gap:12px!important;max-width:430px!important;margin:15px auto 0!important}
 }
+
+/* Crop only the transparent top/bottom padding embedded in the three 2048×682 PNGs. */
+.download-grid.wood-image-downloads{
+  gap:6px!important;
+  align-items:start!important;
+}
+.wood-image-downloads .download-platform-image{
+  position:relative!important;
+  aspect-ratio:2048 / 410!important;
+  overflow:hidden!important;
+}
+.wood-image-downloads .download-platform-image img{
+  position:absolute!important;
+  top:0!important;left:0!important;
+  width:100%!important;height:auto!important;
+  max-width:none!important;
+  transform:translateY(-20.5%)!important;
+  object-fit:contain!important;
+}
+@media(max-width:750px){
+  .download-grid.wood-image-downloads{gap:3px!important}
+}
