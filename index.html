@@ -411,6 +411,14 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
 .hero-core-graphic{width:100%;max-width:860px;margin:12px auto 20px;display:flex;align-items:center;justify-content:center}
 .hero-core-graphic img{display:block;width:100%;height:auto;object-fit:contain}
 @media(max-width:700px){.hero-core-graphic{margin:9px auto 18px;width:100%}}
+
+/* Four uploaded image shortcuts, preserving click destinations */
+@media(max-width:700px){
+.hero .mobile-quick-links.image-shortcuts{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:20px}
+.hero .mobile-quick-links.image-shortcuts>a{display:block!important;min-height:0!important;padding:0!important;border:0!important;background:transparent!important;border-radius:0!important;box-shadow:none!important;overflow:visible;text-align:center}
+.hero .mobile-quick-links.image-shortcuts>a>img{display:block;width:100%;height:auto;object-fit:contain}
+.hero .mobile-quick-links.image-shortcuts>a:focus-visible{outline:2px solid #9d672b;outline-offset:3px}
+}
 </style>
 <link rel="stylesheet" href="/assets/oak-theme.css?v=7">
 </head>
@@ -429,11 +437,11 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
       </div>
       <div class="hero-core-graphic"><img src="/e295598e-659d-41fe-9f6e-396e2852c031.png" alt="賽特神諭核心功能：數據、極速、訊號、掃描、劇透、管控" decoding="async"></div>
       <div class="actions"><a class="btn primary" href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer">立即啟動</a><a class="btn secondary" href="#features">探索功能</a></div>
-    <div class="mobile-quick-links" aria-label="熱門功能入口">
-      <a href="#games"><span aria-hidden="true">◈</span><strong>支援遊戲</strong><small>8 款遊戲</small></a>
-      <a href="#features"><span class="app-symbol-container" aria-hidden="true"><img class="app-symbol-img" src="https://xinyao-ai.github.io/xinyao-ai/icon-192.png" alt="" loading="lazy"></span><strong>核心功能</strong><small>查看功能介紹</small></a>
-      <a href="/guides/"><span aria-hidden="true">▤</span><strong>攻略教學</strong><small>新手必看</small></a>
-      <a href="#download"><span aria-hidden="true">⬇</span><strong>下載專區</strong><small>開始使用</small></a>
+    <div class="mobile-quick-links image-shortcuts" aria-label="熱門功能入口">
+      <a href="#games" aria-label="支援遊戲"><img src="/240e701f-d39d-4cec-9d9b-57cfdec31ab1.png" alt="支援遊戲" loading="eager" decoding="async"></a>
+      <a href="#features" aria-label="核心功能"><img src="/f8ef6f6f-a925-4be0-987a-06077507e722.png" alt="核心功能" loading="eager" decoding="async"></a>
+      <a href="/guides/" aria-label="攻略教學"><img src="/204310cc-3c5e-41d5-a4e5-0e5c3faa4843.png" alt="攻略教學" loading="eager" decoding="async"></a>
+      <a href="#download" aria-label="下載專區"><img src="/b2e7b138-fe3a-4ee3-9537-504dad01571e.png" alt="下載專區" loading="eager" decoding="async"></a>
     </div>
     </div></div>
 
