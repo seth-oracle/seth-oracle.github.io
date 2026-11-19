@@ -1,33 +1,55 @@
 
-/* 賽特神諭首頁互動體驗：與原功能隔離 */
-.demo-zone{background:radial-gradient(ellipse at 50% 0,#291d0e 0,#0a0908 68%);border-block:1px solid #49351d;padding:64px 18px}
-.demo-zone .section-sub{max-width:740px}
-.oracle-demo{max-width:1020px;margin:0 auto;border:1px solid #946f38;border-radius:19px;background:linear-gradient(155deg,#171715,#0b0d0d);box-shadow:0 18px 45px #0008;padding:22px;overflow:hidden}
-.demo-top{display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;flex-wrap:wrap;margin-bottom:16px}
-.demo-top strong{font-size:20px;color:#ffe1a1}.demo-tag{font-size:12px;color:#f1d397;border:1px solid #72572d;border-radius:20px;padding:6px 11px}
-.demo-content{display:grid;grid-template-columns:minmax(240px,.88fr) minmax(300px,1.12fr);gap:18px;text-align:left}
-.demo-game{border:1px solid #72542d;border-radius:13px;min-height:420px;position:relative;overflow:hidden;background:linear-gradient(#08080822,#080808cc),url('https://www.atg-games.com/storm-of-seth-2-awakening/zh-tw/game_icon.png') center/cover,#161118;display:flex;align-items:center;justify-content:center;flex-direction:column}
-.demo-game::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#090b0b 3%,transparent 42%);pointer-events:none}
-.demo-game>*{position:relative}
-.demo-game .demo-symbol{font-size:58px;text-shadow:0 2px 25px #000}
-.demo-game h3{font-size:22px;color:#ffe1a1;margin:6px 0 2px}
-.demo-game p{max-width:285px;text-align:center;color:#ede0c7;font-size:13px;line-height:1.8;padding:0 12px}
-.demo-play{border:1px solid #ffe2a0;background:linear-gradient(105deg,#f8e3a9,#d8a747);color:#261808;border-radius:9px;padding:12px 24px;font-weight:800;cursor:pointer}
-.demo-panel{border:1px solid #5c4b30;border-radius:13px;background:#111716;padding:18px;display:flex;flex-direction:column;gap:15px}
-.demo-toolbar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
-.demo-tool{border:1px solid #886a37;background:#171c1a;border-radius:9px;color:#f6dd9e;min-height:64px;padding:9px 5px;font-weight:800;font-size:14px;cursor:pointer}
-.demo-tool[aria-pressed="true"]{background:linear-gradient(125deg,#f9e0a4,#cf9a42);color:#231708;border-color:#f6d78d}
-.demo-tool:disabled{opacity:.5;cursor:not-allowed}
-.demo-screen{background:#0a1110;border:1px solid #3d4d42;border-radius:12px;min-height:185px;padding:18px;display:flex;flex-direction:column;gap:10px}
-.demo-screen h3{font-size:19px;color:#f9d78a;margin:0}
-.demo-screen p{color:#d6d1c5;margin:0;line-height:1.8;font-size:14px}
-.demo-rooms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px}
-.demo-room{border:1px solid #665130;border-radius:8px;padding:10px 3px;text-align:center;color:#f0d6a1;background:#19201c;font-size:13px}
-.demo-kpis{display:flex;gap:9px;flex-wrap:wrap}
-.demo-kpi{border:1px solid #665130;padding:8px 12px;border-radius:8px;color:#f0d7a4;font-size:13px}
-.demo-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.demo-reset{border:1px solid #785d36;background:transparent;color:#eed59c;border-radius:8px;padding:9px 13px;cursor:pointer}
-.demo-note{color:#a99b83;font-size:12px;line-height:1.7;margin:0}
-.demo-footer{margin-top:16px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.demo-footer a{display:inline-block;border:1px solid #a58044;border-radius:8px;color:#f6d99b;padding:11px 20px;font-weight:800;font-size:14px}
-@media(max-width:750px){.demo-zone{padding:43px 12px}.oracle-demo{padding:12px}.demo-content{grid-template-columns:1fr}.demo-game{min-height:300px}.demo-panel{padding:12px}.demo-tool{font-size:13px;min-height:57px}.demo-screen{min-height:165px}.demo-top strong{font-size:18px}}
+/* 首頁手機互動模擬器：隔離樣式，不影響網站其他功能 */
+.demo-zone{padding:58px 14px 68px;border-block:1px solid #5a4220;background:radial-gradient(ellipse at top,#302210 0%,#100f0c 60%,#080808 100%)}
+.demo-zone .section-sub{max-width:700px;margin-inline:auto}
+.oracle-demo{max-width:1020px;margin:auto;padding:19px 18px 23px;border:1px solid #8a662d;border-radius:18px;background:linear-gradient(155deg,#171713,#0b0b0a);box-shadow:0 16px 36px #0009;color:#f2dfb7}
+.demo-top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:15px}
+.demo-top strong{font-size:18px;color:#ffe3a6}.demo-tag{border:1px solid #6f582e;padding:6px 10px;border-radius:25px;color:#e7c989;font-size:12px}
+.demo-stage{display:grid;grid-template-columns:minmax(0,370px) minmax(0,1fr);align-items:center;gap:28px;justify-content:center}
+.demo-phone{position:relative;isolation:isolate;width:100%;max-width:370px;aspect-ratio:9/17.9;margin:auto;border:5px solid #d5a957;border-radius:33px;padding:9px;background:#080908;box-shadow:0 0 0 2px #4b361c,0 12px 32px #000c, inset 0 0 12px #d8a94870;overflow:hidden}
+.demo-phone::before{content:"";position:absolute;top:7px;left:36%;right:36%;height:13px;border-radius:0 0 14px 14px;background:#050606;z-index:5}
+.demo-phone-screen{height:100%;overflow:hidden;position:relative;border-radius:23px;background:radial-gradient(circle at 50% 18%,#48311e,#10121a 58%,#080b0f 100%);border:1px solid #76582a}
+.demo-phone-head{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:20px 13px 7px;border-bottom:1px solid #785e2f;background:#090a0bcc;gap:5px}
+.demo-phone-head strong{color:#ffe5a8;font-size:14px}.demo-phone-head span{font-size:10px;color:#e3c586}
+.demo-jackpot{padding:8px 5px 5px;display:grid;grid-template-columns:repeat(4,1fr);gap:3px;text-align:center;background:linear-gradient(90deg,#221332,#0e1236)}
+.demo-jackpot b{font-size:9px;color:#f7d58b;display:block}.demo-jackpot small{font-size:11px;color:#ffffff}
+.demo-slot-scene{position:relative;height:53%;display:flex;flex-direction:column;justify-content:space-evenly;padding:10px 8px 8px;background:linear-gradient(#1c192044,#120b13ac),url('https://www.atg-games.com/storm-of-seth-2-awakening/zh-tw/game_icon.png') center 22% / cover}
+.demo-slot-brand{text-align:center;background:#100c16d9;border:1px solid #b48a4a;border-radius:22px;padding:6px 4px;margin:0 19px;color:#ecca83;font-size:12px;font-weight:800}
+.demo-reels{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:3px;height:70%;padding:5px;border:2px solid #c29649;border-radius:10px;background:#110e20db;box-shadow:inset 0 0 13px #000}
+.demo-reel{display:flex;align-items:center;justify-content:center;font-size:clamp(20px,3.6vw,32px);background:radial-gradient(circle,#302143,#111123);border:1px solid #6d4c41;border-radius:5px;text-shadow:0 2px 3px #000}
+.demo-reels.is-spinning .demo-reel{animation:oracle-reel .22s linear infinite alternate}@keyframes oracle-reel{from{filter:blur(0);transform:translateY(-5px)}to{filter:blur(2px);transform:translateY(5px)}}
+.demo-game-controls{height:30%;background:linear-gradient(#1a1322,#11101b);border-top:2px solid #ae8645;display:flex;flex-direction:column;align-items:center;justify-content:space-around;gap:7px;padding:8px}
+.demo-game-money{display:flex;width:100%;justify-content:space-between;gap:4px;color:#f5d99c;font-size:11px;border:1px solid #68532d;border-radius:8px;padding:7px 6px}
+.demo-spin{width:69px;height:69px;border-radius:50%;border:3px solid #f7d285;background:radial-gradient(circle at 35% 25%,#9a6ed0,#54258d 58%,#251235);color:#f5dba5;font-size:27px;cursor:pointer;box-shadow:0 0 10px #f3bc65a8}
+.demo-spin:disabled{opacity:.5;cursor:default}
+.demo-spin-caption{font-size:10px;color:#baae9e;text-align:center}
+.demo-overlay{position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;background:linear-gradient(#08090bd9,#10121de8);padding:24px}
+.demo-overlay[hidden]{display:none}
+.demo-overlay .logo{font-size:44px;color:#f2ce81;text-shadow:0 0 18px #ce9b54}
+.demo-overlay h3{font-size:25px;color:#ffe0a2;margin:0}
+.demo-overlay p{margin:0;color:#d8c5a5;font-size:12px;line-height:1.7}
+.demo-play{border:1px solid #ffdfa0;background:linear-gradient(#ffe6ae,#c9963b);color:#2b1b09;border-radius:11px;padding:12px 21px;font-weight:900;cursor:pointer}
+.demo-assistant{position:absolute;z-index:4;left:9px;right:9px;top:73px;padding:7px;border:1px solid #b48c4d;border-radius:10px;background:#070b0be8;backdrop-filter:blur(4px)}
+.demo-assistant.to-bottom{top:auto;bottom:104px}
+.demo-assistant-title{font-size:10px;color:#f5d28a;margin-bottom:6px;display:flex;justify-content:space-between}
+.demo-toolbar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+.demo-tool{font-size:10px;color:#f3dba5;background:#18201e;border:1px solid #795e34;border-radius:7px;min-height:33px;padding:5px 2px;cursor:pointer}
+.demo-tool[aria-pressed=true]{background:linear-gradient(#ffe7b0,#c79541);color:#211606;font-weight:800}
+.demo-drawer{position:absolute;z-index:7;left:12px;right:12px;bottom:17px;max-height:51%;overflow:auto;border:1px solid #d2a751;border-radius:13px;background:#0b1212f2;box-shadow:0 5px 25px #000c;padding:13px 13px 15px}
+.demo-drawer[hidden]{display:none}.demo-drawer-head{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.demo-drawer h3{color:#ffe0a2;font-size:17px;margin:0}.demo-drawer p{color:#e5dcc8;font-size:12px;line-height:1.65;margin:10px 0}
+.demo-close{border:1px solid #7c6134;color:#ffdc96;background:#1d211d;border-radius:6px;padding:2px 8px;cursor:pointer}
+.demo-kpis{display:flex;flex-wrap:wrap;gap:5px}.demo-kpi{border:1px solid #6f5b3b;border-radius:7px;padding:6px 8px;font-size:11px;color:#f5d398;background:#1b221e}
+.demo-room-list{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}.demo-room{cursor:pointer;background:#202722;border:1px solid #836638;color:#f4dbad;padding:9px 6px;border-radius:7px;font-size:11px}
+.demo-room.is-selected{background:#9b743b;color:#100c05}
+.demo-instructions{display:flex;flex-direction:column;gap:14px;justify-content:center;min-width:0}
+.demo-instructions h3{font-size:26px;color:#ffdc92;margin:0}
+.demo-instructions p{color:#ddc9a4;line-height:1.8;font-size:15px;margin:0}
+.demo-feature-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.demo-feature-list div{border:1px solid #695332;border-radius:11px;padding:14px 9px;color:#f6dba8;font-size:13px;background:#1b211c}
+.demo-reset{align-self:flex-start;padding:10px 15px;border-radius:8px;border:1px solid #b08748;color:#f9dc9c;background:#252017;cursor:pointer}
+.demo-note{color:#b5a384!important;font-size:12px!important;line-height:1.6!important}
+.demo-footer{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:19px}
+.demo-footer a{padding:10px 18px;border:1px solid #ad884c;color:#f8d99d;border-radius:9px;font-size:14px;font-weight:800}
+@media(max-width:740px){.demo-zone{padding:35px 12px}.oracle-demo{padding:12px}.demo-stage{grid-template-columns:1fr;gap:20px}.demo-phone{max-width:340px}.demo-instructions h3{font-size:21px}.demo-feature-list{gap:7px}.demo-feature-list div{padding:9px;font-size:12px}.demo-assistant{top:66px}.demo-reel{font-size:25px}}
+@media(prefers-reduced-motion:reduce){.demo-reels.is-spinning .demo-reel{animation:none}}
