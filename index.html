@@ -348,11 +348,12 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
 .download-card .apple-device-icon{display:flex!important;align-items:center!important;justify-content:center!important;padding:7px!important;overflow:hidden;background:radial-gradient(circle,#342c27,#130f0b 75%)}
 .download-card .apple-device-icon img{display:block!important;width:auto!important;height:auto!important;max-width:88%!important;max-height:88%!important;object-fit:contain!important;object-position:center;flex-shrink:1;transform:translateY(-2px)}
 </style>
+<link rel="stylesheet" href="/assets/home-demo.css?v=1">
 </head>
 <body>
   <header>
     <a class="logo" href="#home"><img class="logo-app-icon" src="https://xinyao-ai.github.io/xinyao-ai/icon-192.png" alt="" width="40" height="40" decoding="async"> <span>賽特神諭</span></a>
-    <button class="mobile-menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="展開網站選單"><span></span><span></span><span></span></button><nav class="nav" id="primary-nav"><a href="#features">核心功能</a><a href="#games">支援遊戲</a><a href="/guides/">攻略教學</a><a href="/reviews/">玩家評價</a><a href="/assistant/">神諭助手</a><a href="#guide">新手教學</a><a href="#download">下載專區</a><a href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer">啟動系統</a></nav>
+    <button class="mobile-menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="展開網站選單"><span></span><span></span><span></span></button><nav class="nav" id="primary-nav"><a href="#try-demo">免費體驗</a><a href="#features">核心功能</a><a href="#games">支援遊戲</a><a href="/guides/">攻略教學</a><a href="/reviews/">玩家評價</a><a href="/assistant/">神諭助手</a><a href="#guide">新手教學</a><a href="#download">下載專區</a><a href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer">啟動系統</a></nav>
   </header>
   <main>
     <div class="hero" id="home"><div class="hero-content">
@@ -367,6 +368,41 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
       <a href="#download"><span aria-hidden="true">⬇</span><strong>下載專區</strong><small>開始使用</small></a>
     </div>
     </div></div>
+
+    <section class="demo-zone" id="try-demo" aria-labelledby="demo-title">
+      <h2 class="section-title" id="demo-title">免費互動體驗｜賽特神諭助手</h2>
+      <p class="section-sub">不必註冊，直接操作示範版六格助手，了解全房掃描、盤面觀察等功能如何呈現。</p>
+      <div class="oracle-demo" id="oracleDemo">
+        <div class="demo-top"><strong>SETH ORACLE ✦ 互動展示</strong><span class="demo-tag">教學示範 · 非真實遊戲</span></div>
+        <div class="demo-content">
+          <div class="demo-game">
+            <span class="demo-symbol" aria-hidden="true">𓂀</span>
+            <h3>賽特神諭模擬體驗</h3>
+            <p>免安裝、不需登入。點擊開始，試操作助手功能。</p>
+            <button type="button" class="demo-play" id="demoStart">▶ 開始免費體驗</button>
+          </div>
+          <div class="demo-panel">
+            <div class="demo-toolbar" aria-label="六格助手功能">
+              <button type="button" class="demo-tool" data-demo-tool="data" aria-pressed="false" disabled>📋 資料</button>
+              <button type="button" class="demo-tool" data-demo-tool="speed" aria-pressed="false" disabled>🚀 極速</button>
+              <button type="button" class="demo-tool" data-demo-tool="board" aria-pressed="false" disabled>🎯 盤面</button>
+              <button type="button" class="demo-tool" data-demo-tool="rooms" aria-pressed="false" disabled>🏠 全房</button>
+              <button type="button" class="demo-tool" data-demo-tool="result" aria-pressed="false" disabled>💎 結果</button>
+              <button type="button" class="demo-tool" data-demo-tool="switch" aria-pressed="false" disabled>↔️ 換邊</button>
+            </div>
+            <div class="demo-screen" role="status" aria-live="polite">
+              <h3 id="demoHeading">準備開始體驗</h3>
+              <p id="demoDetails">按左側「開始免費體驗」，再點六個功能按鈕試操作。</p>
+              <div id="demoStats"></div>
+            </div>
+            <div class="demo-actions"><button type="button" id="demoReset" class="demo-reset">↻ 重新體驗</button><span class="demo-tag">不使用會員帳號</span></div>
+            <p class="demo-note">示範數據不連接 ATG 實際遊戲、不代表中獎機率或下輪結果，也不進行投注。</p>
+          </div>
+        </div>
+        <div class="demo-footer"><a href="#download">下載賽特神諭 ↗</a><a href="/assistant/">了解助手功能 ↗</a></div>
+      </div>
+    </section>
+
     <section id="features" class="feature-section">
       <h2 class="section-title">核心功能</h2>
       <p class="section-sub">了解 ATG 電子遊戲全房掃描、盤面監測與資料觀察等核心功能；左右滑動查看更多，點選卡片即可閱讀完整教學。</p>
@@ -542,5 +578,5 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
     });
   });
 })();
-</script></body>
+</script><script src="/assets/home-demo.js?v=1" defer></script></body>
 </html>
