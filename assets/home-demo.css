@@ -1,0 +1,33 @@
+
+/* 賽特神諭首頁互動體驗：與原功能隔離 */
+.demo-zone{background:radial-gradient(ellipse at 50% 0,#291d0e 0,#0a0908 68%);border-block:1px solid #49351d;padding:64px 18px}
+.demo-zone .section-sub{max-width:740px}
+.oracle-demo{max-width:1020px;margin:0 auto;border:1px solid #946f38;border-radius:19px;background:linear-gradient(155deg,#171715,#0b0d0d);box-shadow:0 18px 45px #0008;padding:22px;overflow:hidden}
+.demo-top{display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;flex-wrap:wrap;margin-bottom:16px}
+.demo-top strong{font-size:20px;color:#ffe1a1}.demo-tag{font-size:12px;color:#f1d397;border:1px solid #72572d;border-radius:20px;padding:6px 11px}
+.demo-content{display:grid;grid-template-columns:minmax(240px,.88fr) minmax(300px,1.12fr);gap:18px;text-align:left}
+.demo-game{border:1px solid #72542d;border-radius:13px;min-height:420px;position:relative;overflow:hidden;background:linear-gradient(#08080822,#080808cc),url('https://www.atg-games.com/storm-of-seth-2-awakening/zh-tw/game_icon.png') center/cover,#161118;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.demo-game::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#090b0b 3%,transparent 42%);pointer-events:none}
+.demo-game>*{position:relative}
+.demo-game .demo-symbol{font-size:58px;text-shadow:0 2px 25px #000}
+.demo-game h3{font-size:22px;color:#ffe1a1;margin:6px 0 2px}
+.demo-game p{max-width:285px;text-align:center;color:#ede0c7;font-size:13px;line-height:1.8;padding:0 12px}
+.demo-play{border:1px solid #ffe2a0;background:linear-gradient(105deg,#f8e3a9,#d8a747);color:#261808;border-radius:9px;padding:12px 24px;font-weight:800;cursor:pointer}
+.demo-panel{border:1px solid #5c4b30;border-radius:13px;background:#111716;padding:18px;display:flex;flex-direction:column;gap:15px}
+.demo-toolbar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.demo-tool{border:1px solid #886a37;background:#171c1a;border-radius:9px;color:#f6dd9e;min-height:64px;padding:9px 5px;font-weight:800;font-size:14px;cursor:pointer}
+.demo-tool[aria-pressed="true"]{background:linear-gradient(125deg,#f9e0a4,#cf9a42);color:#231708;border-color:#f6d78d}
+.demo-tool:disabled{opacity:.5;cursor:not-allowed}
+.demo-screen{background:#0a1110;border:1px solid #3d4d42;border-radius:12px;min-height:185px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.demo-screen h3{font-size:19px;color:#f9d78a;margin:0}
+.demo-screen p{color:#d6d1c5;margin:0;line-height:1.8;font-size:14px}
+.demo-rooms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px}
+.demo-room{border:1px solid #665130;border-radius:8px;padding:10px 3px;text-align:center;color:#f0d6a1;background:#19201c;font-size:13px}
+.demo-kpis{display:flex;gap:9px;flex-wrap:wrap}
+.demo-kpi{border:1px solid #665130;padding:8px 12px;border-radius:8px;color:#f0d7a4;font-size:13px}
+.demo-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.demo-reset{border:1px solid #785d36;background:transparent;color:#eed59c;border-radius:8px;padding:9px 13px;cursor:pointer}
+.demo-note{color:#a99b83;font-size:12px;line-height:1.7;margin:0}
+.demo-footer{margin-top:16px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.demo-footer a{display:inline-block;border:1px solid #a58044;border-radius:8px;color:#f6d99b;padding:11px 20px;font-weight:800;font-size:14px}
+@media(max-width:750px){.demo-zone{padding:43px 12px}.oracle-demo{padding:12px}.demo-content{grid-template-columns:1fr}.demo-game{min-height:300px}.demo-panel{padding:12px}.demo-tool{font-size:13px;min-height:57px}.demo-screen{min-height:165px}.demo-top strong{font-size:18px}}
