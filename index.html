@@ -348,7 +348,7 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
 .download-card .apple-device-icon{display:flex!important;align-items:center!important;justify-content:center!important;padding:7px!important;overflow:hidden;background:radial-gradient(circle,#342c27,#130f0b 75%)}
 .download-card .apple-device-icon img{display:block!important;width:auto!important;height:auto!important;max-width:88%!important;max-height:88%!important;object-fit:contain!important;object-position:center;flex-shrink:1;transform:translateY(-2px)}
 </style>
-<link rel="stylesheet" href="/assets/home-demo.css?v=1">
+<link rel="stylesheet" href="/assets/home-demo.css?v=2">
 </head>
 <body>
   <header>
@@ -370,36 +370,65 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
     </div></div>
 
     <section class="demo-zone" id="try-demo" aria-labelledby="demo-title">
-      <h2 class="section-title" id="demo-title">免費互動體驗｜賽特神諭助手</h2>
-      <p class="section-sub">不必註冊，直接操作示範版六格助手，了解全房掃描、盤面觀察等功能如何呈現。</p>
+      <h2 class="section-title" id="demo-title">賽特神諭｜免費模擬體驗</h2>
+      <p class="section-sub">點擊啟動畫面，試試模擬旋轉、房間切換與六格助手。無需註冊、無需安裝。</p>
       <div class="oracle-demo" id="oracleDemo">
-        <div class="demo-top"><strong>SETH ORACLE ✦ 互動展示</strong><span class="demo-tag">教學示範 · 非真實遊戲</span></div>
-        <div class="demo-content">
-          <div class="demo-game">
-            <span class="demo-symbol" aria-hidden="true">𓂀</span>
-            <h3>賽特神諭模擬體驗</h3>
-            <p>免安裝、不需登入。點擊開始，試操作助手功能。</p>
-            <button type="button" class="demo-play" id="demoStart">▶ 開始免費體驗</button>
+        <div class="demo-top"><strong>✦ SETH ORACLE 互動體驗</strong><span class="demo-tag">模擬教學 · 非真實遊戲</span></div>
+        <div class="demo-stage">
+          <div class="demo-phone" aria-label="賽特神諭手機模擬器">
+            <div class="demo-phone-screen">
+              <div class="demo-phone-head"><strong>𓂀 賽特神諭</strong><span id="demoRoomIndicator">房號 A-018</span></div>
+              <div class="demo-jackpot"><span><b>GRAND</b><small>20,000</small></span><span><b>MAJOR</b><small>5,000</small></span><span><b>MINOR</b><small>1,000</small></span><span><b>MINI</b><small>200</small></span></div>
+              <div class="demo-slot-scene">
+                <div class="demo-slot-brand">戰神賽特 · 盤面模擬</div>
+                <div class="demo-reels" id="demoReels" aria-label="五欄三列模擬老虎機盤面">
+                  <span class="demo-reel">𓂀</span><span class="demo-reel">💎</span><span class="demo-reel">𓃭</span><span class="demo-reel">🪙</span><span class="demo-reel">☥</span>
+                  <span class="demo-reel">🔱</span><span class="demo-reel">🪲</span><span class="demo-reel">𓂀</span><span class="demo-reel">✦</span><span class="demo-reel">𓃭</span>
+                  <span class="demo-reel">🪙</span><span class="demo-reel">✦</span><span class="demo-reel">☥</span><span class="demo-reel">💎</span><span class="demo-reel">🔱</span>
+                </div>
+              </div>
+              <div class="demo-game-controls">
+                <div class="demo-game-money"><span>模擬餘額：—</span><span>投注：0</span><span>派彩：—</span></div>
+                <button type="button" class="demo-spin" id="demoSpin" disabled aria-label="模擬旋轉盤面">⟳</button>
+                <span class="demo-spin-caption" id="demoPlayStatus" aria-live="polite">等待開始體驗</span>
+              </div>
+              <div class="demo-assistant" id="demoAssistant" hidden>
+                <div class="demo-assistant-title"><span>✦ 賽特神諭 六格助手</span><span>DEMO</span></div>
+                <div class="demo-toolbar" aria-label="賽特神諭六格助手">
+                  <button type="button" class="demo-tool" data-demo-tool="data" aria-pressed="false">📋 資料</button>
+                  <button type="button" class="demo-tool" data-demo-tool="speed" aria-pressed="false">🚀 極速</button>
+                  <button type="button" class="demo-tool" data-demo-tool="board" aria-pressed="false">🎯 盤面</button>
+                  <button type="button" class="demo-tool" data-demo-tool="rooms" aria-pressed="false">🏠 全房</button>
+                  <button type="button" class="demo-tool" data-demo-tool="result" aria-pressed="false">💎 結果</button>
+                  <button type="button" class="demo-tool" data-demo-tool="switch" aria-pressed="false">↔️ 換邊</button>
+                </div>
+              </div>
+              <div class="demo-drawer" id="demoDrawer" hidden>
+                <div class="demo-drawer-head"><h3 id="demoDrawerTitle">示範資料</h3><button id="demoClose" class="demo-close" type="button" aria-label="關閉資訊視窗">✕</button></div>
+                <p id="demoDrawerText"></p><div id="demoDrawerStats"></div>
+              </div>
+              <div class="demo-overlay" id="demoOverlay">
+                <span class="logo" aria-hidden="true">𓂀</span>
+                <h3>賽特神諭</h3>
+                <p>免費互動模擬體驗</p>
+                <button type="button" class="demo-play" id="demoStart">▶ 點擊開始體驗</button>
+                <p>不用登入｜不連接真實遊戲</p>
+              </div>
+            </div>
           </div>
-          <div class="demo-panel">
-            <div class="demo-toolbar" aria-label="六格助手功能">
-              <button type="button" class="demo-tool" data-demo-tool="data" aria-pressed="false" disabled>📋 資料</button>
-              <button type="button" class="demo-tool" data-demo-tool="speed" aria-pressed="false" disabled>🚀 極速</button>
-              <button type="button" class="demo-tool" data-demo-tool="board" aria-pressed="false" disabled>🎯 盤面</button>
-              <button type="button" class="demo-tool" data-demo-tool="rooms" aria-pressed="false" disabled>🏠 全房</button>
-              <button type="button" class="demo-tool" data-demo-tool="result" aria-pressed="false" disabled>💎 結果</button>
-              <button type="button" class="demo-tool" data-demo-tool="switch" aria-pressed="false" disabled>↔️ 換邊</button>
+          <div class="demo-instructions">
+            <h3>真的可以點，操作看看 ✨</h3>
+            <p>跟著手機畫面操作：先點「開始體驗」，選擇示範房間、點老虎機旋轉，再打開六格助手功能。</p>
+            <div class="demo-feature-list">
+              <div>🏠 全房掃描與選房</div><div>🎯 盤面資訊展示</div>
+              <div>💎 結果介面展示</div><div>🚀 極速加速器</div>
+              <div>📋 資料觀察</div><div>↔️ 工具列換邊</div>
             </div>
-            <div class="demo-screen" role="status" aria-live="polite">
-              <h3 id="demoHeading">準備開始體驗</h3>
-              <p id="demoDetails">按左側「開始免費體驗」，再點六個功能按鈕試操作。</p>
-              <div id="demoStats"></div>
-            </div>
-            <div class="demo-actions"><button type="button" id="demoReset" class="demo-reset">↻ 重新體驗</button><span class="demo-tag">不使用會員帳號</span></div>
-            <p class="demo-note">示範數據不連接 ATG 實際遊戲、不代表中獎機率或下輪結果，也不進行投注。</p>
+            <button type="button" class="demo-reset" id="demoReset">↻ 重新開始體驗</button>
+            <p class="demo-note">此為獨立模擬介面，使用示例資料；不提供真實下注、派彩、預測或遊戲結果，不會連線 ATG 會員帳號。</p>
           </div>
         </div>
-        <div class="demo-footer"><a href="#download">下載賽特神諭 ↗</a><a href="/assistant/">了解助手功能 ↗</a></div>
+        <div class="demo-footer"><a href="#download">下載賽特神諭 ↗</a><a href="/assistant/">了解六格助手 ↗</a></div>
       </div>
     </section>
 
@@ -578,5 +607,5 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
     });
   });
 })();
-</script><script src="/assets/home-demo.js?v=1" defer></script></body>
+</script><script src="/assets/home-demo.js?v=2" defer></script></body>
 </html>
