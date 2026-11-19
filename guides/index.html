@@ -108,6 +108,18 @@ body.oak-subpage .container .toolbar{margin-bottom:14px!important}
  body.oak-subpage .container{padding-top:2px!important}
  body.oak-subpage .container .toolbar{gap:8px!important}
 }
+<style id="guide-hero-larger">
+/* Larger image without changing its aspect ratio or introducing extra vertical spacing */
+.guide-hero-image{overflow:visible}
+@media(max-width:700px){
+ body.oak-subpage .hero{overflow:hidden!important}
+ .guide-hero-image{width:100%!important;max-width:none!important}
+ .guide-hero-image img{width:100%!important;max-width:none!important;height:auto!important;transform:scale(1.13);transform-origin:center center}
+}
+@media(min-width:701px){
+ .guide-hero-image{max-width:1050px!important}
+}
+</style>
 </style>
 </head>
 <body class="oak-subpage">
