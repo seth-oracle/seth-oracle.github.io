@@ -435,13 +435,13 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
         <button class="homepage-banner-next" type="button" aria-label="下一張">›</button>
         <div class="homepage-banner-dots" id="homepageBannerDots"></div>
       </div>
-      <div class="hero-core-graphic"><img src="/e295598e-659d-41fe-9f6e-396e2852c031.png" alt="賽特神諭核心功能：數據、極速、訊號、掃描、劇透、管控" decoding="async"></div>
+      <div class="hero-core-graphic"><img loading="lazy" src="/e295598e-659d-41fe-9f6e-396e2852c031.png" alt="賽特神諭核心功能：數據、極速、訊號、掃描、劇透、管控" decoding="async"></div>
       <div class="actions"><a class="btn primary" href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer">立即啟動</a><a class="btn secondary" href="#features">探索功能</a></div>
     <div class="mobile-quick-links image-shortcuts" aria-label="熱門功能入口">
-      <a href="#games" aria-label="支援遊戲"><img src="/240e701f-d39d-4cec-9d9b-57cfdec31ab1.png" alt="支援遊戲" loading="eager" decoding="async"></a>
-      <a href="#features" aria-label="核心功能"><img src="/f8ef6f6f-a925-4be0-987a-06077507e722.png" alt="核心功能" loading="eager" decoding="async"></a>
-      <a href="/guides/" aria-label="攻略教學"><img src="/204310cc-3c5e-41d5-a4e5-0e5c3faa4843.png" alt="攻略教學" loading="eager" decoding="async"></a>
-      <a href="#download" aria-label="下載專區"><img src="/b2e7b138-fe3a-4ee3-9537-504dad01571e.png" alt="下載專區" loading="eager" decoding="async"></a>
+      <a href="#games" aria-label="支援遊戲"><img src="/240e701f-d39d-4cec-9d9b-57cfdec31ab1.png" alt="支援遊戲" loading="lazy" decoding="async"></a>
+      <a href="#features" aria-label="核心功能"><img src="/f8ef6f6f-a925-4be0-987a-06077507e722.png" alt="核心功能" loading="lazy" decoding="async"></a>
+      <a href="/guides/" aria-label="攻略教學"><img src="/204310cc-3c5e-41d5-a4e5-0e5c3faa4843.png" alt="攻略教學" loading="lazy" decoding="async"></a>
+      <a href="#download" aria-label="下載專區"><img src="/b2e7b138-fe3a-4ee3-9537-504dad01571e.png" alt="下載專區" loading="lazy" decoding="async"></a>
     </div>
     </div></div>
 
@@ -620,25 +620,44 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
 </script>
 <script id="homepage-banner-carousel-script">
 (()=>{
+ 'use strict';
  const root=document.getElementById('homepageBanner');
  if(!root)return;
  const stage=document.getElementById('homepageBannerStage'),dots=document.getElementById('homepageBannerDots');
- let slides=[],idx=0,intervalMs=6500,changed=Date.now(),startX=null;
+ let slides=[],idx=0,intervalMs=6500,changed=Date.now(),startX=null,lastConfig='';
  const validUrl=url=>typeof url==='string'&&(/^(https?:\/\/)/i.test(url)||/^\/(?!\/)/.test(url));
+ function loadSlide(i){
+  if(!slides.length)return;
+  const node=stage.children[(i+slides.length)%slides.length];
+  if(!node||node.dataset.loaded==='true')return;
+  const picture=node.querySelector('picture'),img=picture?.querySelector('img');
+  const mobile=slides[(i+slides.length)%slides.length].mobile;
+  if(validUrl(mobile)){
+   const source=document.createElement('source');source.media='(max-width:700px)';source.srcset=mobile;
+   picture.insertBefore(source,img);
+  }
+  img.src=slides[(i+slides.length)%slides.length].desktop;
+  node.dataset.loaded='true';
+ }
  function show(n){
   if(!slides.length)return;
   idx=(n+slides.length)%slides.length;
+  loadSlide(idx);
   [...stage.children].forEach((el,i)=>{el.classList.toggle('active',i===idx);el.setAttribute('aria-hidden',String(i!==idx));});
   [...dots.children].forEach((el,i)=>{el.classList.toggle('active',i===idx);el.setAttribute('aria-current',i===idx?'true':'false');});
   changed=Date.now();
+  // Preload only the next banner during idle time, not all at once.
+  if(slides.length>1){if('requestIdleCallback' in window)requestIdleCallback(()=>loadSlide(idx+1),{timeout:3500});else setTimeout(()=>loadSlide(idx+1),1200);}
  }
  function render(items){
   slides=items;idx=0;stage.replaceChildren();dots.replaceChildren();root.hidden=!items.length;root.classList.toggle('single',items.length<2);
   items.forEach((item,i)=>{
    const slide=document.createElement('div');slide.className='homepage-banner-slide';
    const pic=document.createElement('picture');
-   if(validUrl(item.mobile)){const source=document.createElement('source');source.media='(max-width:700px)';source.srcset=item.mobile;pic.appendChild(source);}
-   const img=document.createElement('img');img.src=item.desktop;img.alt=item.title||'賽特神諭輪播公告 '+(i+1);img.loading=i===0?'eager':'lazy';img.decoding='async';pic.appendChild(img);
+   const img=document.createElement('img');img.alt=item.title||'賽特神諭輪播公告 '+(i+1);
+   img.loading=i===0?'eager':'lazy';img.decoding='async';
+   if(i===0)img.fetchPriority='high';
+   pic.appendChild(img);
    if(validUrl(item.link)){const a=document.createElement('a');a.href=item.link;a.target='_blank';a.rel='noopener noreferrer';a.setAttribute('aria-label',item.title||'查看輪播公告 '+(i+1));a.appendChild(pic);slide.appendChild(a);}
    else slide.appendChild(pic);
    stage.appendChild(slide);
@@ -648,11 +667,12 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
  }
  async function load(){
   try{
-   const response=await fetch('/homepage-carousel.json?t='+Date.now(),{cache:'no-store'});
+   const response=await fetch('/homepage-carousel.json',{cache:'no-cache'});
    if(!response.ok)throw Error('輪播設定讀取失敗');
-   const cfg=await response.json();intervalMs=Math.max(2500,Number(cfg.intervalMs)||6500);
-   const items=(Array.isArray(cfg.slides)?cfg.slides:[]).filter(x=>x.enabled!==false&&validUrl(x.desktop));
-   render(items);
+   const cfg=await response.json();const items=(Array.isArray(cfg.slides)?cfg.slides:[]).filter(x=>x.enabled!==false&&validUrl(x.desktop));
+   const signature=JSON.stringify(items);
+   intervalMs=Math.max(2500,Number(cfg.intervalMs)||6500);
+   if(signature!==lastConfig){lastConfig=signature;render(items);}
   }catch(err){console.warn('首頁輪播:',err);if(!slides.length)root.hidden=true;}
  }
  root.querySelector('.homepage-banner-prev').addEventListener('click',()=>show(idx-1));
@@ -661,7 +681,8 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
  root.addEventListener('touchstart',e=>{startX=e.changedTouches[0]?.clientX??null;},{passive:true});
  root.addEventListener('touchend',e=>{if(startX===null)return;let dist=(e.changedTouches[0]?.clientX??startX)-startX;startX=null;if(Math.abs(dist)>40)show(idx+(dist<0?1:-1));},{passive:true});
  setInterval(()=>{if(!document.hidden&&slides.length>1&&Date.now()-changed>=intervalMs)show(idx+1);},1000);
- load();setInterval(()=>{if(!document.hidden)load();},300000);
+ load();
+ setInterval(()=>{if(!document.hidden)load();},300000);
 })();
 </script>
 </body>
