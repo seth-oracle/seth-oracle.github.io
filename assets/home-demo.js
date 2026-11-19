@@ -5,6 +5,11 @@ const $=id=>document.getElementById(id);
 const overlay=$("demoOverlay"),start=$("demoStart"),spin=$("demoSpin"),reset=$("demoReset"),reels=$("demoReels"),drawer=$("demoDrawer"),drawerTitle=$("demoDrawerTitle"),drawerText=$("demoDrawerText"),drawerStats=$("demoDrawerStats"),assistant=$("demoAssistant"),roomIndicator=$("demoRoomIndicator"),status=$("demoPlayStatus"),workflow=$("demoWorkflow"),gameSelect=$("demoGameSelect"),roomFlow=$("demoRoomFlow"),roomResults=$("demoRoomResults"),scan=$("demoScan"),scanStatus=$("demoScanStatus"),stepTitle=$("demoStepTitle"),liveGame=$("demoLiveGame"),gameBrand=$("demoGameBrand");
 const symbols=["𓂀","☥","💎","🔱","🪙","𓃭","🪲","✦"];
 const buttons=[...root.querySelectorAll("[data-demo-tool]")];
+let demoZoom=100;
+function setDemoZoom(value){demoZoom=Math.max(75,Math.min(115,value));assistant.style.setProperty("--demo-zoom",String(demoZoom/100));$("demoZoomValue").textContent=demoZoom+"%";}
+$("demoZoomOut").addEventListener("click",()=>setDemoZoom(demoZoom-10));
+$("demoZoomIn").addEventListener("click",()=>setDemoZoom(demoZoom+10));
+
 let room="A-018",game="",round=0,spinning=false,position=false,scanned=false,demoSpeed=1;
 function randomSymbols(){for(const cell of reels.children)cell.textContent=symbols[Math.floor(Math.random()*symbols.length)];}
 function closeDrawer(){drawer.hidden=true;buttons.forEach(b=>b.setAttribute("aria-pressed","false"));}
