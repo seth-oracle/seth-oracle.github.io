@@ -99,3 +99,24 @@ body.oak-subpage{
  .oak-subpage .masthead{padding:38px 16px 53px!important}
  .oak-subpage .wrap{margin:-17px auto 0!important}
 }
+
+
+/* Auxiliary subpages: game status, review moderation, and admin landing */
+.oak-subpage header a,.oak-subpage header nav,.oak-subpage header nav a{color:#603d1e!important}
+.oak-subpage .panel h2,.oak-subpage .empty b,.oak-subpage .hero small{color:#70441d!important}
+.oak-subpage .game,.oak-subpage .summary div{
+ background:#fff3dcf0!important;color:#5f3d1c!important;border:1px solid #aa8353!important;
+}
+.oak-subpage .game.on,.oak-subpage .game:hover{background:linear-gradient(120deg,#f5dfb6,#c59658)!important;color:#39230f!important}
+.oak-subpage .summary label,.oak-subpage .summary strong,.oak-subpage .status,
+.oak-subpage .status strong,.oak-subpage .meta{color:#6b4723!important}
+.oak-subpage .actions a,.oak-subpage .button,.oak-subpage button:not(.review-photo-controls button):not(.slide-controls button){
+ color:#503318;background:linear-gradient(120deg,#f5e1bc,#cfaa72);border-color:#ad8757;
+}
+.oak-subpage .button.alt,.oak-subpage button.alt{
+ color:#60401f!important;background:#fff0d7!important;border-color:#ac875a!important;
+}
+.oak-subpage button.warn{background:#a45545!important;color:#fff9ef!important;border-color:#863a2f!important}
+.oak-subpage .steps,.oak-subpage .steps li,.oak-subpage .panel p,.oak-subpage main p{color:#4e361f}
+.oak-subpage .note,.oak-subpage .notice{background:#f5e5c9!important;color:#5b4025!important}
+.oak-subpage .gallery img{background:#ead7bb}
