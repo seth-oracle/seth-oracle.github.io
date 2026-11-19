@@ -84,3 +84,22 @@
 .oracle-signal-bars span{flex:1;min-width:0;border-radius:4px 4px 0 0;background:linear-gradient(#ffe4a6,#aa7733)}
 .oracle-result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:8px}
 .oracle-result-grid div{border:1px solid #97763e;border-radius:8px;padding:12px 0;text-align:center;color:#ecd299;font-size:20px;font-weight:800;background:#1c201c}
+
+/* 與正式「資料」視窗對齊的六格資訊卡 */
+.demo-drawer.oracle-data-mode{bottom:13px;max-height:70%;border-color:#a17a43;background:#1a1420f4;border-radius:16px;padding:12px 10px;box-shadow:0 10px 30px #000c}
+.oracle-data-mode .demo-drawer-head{margin:0 0 4px}
+.oracle-data-mode .demo-drawer-head h3{font-size:19px;color:#ffcf77;font-weight:900;letter-spacing:.03em}
+.oracle-data-mode #demoDrawerText{font-size:11px;color:#cfc6c8;margin:3px 0 11px}
+.oracle-data-mode #demoDrawerText::first-letter{color:#5bd59b}
+.oracle-data-mode #demoDrawerStats{display:flex;flex-direction:column;gap:9px}
+.oracle-mini-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;background:#292331;border:1px solid #554557;border-radius:12px;padding:6px}
+.oracle-mini-tile{min-height:58px;border-radius:8px;background:#322b39;padding:7px 5px;min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:3px}
+.oracle-mini-tile span{font-size:10px;line-height:1.2;color:#d3cbd6;white-space:normal}
+.oracle-mini-tile strong{font-size:17px;font-weight:900;color:#fff;line-height:1.15}
+.oracle-stop-button{border-radius:12px;border:2px solid #ffe5a9;background:linear-gradient(180deg,#ffecb1 0%,#e3b74f 48%,#bc8426 100%);color:#261a0a;min-height:47px;font-weight:900;font-size:16px;box-shadow:0 0 0 3px #8b662e70;cursor:pointer}
+.oracle-stop-settings{border:1px solid #735737;background:#17191a;border-radius:9px;padding:9px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.oracle-stop-settings[hidden]{display:none}
+.oracle-stop-settings p{grid-column:1/-1;font-size:10px!important;margin:0!important}
+.oracle-stop-settings label{font-size:10px;color:#f0d6a4}
+.oracle-stop-settings input{box-sizing:border-box;width:100%;margin-top:3px;background:#0a0d0d;color:#ffe5aa;border:1px solid #8b7046;border-radius:5px;padding:6px;font-size:12px}
+.oracle-data-footnote{font-size:9px;color:#a99b9b;text-align:center;line-height:1.45}
