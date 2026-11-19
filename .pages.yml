@@ -138,6 +138,47 @@ content:
           switcher: true
           rename: true
 
+  - name: homepage_carousel
+    label: 首頁輪播圖管理
+    type: file
+    path: homepage-carousel.json
+    format: json
+    fields:
+      - name: intervalMs
+        label: 自動輪播間隔（毫秒）
+        type: number
+        default: 6500
+        description: 6500 代表 6.5 秒，建議 4000～10000
+      - name: slides
+        label: 首頁輪播圖片（可拖曳調整順序）
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.title}（第 {index} 張）"
+        fields:
+          - name: title
+            label: 圖片名稱
+            type: string
+            description: 僅供後台辨識，不會顯示在圖片上
+          - name: desktop
+            label: 電腦版圖片
+            type: image
+            required: true
+            description: 可從媒體庫選圖或直接上傳，建議橫式 2.9:1
+          - name: mobile
+            label: 手機版圖片（選填）
+            type: image
+            description: 留空時自動使用電腦版圖片；建議橫式 2.45:1
+          - name: link
+            label: 點擊圖片後開啟的網址
+            type: string
+            description: 貼上完整 https:// 網址；不填則圖片不跳轉
+          - name: enabled
+            label: 啟用這張輪播圖
+            type: boolean
+            default: true
+
   - name: reviews
     label: 玩家評價管理
     type: collection
