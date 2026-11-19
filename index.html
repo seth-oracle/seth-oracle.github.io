@@ -348,7 +348,7 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
 .download-card .apple-device-icon{display:flex!important;align-items:center!important;justify-content:center!important;padding:7px!important;overflow:hidden;background:radial-gradient(circle,#342c27,#130f0b 75%)}
 .download-card .apple-device-icon img{display:block!important;width:auto!important;height:auto!important;max-width:88%!important;max-height:88%!important;object-fit:contain!important;object-position:center;flex-shrink:1;transform:translateY(-2px)}
 </style>
-<link rel="stylesheet" href="/assets/home-demo.css?v=2">
+<link rel="stylesheet" href="/assets/home-demo.css?v=3">
 </head>
 <body>
   <header>
@@ -371,26 +371,41 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
 
     <section class="demo-zone" id="try-demo" aria-labelledby="demo-title">
       <h2 class="section-title" id="demo-title">賽特神諭｜免費模擬體驗</h2>
-      <p class="section-sub">點擊啟動畫面，試試模擬旋轉、房間切換與六格助手。無需註冊、無需安裝。</p>
+      <p class="section-sub">體驗賽特神諭的選遊戲、全房掃描、進房及六格助手操作流程。無需註冊、無需安裝。</p>
       <div class="oracle-demo" id="oracleDemo">
-        <div class="demo-top"><strong>✦ SETH ORACLE 互動體驗</strong><span class="demo-tag">模擬教學 · 非真實遊戲</span></div>
+        <div class="demo-top"><strong>✦ SETH ORACLE 互動體驗</strong><span class="demo-tag">操作流程展示 · 非真實遊戲</span></div>
         <div class="demo-stage">
           <div class="demo-phone" aria-label="賽特神諭手機模擬器">
             <div class="demo-phone-screen">
               <div class="demo-phone-head"><strong>𓂀 賽特神諭</strong><span id="demoRoomIndicator">房號 A-018</span></div>
-              <div class="demo-jackpot"><span><b>GRAND</b><small>20,000</small></span><span><b>MAJOR</b><small>5,000</small></span><span><b>MINOR</b><small>1,000</small></span><span><b>MINI</b><small>200</small></span></div>
-              <div class="demo-slot-scene">
-                <div class="demo-slot-brand">戰神賽特 · 盤面模擬</div>
-                <div class="demo-reels" id="demoReels" aria-label="五欄三列模擬老虎機盤面">
-                  <span class="demo-reel">𓂀</span><span class="demo-reel">💎</span><span class="demo-reel">𓃭</span><span class="demo-reel">🪙</span><span class="demo-reel">☥</span>
-                  <span class="demo-reel">🔱</span><span class="demo-reel">🪲</span><span class="demo-reel">𓂀</span><span class="demo-reel">✦</span><span class="demo-reel">𓃭</span>
-                  <span class="demo-reel">🪙</span><span class="demo-reel">✦</span><span class="demo-reel">☥</span><span class="demo-reel">💎</span><span class="demo-reel">🔱</span>
+              <div class="demo-workflow" id="demoWorkflow">
+                <div class="demo-workflow-title" id="demoStepTitle">選擇 ATG 遊戲</div>
+                <div class="demo-game-select" id="demoGameSelect">
+                  <button type="button" data-game="戰神賽特2" class="demo-game-choice"><img src="https://www.atg-games.com/storm-of-seth-2-awakening/zh-tw/game_icon.png" alt="" loading="lazy"><span>戰神賽特2</span></button>
+                  <button type="button" data-game="虎小妹" class="demo-game-choice"><img src="https://atg-games.com/_ipx/f_webp/tiger-girl/zh-tw/game_icon.png" alt="" loading="lazy"><span>虎小妹</span></button>
+                  <button type="button" data-game="戰神賽特1" class="demo-game-choice"><img src="https://www.atg-games.com/storm-of-seth/zh-tw/game_icon.png" alt="" loading="lazy"><span>戰神賽特1</span></button>
+                </div>
+                <div class="demo-room-flow" id="demoRoomFlow" hidden>
+                  <p id="demoScanStatus">準備掃描模擬房間</p>
+                  <button id="demoScan" type="button" class="demo-play">🔎 開始全房掃描</button>
+                  <div id="demoRoomResults" class="demo-room-list" hidden></div>
                 </div>
               </div>
-              <div class="demo-game-controls">
-                <div class="demo-game-money"><span>模擬餘額：—</span><span>投注：0</span><span>派彩：—</span></div>
-                <button type="button" class="demo-spin" id="demoSpin" disabled aria-label="模擬旋轉盤面">⟳</button>
-                <span class="demo-spin-caption" id="demoPlayStatus" aria-live="polite">等待開始體驗</span>
+              <div class="demo-live-game" id="demoLiveGame" hidden>
+                <div class="demo-jackpot"><span><b>GRAND</b><small>20,000</small></span><span><b>MAJOR</b><small>5,000</small></span><span><b>MINOR</b><small>1,000</small></span><span><b>MINI</b><small>200</small></span></div>
+                <div class="demo-slot-scene">
+                  <div class="demo-slot-brand" id="demoGameBrand">戰神賽特2 · 示範畫面</div>
+                  <div class="demo-reels" id="demoReels" aria-label="示範盤面">
+                    <span class="demo-reel">𓂀</span><span class="demo-reel">💎</span><span class="demo-reel">𓃭</span><span class="demo-reel">🪙</span><span class="demo-reel">☥</span>
+                    <span class="demo-reel">🔱</span><span class="demo-reel">🪲</span><span class="demo-reel">𓂀</span><span class="demo-reel">✦</span><span class="demo-reel">𓃭</span>
+                    <span class="demo-reel">🪙</span><span class="demo-reel">✦</span><span class="demo-reel">☥</span><span class="demo-reel">💎</span><span class="demo-reel">🔱</span>
+                  </div>
+                </div>
+                <div class="demo-game-controls">
+                  <div class="demo-game-money"><span>自動分數配置：示範</span><span>未連線</span></div>
+                  <button type="button" class="demo-spin" id="demoSpin" disabled aria-label="示範盤面切換">⟳</button>
+                  <span class="demo-spin-caption" id="demoPlayStatus" aria-live="polite">等待進房</span>
+                </div>
               </div>
               <div class="demo-assistant" id="demoAssistant" hidden>
                 <div class="demo-assistant-title"><span>✦ 賽特神諭 六格助手</span><span>DEMO</span></div>
@@ -418,7 +433,7 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
           </div>
           <div class="demo-instructions">
             <h3>真的可以點，操作看看 ✨</h3>
-            <p>跟著手機畫面操作：先點「開始體驗」，選擇示範房間、點老虎機旋轉，再打開六格助手功能。</p>
+            <p>跟著賽特神諭原本的操作順序：先選戰神賽特2、虎小妹或賽特1，再掃描房間、選房進入，最後體驗六格助手。</p>
             <div class="demo-feature-list">
               <div>🏠 全房掃描與選房</div><div>🎯 盤面資訊展示</div>
               <div>💎 結果介面展示</div><div>🚀 極速加速器</div>
@@ -607,5 +622,5 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
     });
   });
 })();
-</script><script src="/assets/home-demo.js?v=2" defer></script></body>
+</script><script src="/assets/home-demo.js?v=3" defer></script></body>
 </html>
