@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - ".github/workflows/optimize-homepage-images.yml"
+      - "index.html"
 permissions:
   contents: write
 jobs:
