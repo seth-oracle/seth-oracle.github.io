@@ -75,7 +75,7 @@ body.oak-subpage #demo.section{padding-top:18px!important}
 
 <div class="actions"><a class="btn" href="#demo">觀看功能展示</a><a class="btn alt" href="../#download">前往下載專區</a></div></section>
 <section class="section" id="demo"><h2 class="section-title">認識賽特神諭操作畫面</h2>
-<div class="demo-layout"><div class="demo-visual"><div class="phone-stage"><img class="demo-image" id="demoImage" src="./images/login.webp" alt="賽特神諭會員登入介面"></div>
+<div class="demo-layout"><div class="demo-visual"><div class="phone-stage"><img class="demo-image" id="demoImage" src="./images/assistant-demo-01.webp" alt="賽特神諭登入前支援遊戲與下載畫面" onerror="this.onerror=null;this.src='./images/login.webp'"></div>
 <div class="demo-bottom"><div class="demo-caption"><strong id="demoTitle">會員登入介面</strong><small id="demoDesc">實際會員登入頁面展示</small></div><div class="slide-controls"><button type="button" id="prevSlide" aria-label="上一張展示圖">‹</button><span id="slideCount" class="slide-count">1 / 6</span><button type="button" id="nextSlide" aria-label="下一張展示圖">›</button></div></div></div>
 <aside class="demo-aside"><span class="tag">SYSTEM OVERVIEW</span><h3>一個入口，整合常用功能</h3><p>先登入皇鼎會員帳號並完成裝置配對，再進入支援遊戲使用相應的輔助功能。</p>
 <ul class="demo-points"><li>集中管理支援遊戲入口</li><li>查看房間掃描與盤面資訊</li><li>整合加速與分數配置操作</li><li>依使用裝置選擇安裝方式</li></ul>
@@ -86,15 +86,15 @@ body.oak-subpage #demo.section{padding-top:18px!important}
 <a class="floating-line" href="https://lin.ee/sAuklWr" target="_blank" rel="noopener noreferrer"><b aria-hidden="true">LINE</b> 官方客服</a>
 <script>(function(){
 const slides=[
-{src:"./images/login.webp",title:"會員登入介面",desc:"使用皇鼎會員帳號登入賽特神諭",alt:"賽特神諭會員登入介面"},
-{src:"./images/games.webp",title:"選擇支援遊戲",desc:"從首頁選擇戰神賽特等支援的遊戲",alt:"賽特神諭遊戲選擇介面"},
+{src:"./images/assistant-demo-01.webp",fallback:"./images/login.webp",title:"登入前首頁介面",desc:"賽特神諭登入前畫面、支援遊戲與下載入口",alt:"賽特神諭登入前首頁介面"},
+{src:"./images/assistant-demo-02.webp",fallback:"./images/games.webp",title:"登入後選擇遊戲",desc:"會員登入後選擇支援的 ATG 遊戲",alt:"賽特神諭登入後遊戲選擇畫面"},
 {src:"./images/monitor.webp",title:"盤面監測畫面",desc:"查看支援遊戲的符號與近期盤面資訊",alt:"賽特神諭盤面監測實際畫面"},
 {src:"./images/scan-control.webp",title:"掃描控制面板",desc:"全房掃描與控制工具的實際操作介面",alt:"賽特神諭掃描控制面板"},
 {src:"./images/room-ranking.webp",title:"房間排行總覽",desc:"房間掃描列表及排行資訊展示",alt:"賽特神諭房間排行介面"},
 {src:"./images/game-main.webp",title:"遊戲主畫面",desc:"賽特神諭搭配 ATG 遊戲的介面展示",alt:"賽特神諭遊戲主畫面"}
 ];let i=0;
 const img=document.getElementById("demoImage"),title=document.getElementById("demoTitle"),desc=document.getElementById("demoDesc"),count=document.getElementById("slideCount");
-function show(n){i=(n+slides.length)%slides.length;const s=slides[i];img.src=s.src;img.alt=s.alt;title.textContent=s.title;desc.textContent=s.desc;count.textContent=(i+1)+" / "+slides.length;}
+function show(n){i=(n+slides.length)%slides.length;const s=slides[i];img.onerror=()=>{img.onerror=null;if(s.fallback)img.src=s.fallback};img.src=s.src;img.alt=s.alt;title.textContent=s.title;desc.textContent=s.desc;count.textContent=(i+1)+" / "+slides.length;}
 document.getElementById("prevSlide").addEventListener("click",()=>show(i-1));
 document.getElementById("nextSlide").addEventListener("click",()=>show(i+1));
 })();</script>
