@@ -399,7 +399,12 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
 .homepage-banner{background:transparent!important;border-color:transparent!important;box-shadow:none!important}
 .homepage-banner-stage,.homepage-banner-slide,.homepage-banner-slide picture,
 .homepage-banner-slide a,.homepage-banner-slide img{background:transparent!important}
-.homepage-banner-slide img{object-fit:contain!important}
+.homepage-banner-slide img{
+  object-fit:contain!important;
+  filter:drop-shadow(0 5px 8px rgba(0,0,0,.58)) drop-shadow(0 0 16px rgba(0,0,0,.38));
+}
+.homepage-banner{overflow:visible!important}
+.homepage-banner-slide img{border-radius:10px}
 .homepage-banner-prev,.homepage-banner-next{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:30px;height:38px;border:1px solid #e2be86;border-radius:6px;background:#241506b5;color:#fff4dc;font-size:24px;cursor:pointer}
 .homepage-banner-prev{left:7px}.homepage-banner-next{right:7px}
 .homepage-banner-dots{position:absolute;bottom:7px;left:0;right:0;z-index:2;display:flex;gap:7px;justify-content:center}
