@@ -3,18 +3,15 @@
   "slides": [
     {
       "desktop": "/media/guides/389857bb-29e0-40c7-967f-767eacdc9024-1.png",
-      "mobile": "/media/guides/bd440ea8-f0f7-4c7c-bad4-82d764940f92.png",
       "link": "https://seth-oracle.github.io/assistant/",
       "enabled": true
     },
     {
       "desktop": "/media/guides/d6878fc0-8fa9-474f-b4da-6abf59b1a1a7.png",
-      "mobile": "/media/guides/08136537-0454-49d3-b9b4-61d525ba8eac.png",
       "enabled": true
     },
     {
       "desktop": "/media/guides/e68247a0-9ead-4f53-a2e0-fcc0983170ec.png",
-      "mobile": "/media/guides/cd63ee45-ed2c-483a-ae66-db8bb25625d3.png",
       "enabled": true
     }
   ]
