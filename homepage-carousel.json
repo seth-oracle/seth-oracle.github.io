@@ -2,16 +2,16 @@
   "intervalMs": 6500,
   "slides": [
     {
-      "desktop": "/media/guides/389857bb-29e0-40c7-967f-767eacdc9024-1.png",
+      "desktop": "/media/guides/389857bb-29e0-40c7-967f-767eacdc9024-1.webp",
       "link": "https://seth-oracle.github.io/assistant/",
       "enabled": true
     },
     {
-      "desktop": "/media/guides/d6878fc0-8fa9-474f-b4da-6abf59b1a1a7.png",
+      "desktop": "/media/guides/d6878fc0-8fa9-474f-b4da-6abf59b1a1a7.webp",
       "enabled": true
     },
     {
-      "desktop": "/media/guides/e68247a0-9ead-4f53-a2e0-fcc0983170ec.png",
+      "desktop": "/media/guides/e68247a0-9ead-4f53-a2e0-fcc0983170ec.webp",
       "enabled": true
     }
   ]
