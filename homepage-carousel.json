@@ -13,13 +13,8 @@
       "enabled": true
     },
     {
-      "desktop": "https://xinyao-ai.github.io/xinyao-ai/assets/carousel/1794219818953-2-desktop.png",
-      "mobile": "https://xinyao-ai.github.io/xinyao-ai/assets/carousel/1794219823187-2-mobile.png",
-      "enabled": true
-    },
-    {
-      "desktop": "https://xinyao-ai.github.io/xinyao-ai/assets/carousel/1793542019184-1-desktop.png",
-      "mobile": "https://xinyao-ai.github.io/xinyao-ai/assets/carousel/1793542025701-1-mobile.png",
+      "desktop": "/media/guides/e68247a0-9ead-4f53-a2e0-fcc0983170ec.png",
+      "mobile": "/media/guides/cd63ee45-ed2c-483a-ae66-db8bb25625d3.png",
       "enabled": true
     }
   ]
