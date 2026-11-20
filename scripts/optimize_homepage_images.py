@@ -51,7 +51,7 @@ html = INDEX.read_text(encoding="utf-8")
 def convert_html(match):
     url = match.group(2)
     maximum = (160, 160) if Path(url).name in MENU_ICONS else (1500, 1500)
-    return match.group(1) + optimized_url("/" + url, maximum) + match.group(3)
+    return match.group(1) + optimized_url(url, maximum) + match.group(3)
 html = re.sub(r'(src=")(/[^"<>]+?\.(?:png|jpg|jpeg))(")', convert_html, html, flags=re.IGNORECASE)
 
 if CAROUSEL.exists():
