@@ -526,6 +526,20 @@ header .nav .menu-symbol{display:none}
  }
  body>header .nav#primary-nav a{min-height:48px!important}
 }
+
+/* Distinct download action pinned visually at end of mobile popover */
+@media(max-width:700px){
+ body>header .nav#primary-nav a.menu-download-highlight{
+  margin-top:6px!important;
+  border:2px solid #a16a1a!important;
+  background:linear-gradient(110deg,#fff0c3 0%,#efc371 55%,#d89d41 100%)!important;
+  box-shadow:0 0 0 2px #ffebaa inset,0 3px 10px #87551655!important;
+  color:#4b2808!important;font-weight:900!important;
+ }
+ body>header .nav#primary-nav a.menu-download-highlight:active{
+  background:linear-gradient(110deg,#f5d58c,#c58b30)!important;
+ }
+}
 </style>
 
 </head>
@@ -540,8 +554,8 @@ header .nav .menu-symbol{display:none}
       <a href="/reviews/"><span class="menu-symbol" aria-hidden="true"><img src="/8e84bdc6-e27b-4aa3-b83c-5a8913375623.webp" alt="" loading="lazy" decoding="async" width="38" height="38"></span><span>玩家評價</span></a>
       <a href="/assistant/"><span class="menu-symbol" aria-hidden="true"><img src="/33d7d4dd-9acd-4167-8954-c994d42cee23.webp" alt="" loading="lazy" decoding="async" width="38" height="38"></span><span>神諭助手</span></a>
       <a href="#guide"><span class="menu-symbol" aria-hidden="true"><img src="/8f44ccfc-2637-481c-af9d-7109faea41d6.webp" alt="" loading="lazy" decoding="async" width="38" height="38"></span><span>新手教學</span></a>
-      <a href="#download"><span class="menu-symbol" aria-hidden="true"><img src="/946cbabf-17b4-46f8-a807-fa3d430e77b1.webp" alt="" loading="lazy" decoding="async" width="38" height="38"></span><span>下載專區</span></a>
       <a href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer"><span class="menu-symbol" aria-hidden="true"><img src="/b078e026-3469-4893-989f-214dea794e21.webp" alt="" loading="lazy" decoding="async" width="38" height="38"></span><span>啟動系統</span></a>
+      <a href="#download" class="menu-download-highlight"><span class="menu-symbol" aria-hidden="true"><img src="/946cbabf-17b4-46f8-a807-fa3d430e77b1.webp" alt="" loading="lazy" decoding="async" width="38" height="38"></span><span>下載專區</span></a>
     </nav>
   </header>
   <main>
