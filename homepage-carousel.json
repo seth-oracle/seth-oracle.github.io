@@ -2,31 +2,24 @@
   "intervalMs": 6500,
   "slides": [
     {
-      "title": "",
-      "desktop": "https://xinyao-ai.github.io/xinyao-ai/assets/carousel/1794219024469-0-desktop.png",
-      "mobile": "https://xinyao-ai.github.io/xinyao-ai/assets/carousel/1794219032528-0-mobile.png",
-      "link": "",
+      "desktop": "/media/guides/389857bb-29e0-40c7-967f-767eacdc9024-1.png",
+      "mobile": "/media/guides/bd440ea8-f0f7-4c7c-bad4-82d764940f92.png",
+      "link": "https://seth-oracle.github.io/assistant/",
       "enabled": true
     },
     {
-      "title": "",
       "desktop": "https://xinyao-ai.github.io/xinyao-ai/assets/carousel/1794219363382-1-desktop.png",
       "mobile": "https://xinyao-ai.github.io/xinyao-ai/assets/carousel/1794219363239-1-mobile.png",
-      "link": "",
       "enabled": true
     },
     {
-      "title": "",
       "desktop": "https://xinyao-ai.github.io/xinyao-ai/assets/carousel/1794219818953-2-desktop.png",
       "mobile": "https://xinyao-ai.github.io/xinyao-ai/assets/carousel/1794219823187-2-mobile.png",
-      "link": "",
       "enabled": true
     },
     {
-      "title": "",
       "desktop": "https://xinyao-ai.github.io/xinyao-ai/assets/carousel/1793542019184-1-desktop.png",
       "mobile": "https://xinyao-ai.github.io/xinyao-ai/assets/carousel/1793542025701-1-mobile.png",
-      "link": "",
       "enabled": true
     }
   ]
