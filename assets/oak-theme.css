@@ -238,3 +238,14 @@ body::before{
  .hero .mobile-quick-links.image-shortcuts>a{aspect-ratio:3.05/1}
  #features.feature-section{padding-top:22px!important}
 }
+
+/* Mobile overflow fix: allow internal carousels to swipe, not the entire document. */
+html,body{max-width:100%;overflow-x:clip!important}
+@media(max-width:700px){
+  body>header,body>main,main,.hero,.feature-section,.games,.guide-section,.downloads,.faq-section{max-width:100%;min-width:0}
+  .hero .hero-content{min-width:0;max-width:100%}
+  .feature-section,.games,.guide-section,.downloads,.faq-section{overflow-x:clip}
+  .features-carousel,.games-carousel,.features,.games-grid{max-width:100%;min-width:0}
+  /* Preserve intentional horizontal scrolling inside the cards only. */
+  .features,.games-grid{overflow-x:auto!important;overscroll-behavior-x:contain}
+}
