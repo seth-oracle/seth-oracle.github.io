@@ -419,6 +419,11 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
 .hero .mobile-quick-links.image-shortcuts>a>img{display:block;width:100%;height:auto;object-fit:contain}
 .hero .mobile-quick-links.image-shortcuts>a:focus-visible{outline:2px solid #9d672b;outline-offset:3px}
 }
+
+/* Uploaded feature-section heading graphic: original aspect ratio, compact gaps */
+#features .feature-heading-image{width:min(100%,780px);margin:0 auto 16px;display:flex;align-items:center;justify-content:center}
+#features .feature-heading-image img{display:block;width:100%;height:auto;object-fit:contain}
+@media(max-width:700px){#features .feature-heading-image{width:100%;margin:0 auto 12px}}
 </style>
 <link rel="stylesheet" href="/assets/oak-theme.css?v=8">
 </head>
@@ -446,8 +451,7 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
     </div></div>
 
     <section id="features" class="feature-section">
-      <h2 class="section-title">核心功能</h2>
-      <p class="section-sub">了解 ATG 電子遊戲全房掃描、盤面監測與資料觀察等核心功能；左右滑動查看更多，點選卡片即可閱讀完整教學。</p>
+      <div class="feature-heading-image"><img src="/6079b300-6654-4ef1-8479-0cddf6d2bcba.png" alt="賽特神諭核心功能" decoding="async" loading="lazy"></div>
       {% assign sorted_features = site.feature_docs | sort: "card_order" %}
       <div class="features-carousel">
         <button type="button" class="feature-scroll-btn feature-scroll-prev" aria-label="上一張核心功能卡片" data-feature-scroll="-1">‹</button>
