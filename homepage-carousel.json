@@ -8,10 +8,12 @@
     },
     {
       "desktop": "/media/guides/d6878fc0-8fa9-474f-b4da-6abf59b1a1a7.webp",
+      "link": "https://seth-oracle.github.io/guides/",
       "enabled": true
     },
     {
       "desktop": "/media/guides/e68247a0-9ead-4f53-a2e0-fcc0983170ec.webp",
+      "link": "https://seth-oracle.github.io/reviews/",
       "enabled": true
     }
   ]
