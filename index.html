@@ -435,6 +435,14 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
  #games .games-heading-image{width:100%;margin:0 auto 15px}
  #games .games-heading-image img{transform:scale(1.14);transform-origin:center center}
 }
+
+/* Match the previous support-games heading graphic size */
+#guide .guide-heading-image{display:flex;align-items:center;justify-content:center;width:min(100%,1050px);margin:0 auto 15px;overflow:visible}
+#guide .guide-heading-image img{display:block;width:100%;height:auto;object-fit:contain}
+@media(max-width:700px){
+ #guide .guide-heading-image{width:100%;margin:0 auto 15px}
+ #guide .guide-heading-image img{transform:scale(1.14);transform-origin:center center}
+}
 </style>
 <link rel="stylesheet" href="/assets/oak-theme.css?v=8">
 </head>
@@ -539,8 +547,7 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
       </div><button class="game-scroll-btn game-scroll-next" type="button" aria-label="下一組遊戲" onclick="document.getElementById('gameTrack').scrollBy({left:540,behavior:'smooth'})">›</button></div><p class="games-tip">← 左右滑動，查看更多遊戲 →</p></section>
     
     <section class="guide-section" id="guide">
-      <h2 class="section-title">新手使用教學</h2>
-      <p class="section-sub">三個步驟，從註冊到啟用賽特神諭。</p>
+      <div class="guide-heading-image"><img src="/14e8ddf0-fe01-4494-adc2-39b3c476b500.png" alt="賽特神諭新手使用教學｜三步驟快速上手" loading="lazy" decoding="async"></div>
       <div class="guide-steps">
         <article class="guide-step"><span class="guide-num">01</span>
           <h3>註冊皇鼎會員</h3>
