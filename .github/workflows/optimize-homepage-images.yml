@@ -26,7 +26,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html homepage-carousel.json\n          git add -- '*.webp' '**/*.webp'
+          git add index.html homepage-carousel.json
+          git add -- '*.webp' '**/*.webp'
           if ! git diff --cached --quiet; then
             git commit -m "Serve optimized WebP homepage images"
             git push
