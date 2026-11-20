@@ -427,6 +427,11 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
  #features .feature-heading-image{width:100%;margin:0 auto 16px}
  #features .feature-heading-image img{transform:scale(1.14);transform-origin:center}
 }
+
+/* Uploaded support-games heading artwork */
+#games .games-heading-image{display:flex;align-items:center;justify-content:center;width:min(100%,940px);margin:0 auto 15px}
+#games .games-heading-image img{display:block;width:100%;height:auto;object-fit:contain}
+@media(max-width:700px){#games .games-heading-image{width:100%;margin:0 auto 12px}}
 </style>
 <link rel="stylesheet" href="/assets/oak-theme.css?v=8">
 </head>
@@ -478,8 +483,7 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
     </section>
 
         <section class="games" id="games">
-      <h2 class="section-title">支援遊戲</h2>
-      <p class="section-sub">目前展示 8 款 ATG 遊戲，點選卡片可前往系統選擇遊戲。</p>
+      <div class="games-heading-image"><img src="/3a540d19-e9c6-469a-8709-e91ce20528e5.png" alt="賽特神諭支援遊戲｜目前展示 8 款 ATG 遊戲" loading="lazy" decoding="async"></div>
       <div class="games-carousel"><button class="game-scroll-btn game-scroll-prev" type="button" aria-label="上一組遊戲" onclick="document.getElementById('gameTrack').scrollBy({left:-540,behavior:'smooth'})">‹</button><div class="games-grid" id="gameTrack" tabindex="0" aria-label="支援遊戲橫向列表，可左右滑動">
         <article class="game-card">
           <div class="game-cover"><img src="https://www.atg-games.com/storm-of-seth-2-awakening/zh-tw/game_icon.png" alt="戰神賽特二代覺醒之力官方遊戲封面" loading="lazy" referrerpolicy="no-referrer"></div><span class="game-tag">ATG · SETH II</span>
