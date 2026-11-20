@@ -453,11 +453,11 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
 }
 
 /* FAQ graphic same dimensions as the download title */
-.faq-section .faq-heading-image{display:flex;align-items:center;justify-content:center;width:min(100%,1050px);margin:0 auto 15px;overflow:visible;scroll-margin-top:85px}
-.faq-section .faq-heading-image img{display:block;width:100%;height:auto;object-fit:contain}
+.faq-section .faq-heading-image{display:flex;align-items:center;justify-content:center;width:min(100%,1050px);margin:0 auto 8px;overflow:visible;scroll-margin-top:85px}
+.faq-section .faq-heading-image img{display:block;width:100%;height:auto;object-fit:contain;transform:scale(1.24);transform-origin:center}
 @media(max-width:700px){
- .faq-section .faq-heading-image{width:100%;margin:0 auto 15px}
- .faq-section .faq-heading-image img{transform:scale(1.14);transform-origin:center center}
+ .faq-section .faq-heading-image{width:100%;margin:0 auto 0}
+ .faq-section .faq-heading-image img{transform:scale(1.48);transform-origin:center center}
 }
 </style>
 <link rel="stylesheet" href="/assets/oak-theme.css?v=8">
@@ -610,7 +610,7 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
     </dialog>
 
     <section class="guide-section faq-section">
-      <h3 class="faq-title" id="faq">常見問題 FAQ</h3>
+      <div class="faq-heading-image" id="faq"><img src="/a0294817-d336-43ec-93c3-a4da56d013b9.png" alt="常見問題 FAQ" loading="lazy" decoding="async"></div>
       <div class="faq-list">
         <details class="faq-item"><summary>需要付費嗎？</summary><div class="faq-answer">會員免費，用專屬連結註冊皇鼎會員帳號並登入 App 即可使用，不另外收費。</div></details>
         <details class="faq-item"><summary>登入時要輸入哪個帳密？</summary><div class="faq-answer">請輸入皇鼎會員帳號與密碼。</div></details>
