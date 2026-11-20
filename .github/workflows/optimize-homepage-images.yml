@@ -5,6 +5,9 @@ on:
     paths:
       - ".github/workflows/optimize-homepage-images.yml"
       - "index.html"
+      - "homepage-carousel.json"
+      - "media/guides/**"
+      - "scripts/optimize_homepage_images.py"
 permissions:
   contents: write
 jobs:
@@ -23,7 +26,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html '*.webp' '**/*.webp'
+          git add index.html homepage-carousel.json\n          git add -- '*.webp' '**/*.webp'
           if ! git diff --cached --quiet; then
             git commit -m "Serve optimized WebP homepage images"
             git push
