@@ -21,6 +21,10 @@ layout: null
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"賽特神諭","alternateName":"SETH ORACLE","url":"https://seth-oracle.github.io/","description":"賽特神諭官方網站，提供 ATG 電子遊戲全房掃描、盤面監測、數據觀察、攻略教學與 APP 下載資訊。","inLanguage":"zh-Hant"}</script>
   <link rel="icon" type="image/png" href="https://xinyao-ai.github.io/xinyao-ai/favicon.png">
   <link rel="apple-touch-icon" href="https://xinyao-ai.github.io/xinyao-ai/apple-touch-icon.png">
+  <!-- Prioritize above-the-fold assets; avoid waiting for carousel JSON to discover the first image -->
+  <link rel="preconnect" href="https://xinyao-ai.github.io" crossorigin>
+  <link rel="preload" as="image" media="(max-width:700px)" href="https://xinyao-ai.github.io/xinyao-ai/assets/carousel/1794219032528-0-mobile.png" fetchpriority="high">
+  <link rel="preload" as="image" media="(min-width:701px)" href="https://xinyao-ai.github.io/xinyao-ai/assets/carousel/1794219024469-0-desktop.png" fetchpriority="high">
   <style>
     :root{--gold:#f5cf79;--muted:#c5b9a4;--line:#6f502b}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#080707;color:#f9f2e7;font-family:"Microsoft JhengHei","Noto Sans TC",system-ui,sans-serif}
@@ -459,6 +463,10 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
  .faq-section .faq-heading-image{width:100%;margin:0 auto 0}
  .faq-section .faq-heading-image img{transform:scale(1.48);transform-origin:center center}
 }
+
+/* Prevent blank image blocks while assets are loading. */
+.image-shortcuts img,.hero-core-graphic img{content-visibility:visible!important}
+.homepage-banner-slide img{background:#442712}
 </style>
 <link rel="stylesheet" href="/assets/oak-theme.css?v=8">
 </head>
@@ -475,11 +483,11 @@ header .logo-app-icon{display:block;width:40px;height:40px;flex:none;object-fit:
         <button class="homepage-banner-next" type="button" aria-label="下一張">›</button>
         <div class="homepage-banner-dots" id="homepageBannerDots"></div>
       </div>
-      <div class="hero-core-graphic"><img loading="lazy" src="/e295598e-659d-41fe-9f6e-396e2852c031.png" alt="賽特神諭核心功能：數據、極速、訊號、掃描、劇透、管控" decoding="async"></div>
+      <div class="hero-core-graphic"><img loading="eager" fetchpriority="high" src="/e295598e-659d-41fe-9f6e-396e2852c031.png" alt="賽特神諭核心功能：數據、極速、訊號、掃描、劇透、管控" decoding="async"></div>
       
     <div class="mobile-quick-links image-shortcuts" aria-label="熱門功能入口">
-      <a href="#games" aria-label="支援遊戲"><img src="/240e701f-d39d-4cec-9d9b-57cfdec31ab1.png" alt="支援遊戲" loading="lazy" decoding="async"></a>
-      <a href="#features" aria-label="核心功能"><img src="/f8ef6f6f-a925-4be0-987a-06077507e722.png" alt="核心功能" loading="lazy" decoding="async"></a>
+      <a href="#games" aria-label="支援遊戲"><img src="/240e701f-d39d-4cec-9d9b-57cfdec31ab1.png" alt="支援遊戲" loading="eager" fetchpriority="high" decoding="async"></a>
+      <a href="#features" aria-label="核心功能"><img src="/f8ef6f6f-a925-4be0-987a-06077507e722.png" alt="核心功能" loading="eager" fetchpriority="high" decoding="async"></a>
       <a href="/guides/" aria-label="攻略教學"><img src="/204310cc-3c5e-41d5-a4e5-0e5c3faa4843.png" alt="攻略教學" loading="lazy" decoding="async"></a>
       <a href="#download" aria-label="下載專區"><img src="/b2e7b138-fe3a-4ee3-9537-504dad01571e.png" alt="下載專區" loading="lazy" decoding="async"></a>
     </div>
