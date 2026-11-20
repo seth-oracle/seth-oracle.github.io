@@ -94,7 +94,7 @@ body.oak-subpage{
  outline:2px solid #8c602d!important;outline-offset:3px;
 }
 @media(max-width:700px){
- body.oak-subpage{background-size:320px auto!important;background-attachment:scroll!important}
+ body.oak-subpage{background-size:320px auto!important;background-attachment:fixed!important}
  .oak-subpage .hero{padding:37px 15px 38px!important}
  .oak-subpage .masthead{padding:38px 16px 53px!important}
  .oak-subpage .wrap{margin:-17px auto 0!important}
@@ -120,3 +120,17 @@ body.oak-subpage{
 .oak-subpage .steps,.oak-subpage .steps li,.oak-subpage .panel p,.oak-subpage main p{color:#4e361f}
 .oak-subpage .note,.oak-subpage .notice{background:#f5e5c9!important;color:#5b4025!important}
 .oak-subpage .gallery img{background:#ead7bb}
+
+
+/* Fixed wood texture on every subpage, including iOS Safari.
+   A fixed viewport layer avoids the mobile browser's unreliable fixed body backgrounds. */
+body.oak-subpage{background-image:none!important;background-color:transparent!important;isolation:isolate}
+body.oak-subpage::before{
+ content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+ background-color:#efe3d1;
+ background-image:url('/assets/photo_2026-11-19_18-11-07.jpg');
+ background-position:center top;background-size:480px auto;background-repeat:repeat;
+}
+@media(max-width:700px){
+ body.oak-subpage::before{background-size:320px auto}
+}
