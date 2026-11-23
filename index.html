@@ -522,6 +522,27 @@ main section.seth-info nav a{
   main section.seth-info h2{font-size:21px!important}
   main section.seth-info p{font-size:14px!important;line-height:1.75!important}
 }
+
+/* Specific override: generic mobile .hero h1 !important was making this title 40px+ */
+@media(max-width:700px){
+  .hero .hero-content .homepage-seo-intro h1{
+    font-size:clamp(17px,4.65vw,20px)!important;
+    line-height:1.55!important;
+    letter-spacing:0!important;
+    font-weight:800!important;
+    margin:0 auto 8px!important;
+    color:#754514!important;
+    text-shadow:none!important;
+    white-space:nowrap!important;
+  }
+  .hero .hero-content .homepage-seo-intro .seo-title-break{
+    display:block!important;
+    white-space:nowrap!important;
+  }
+}
+@media(max-width:360px){
+  .hero .hero-content .homepage-seo-intro h1{font-size:16px!important}
+}
 </style>
 <link rel="stylesheet" href="/assets/oak-theme.css?v=10">
 
