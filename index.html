@@ -637,6 +637,20 @@ header .nav .menu-symbol{display:none}
     .oracle-video-secondary{border:1px solid #ab8552;color:#5b3b1c;background:#f9f1e5}
     @media(max-width:650px){.oracle-video-section{padding:38px 15px 48px}.oracle-video-shell{flex-direction:column;gap:19px;padding:18px 13px}.oracle-video-player{width:min(100%,255px)}.oracle-video-info{text-align:center}.oracle-video-info h3{font-size:19px}.oracle-video-info p{font-size:13px}.oracle-video-link,.oracle-video-secondary{margin:10px auto}}
   </style>
+  <style id="oracle-youtube-hub-style">
+    .oracle-youtube-hub{scroll-margin-top:70px}
+    .oracle-youtube-hub .oracle-youtube-channel{max-width:740px;margin:0 auto 26px;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 20px;border:1px solid #bd965a;border-radius:14px;background:#f8eddb;text-align:left}
+    .oracle-youtube-channel-text{display:flex;gap:13px;align-items:center;color:#503317}
+    .oracle-youtube-mark{display:flex;align-items:center;justify-content:center;border-radius:10px;width:46px;height:36px;background:#cf2b25;color:white;font-size:20px}
+    .oracle-youtube-channel-text strong{display:block;font-size:16px;color:#4c2c10}
+    .oracle-youtube-channel-text small{display:block;color:#826646;font-size:12px;margin-top:5px}
+    .oracle-youtube-channel>a,.oracle-youtube-more a{color:#513213;background:#e8c077;border:1px solid #ba8e43;border-radius:9px;padding:11px 14px;font-size:13px;font-weight:800;white-space:nowrap}
+    .oracle-youtube-list-title{max-width:740px;text-align:left;margin:0 auto 12px!important;font-size:20px;color:#63411e!important}
+    .oracle-youtube-more{max-width:740px;margin:18px auto 0;display:flex;justify-content:space-between;align-items:center;gap:12px;color:#6e4b2a;font-size:13px}
+    .oracle-video-tag{display:block;margin:0 0 18px;font-size:13px;color:#805a31}
+    .oracle-youtube-menu-icon{display:inline-flex;justify-content:center;align-items:center;background:#ce3429;color:white!important;font-weight:900;border-radius:10px;width:38px;height:38px;font-size:16px}
+    @media(max-width:650px){.oracle-youtube-hub .oracle-youtube-channel{flex-direction:column;align-items:stretch;padding:15px}.oracle-youtube-channel>a{text-align:center}.oracle-youtube-more{flex-direction:column}.oracle-youtube-list-title{text-align:center}}
+  </style>
 </head>
 <body>
   <header>
@@ -648,6 +662,7 @@ header .nav .menu-symbol{display:none}
       <a href="/guides/"><span class="menu-symbol" aria-hidden="true"><img src="/71e25ff0-a09f-4bfb-bd34-09ae839b4dfd.webp" alt="" loading="lazy" decoding="async" width="38" height="38"></span><span>攻略教學</span></a>
       <a href="/reviews/"><span class="menu-symbol" aria-hidden="true"><img src="/8e84bdc6-e27b-4aa3-b83c-5a8913375623.webp" alt="" loading="lazy" decoding="async" width="38" height="38"></span><span>玩家評價</span></a>
       <a href="/assistant/"><span class="menu-symbol" aria-hidden="true"><img src="/33d7d4dd-9acd-4167-8954-c994d42cee23.webp" alt="" loading="lazy" decoding="async" width="38" height="38"></span><span>神諭助手</span></a>
+      <a href="#youtube"><span class="menu-symbol oracle-youtube-menu-icon" aria-hidden="true">▶</span><span>YouTube 專區</span></a>
       <a href="#guide"><span class="menu-symbol" aria-hidden="true"><img src="/8f44ccfc-2637-481c-af9d-7109faea41d6.webp" alt="" loading="lazy" decoding="async" width="38" height="38"></span><span>新手教學</span></a>
       <a href="https://xinyao-ai.github.io/xinyao-ai/?v=5000" target="_blank" rel="noopener noreferrer"><span class="menu-symbol" aria-hidden="true"><img src="/b078e026-3469-4893-989f-214dea794e21.webp" alt="" loading="lazy" decoding="async" width="38" height="38"></span><span>啟動系統</span></a>
       <a href="/contact/?v=20261120-2" class="menu-contact-link"><span class="menu-symbol" aria-hidden="true"><img src="/f6045e1d-6ebb-4dc5-86e2-f00b34992c05.webp" alt="" loading="lazy" decoding="async" width="38" height="38"></span><span>聯繫我們</span></a>
@@ -782,26 +797,38 @@ header .nav .menu-symbol{display:none}
       </div>
     </section>
 
-    <section class="oracle-video-section" id="video-guide" aria-labelledby="oracleVideoTitle">
+    <section class="oracle-video-section oracle-youtube-hub" id="youtube" aria-labelledby="oracleVideoTitle">
       <div class="oracle-video-heading">
-        <span class="oracle-video-eyebrow">賽特神諭 · 官方影片</span>
-        <h2 id="oracleVideoTitle">🎬 影片教學｜賽特神諭全新上線</h2>
-        <p>透過影片認識賽特神諭的使用介面與功能。想看更多內容，也可以前往官方 YouTube 頻道。</p>
+        <span class="oracle-video-eyebrow">SETH ORACLE · OFFICIAL YOUTUBE</span>
+        <h2 id="oracleVideoTitle">▶️ 賽特神諭 YouTube 專區</h2>
+        <p>官方影片、功能展示與新手操作教學，都可以在這裡觀看。</p>
       </div>
+      <div class="oracle-youtube-channel">
+        <div class="oracle-youtube-channel-text">
+          <span class="oracle-youtube-mark">▶</span>
+          <div><strong>賽特神諭官方 YouTube</strong><small>最新影片與 Shorts 影片集</small></div>
+        </div>
+        <a href="https://www.youtube.com/@atg8888" target="_blank" rel="noopener noreferrer">前往官方頻道 ↗</a>
+      </div>
+      <h3 class="oracle-youtube-list-title">🎬 精選影片</h3>
       <div class="oracle-video-shell">
         <div class="oracle-video-player">
           <iframe src="https://www.youtube-nocookie.com/embed/VyNEJBsW-3o"
-                  title="賽特神諭全新上線｜官方 YouTube Shorts 影片"
+                  title="賽特神諭全新上線｜YouTube Shorts"
                   loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowfullscreen></iframe>
         </div>
         <div class="oracle-video-info">
           <h3>賽特神諭｜全新上線</h3>
-          
-          <a class="oracle-video-link" href="https://www.youtube.com/shorts/VyNEJBsW-3o" target="_blank" rel="noopener noreferrer">在 YouTube 觀看完整影片 ↗</a>
+          <span class="oracle-video-tag">官方影片 · Shorts</span>
+          <a class="oracle-video-link" href="https://www.youtube.com/shorts/VyNEJBsW-3o" target="_blank" rel="noopener noreferrer">在 YouTube 觀看 ↗</a>
           <a class="oracle-video-secondary" href="#guide">查看新手使用教學 ↗</a>
         </div>
+      </div>
+      <div class="oracle-youtube-more">
+        <span>更多影片陸續更新</span>
+        <a href="https://www.youtube.com/@atg8888/shorts" target="_blank" rel="noopener noreferrer">觀看全部 Shorts ↗</a>
       </div>
     </section>
 
