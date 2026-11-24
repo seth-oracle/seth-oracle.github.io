@@ -53,6 +53,30 @@ a{text-decoration:none}
     .oracle-youtube-menu-icon{display:inline-flex;justify-content:center;align-items:center;background:#ce3429;color:white!important;font-weight:900;border-radius:10px;width:38px;height:38px;font-size:16px}
     @media(max-width:650px){.oracle-youtube-hub .oracle-youtube-channel{flex-direction:column;align-items:stretch;padding:15px}.oracle-youtube-channel>a{text-align:center}.oracle-youtube-more{flex-direction:column}.oracle-youtube-list-title{text-align:center}}
   </style>
+<style id="oracle-video-slider-style">
+.oracle-library-heading{max-width:740px;margin:0 auto 8px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.oracle-library-heading .oracle-youtube-list-title{margin:0!important}
+.oracle-slider-controls{display:flex;gap:7px}
+.oracle-slide-arrow{width:35px;height:35px;border:1px solid #b88746;border-radius:50%;background:#f0d7a6;color:#62401e;font-size:25px;cursor:pointer;line-height:1}
+.oracle-slide-arrow:disabled{opacity:.38;cursor:default}
+.oracle-swipe-tip{max-width:740px;text-align:left;margin:0 auto 12px;color:#876443;font-size:12px}
+.oracle-video-track{--video-gap:14px;display:flex;gap:var(--video-gap);max-width:740px;margin:0 auto;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:#b88a53 transparent;padding:4px 1px 14px;overscroll-behavior-x:contain}
+.oracle-video-card{min-width:0;flex:0 0 calc((100% - 3 * var(--video-gap))/4);scroll-snap-align:start;background:rgba(248,237,219,.43);border:1px solid #c49e68;border-radius:14px;padding:9px;text-align:left;box-shadow:0 5px 18px #68432015}
+.oracle-video-thumb{position:relative;width:100%;aspect-ratio:9/16;border:1px solid #aa7b40;border-radius:10px;background:#15120e;overflow:hidden;cursor:pointer;display:block;padding:0}
+.oracle-video-thumb img{display:block;width:100%;height:100%;object-fit:cover}
+.oracle-video-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:45px;height:45px;border-radius:50%;background:#e62117;color:white;display:grid;place-items:center;font-size:19px;padding-left:3px;box-shadow:0 3px 12px #0007}
+.oracle-video-card h3{font-size:14px;line-height:1.45;color:#51351c;margin:10px 0 5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.oracle-video-card p{font-size:11px;color:#886b4f;margin:0 0 9px}
+.oracle-video-card>a{font-size:12px;color:#6a451e;font-weight:800;text-decoration:underline;text-underline-offset:3px}
+.oracle-video-modal[hidden]{display:none}
+.oracle-video-modal{position:fixed;inset:0;background:rgba(0,0,0,.84);z-index:9999;display:flex;align-items:center;justify-content:center;padding:24px}
+.oracle-modal-inner{width:min(100%,400px);position:relative}
+.oracle-modal-frame{aspect-ratio:9/16;background:#111;border:2px solid #d7aa61;border-radius:12px;overflow:hidden}
+.oracle-modal-frame iframe{width:100%;height:100%;border:0;display:block}
+.oracle-modal-close{position:absolute;right:0;top:-47px;background:#e7c28a;color:#4d301a;border:0;border-radius:9px;padding:8px 13px;font-weight:800;font-size:16px;cursor:pointer}
+@media(max-width:650px){.oracle-video-track{--video-gap:10px}.oracle-video-card{flex-basis:calc((100% - var(--video-gap))/2);padding:7px}.oracle-video-card h3{font-size:13px}.oracle-video-card>a{font-size:11px}.oracle-video-play{width:40px;height:40px}.oracle-modal-inner{width:min(100%,315px)}}
+@media(prefers-reduced-motion:reduce){.oracle-video-track{scroll-behavior:auto}}
+</style>
 </head>
 <body class="oak-subpage">
 <header class="sitebar"><a class="brand" href="/"><img src="https://xinyao-ai.github.io/xinyao-ai/icon-192.png" alt="" width="36" height="36">賽特神諭</a><a class="back" href="/">返回官方首頁 ↗</a></header>
@@ -68,21 +92,24 @@ a{text-decoration:none}
         </div>
         <a href="https://www.youtube.com/@atg8888" target="_blank" rel="noopener noreferrer">前往官方頻道 ↗</a>
       </div>
-      <h3 class="oracle-youtube-list-title">🎬 精選影片</h3>
-      <div class="oracle-video-shell">
-        <div class="oracle-video-player">
-          <iframe src="https://www.youtube-nocookie.com/embed/VyNEJBsW-3o"
-                  title="賽特神諭全新上線｜YouTube Shorts"
-                  loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen></iframe>
+      <div class="oracle-library-heading">
+        <h2 class="oracle-youtube-list-title">🎬 精選影片</h2>
+        <div class="oracle-slider-controls" aria-label="影片切換">
+          <button type="button" id="videoPrev" class="oracle-slide-arrow" aria-label="往左看影片">‹</button>
+          <button type="button" id="videoNext" class="oracle-slide-arrow" aria-label="往右看影片">›</button>
         </div>
-        <div class="oracle-video-info">
+      </div>
+      <p class="oracle-swipe-tip">左右滑動觀看更多影片</p>
+      <div class="oracle-video-track" id="oracleVideoTrack" aria-label="賽特神諭 YouTube 精選影片" tabindex="0">
+        <article class="oracle-video-card">
+          <button type="button" class="oracle-video-thumb" data-video-id="VyNEJBsW-3o" data-video-title="賽特神諭｜全新上線" aria-label="播放：賽特神諭全新上線">
+            <img src="https://i.ytimg.com/vi/VyNEJBsW-3o/hqdefault.jpg" alt="賽特神諭全新上線影片封面" loading="lazy" decoding="async">
+            <span class="oracle-video-play" aria-hidden="true">▶</span>
+          </button>
           <h3>賽特神諭｜全新上線</h3>
-          <span class="oracle-video-tag">官方影片 · Shorts</span>
-          <a class="oracle-video-link" href="https://www.youtube.com/shorts/VyNEJBsW-3o" target="_blank" rel="noopener noreferrer">在 YouTube 觀看 ↗</a>
-          <a class="oracle-video-secondary" href="/#guide">查看新手使用教學 ↗</a>
-        </div>
+          <p>官方影片 · Shorts</p>
+          <a href="https://www.youtube.com/shorts/VyNEJBsW-3o" target="_blank" rel="noopener noreferrer">在 YouTube 觀看 ↗</a>
+        </article>
       </div>
       <div class="oracle-youtube-more">
         <span>更多影片陸續更新</span>
@@ -90,5 +117,65 @@ a{text-decoration:none}
       </div>
     </section>
 </main>
+<div class="oracle-video-modal" id="oracleVideoModal" hidden role="dialog" aria-modal="true" aria-label="YouTube 影片播放器">
+  <div class="oracle-modal-inner">
+    <button type="button" class="oracle-modal-close" id="oracleVideoClose" aria-label="關閉播放器">✕ 關閉</button>
+    <div class="oracle-modal-frame" id="oracleModalFrame"></div>
+  </div>
+</div>
+<script>
+(function(){
+  const track=document.getElementById('oracleVideoTrack');
+  const previous=document.getElementById('videoPrev');
+  const next=document.getElementById('videoNext');
+  const modal=document.getElementById('oracleVideoModal');
+  const frame=document.getElementById('oracleModalFrame');
+  const close=document.getElementById('oracleVideoClose');
+  let opener=null;
+  function updateArrows(){
+    previous.disabled=track.scrollLeft<=2;
+    next.disabled=track.scrollLeft+track.clientWidth>=track.scrollWidth-2;
+  }
+  function slide(dir){
+    const card=track.querySelector('.oracle-video-card');
+    if(!card)return;
+    const gap=parseFloat(getComputedStyle(track).gap)||0;
+    const width=card.getBoundingClientRect().width+gap;
+    track.scrollBy({left:width*dir* (matchMedia('(max-width:650px)').matches?2:4),behavior:'smooth'});
+  }
+  previous.addEventListener('click',()=>slide(-1));
+  next.addEventListener('click',()=>slide(1));
+  track.addEventListener('scroll',updateArrows,{passive:true});
+  window.addEventListener('resize',updateArrows);
+  updateArrows();
+  track.addEventListener('click',e=>{
+    const btn=e.target.closest('button[data-video-id]');
+    if(!btn)return;
+    const id=btn.dataset.videoId;
+    if(!/^[a-zA-Z0-9_-]{11}$/.test(id))return;
+    opener=btn;
+    const iframe=document.createElement('iframe');
+    iframe.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1';
+    iframe.title=btn.dataset.videoTitle||'YouTube 影片';
+    iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.referrerPolicy='strict-origin-when-cross-origin';
+    iframe.allowFullscreen=true;
+    frame.replaceChildren(iframe);
+    modal.hidden=false;
+    document.body.style.overflow='hidden';
+    close.focus();
+  });
+  function hide(){
+    if(modal.hidden)return;
+    modal.hidden=true;
+    frame.replaceChildren();
+    document.body.style.overflow='';
+    if(opener)opener.focus();
+  }
+  close.addEventListener('click',hide);
+  modal.addEventListener('click',e=>{if(e.target===modal)hide()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()});
+})();
+</script>
 </body>
 </html>
