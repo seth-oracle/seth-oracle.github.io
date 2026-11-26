@@ -944,5 +944,37 @@ header .nav .menu-symbol{display:none}
  setInterval(()=>{if(!document.hidden)load();},300000);
 })();
 </script>
+
+<style>
+#homepageNotice{box-sizing:border-box;padding:0;border:1px solid #d5ab58;border-radius:12px;background:#16120e;color:#fff;max-width:min(720px,92vw);max-height:88vh;overflow:visible;box-shadow:0 12px 60px #0009}
+#homepageNotice::backdrop{background:#000a}
+#homepageNotice .notice-close{position:absolute;right:5px;top:5px;z-index:2;width:40px;height:40px;border:1px solid #d5ab58;border-radius:50%;background:#16120e;color:#ffe4a0;font-size:28px;line-height:1;cursor:pointer}
+#homepageNotice img{display:block;width:auto;max-width:100%;max-height:82vh;object-fit:contain;border-radius:11px}
+#homepageNotice a{display:block}
+</style>
+<dialog id="homepageNotice" aria-label="網站公告">
+<button class="notice-close" type="button" aria-label="關閉公告">×</button>
+<div id="homepageNoticeContent"></div>
+</dialog>
+<script>
+(()=>{
+const d=document.getElementById('homepageNotice'),content=document.getElementById('homepageNoticeContent');
+const valid=s=>typeof s==='string'&&(/^(https:\/\/)/i.test(s)||/^\/(?!\/)/.test(s));
+d.querySelector('button').addEventListener('click',()=>d.close());
+d.addEventListener('click',e=>{if(e.target===d)d.close();});
+async function show(){
+try{
+const r=await fetch('/homepage-popup.json',{cache:'no-store'});if(!r.ok)return;
+const c=await r.json();if(c.enabled!==true)return;
+const now=Date.now();for(const [key,cmp] of [['start',v=>now<v],['end',v=>now>v]]){if(c[key]){const v=Date.parse(c[key]);if(!Number.isFinite(v)||cmp(v))return;}}
+const src=matchMedia('(max-width:700px)').matches&&valid(c.mobile)?c.mobile:c.image;if(!valid(src))return;
+const img=new Image();img.alt=c.alt||'網站公告';img.decoding='async';
+img.onload=()=>{content.replaceChildren();if(valid(c.link)){const a=document.createElement('a');a.href=c.link;a.append(img);content.append(a);}else content.append(img);if(!d.open)d.showModal();};img.src=src;
+}catch(e){console.warn('首頁公告讀取失敗',e);}
+}
+show();window.addEventListener('pageshow',e=>{if(e.persisted)show();});
+})();
+</script>
+
 </body>
 </html>

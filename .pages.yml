@@ -179,6 +179,39 @@ content:
             type: boolean
             default: true
 
+
+  - name: homepage_popup
+    label: 首頁彈窗管理
+    type: file
+    path: homepage-popup.json
+    format: json
+    fields:
+      - name: enabled
+        label: 啟用首頁彈窗
+        type: boolean
+        default: false
+      - name: image
+        label: 彈窗圖片
+        type: image
+        description: 上傳公告圖片，完整顯示不裁切
+      - name: mobile
+        label: 手機版圖片（選填）
+        type: image
+      - name: alt
+        label: 圖片說明
+        type: string
+      - name: link
+        label: 點擊圖片跳轉網址（選填）
+        type: string
+      - name: start
+        label: 開始時間（選填）
+        type: string
+        description: 台灣時間格式 2026-11-26T21:00:00+08:00
+      - name: end
+        label: 結束時間（選填）
+        type: string
+        description: 台灣時間格式 2026-12-31T23:59:59+08:00
+
   - name: reviews
     label: 玩家評價管理
     type: collection
