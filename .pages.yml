@@ -195,9 +195,9 @@ content:
         type: image
         description: 建議 1200 × 675（16:9 橫式）；電腦與手機共用可用 1080 × 1080，完整顯示不裁切
       - name: mobile
-        label: 手機版圖片（選填，建議 900 × 1200）
+        label: 手機版圖片（選填，建議 1080 × 1080）
         type: image
-        description: 建議 900 × 1200（3:4 直式）；留空自動使用上方彈窗圖片
+        description: 建議 1080 × 1080（1:1 正方形）；留空自動使用上方彈窗圖片，完整顯示不裁切
       - name: alt
         label: 圖片說明
         type: string
