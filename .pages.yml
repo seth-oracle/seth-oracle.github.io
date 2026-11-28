@@ -213,6 +213,33 @@ content:
         type: string
         description: 台灣時間格式 2026-12-31T23:59:59+08:00
 
+  - name: exclusive_offers
+    label: 獨家優惠管理
+    type: file
+    path: offers/pages.json
+    format: json
+    fields:
+      - name: pages
+        label: 書冊頁面（可拖曳排序）
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.title}"
+        fields:
+          - name: title
+            label: 頁面名稱
+            type: string
+          - name: image
+            label: 頁面圖片（建議 900 × 1200）
+            type: image
+            required: true
+            description: 3:4 直式，完整顯示不裁切
+          - name: enabled
+            label: 公開顯示
+            type: boolean
+            default: true
+
   - name: reviews
     label: 玩家評價管理
     type: collection
